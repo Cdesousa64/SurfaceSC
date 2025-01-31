@@ -22,29 +22,43 @@
             });
         });
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .product-showcase {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 300px;
+            background: #f9f9f9;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <nav style="border: 2px solid #333; padding: 10px; border-radius: 5px;">
         <ul style="display: flex; gap: 10px; list-style: none; padding: 0; justify-content: center;">
-            <li style="border: 1px solid #666; padding: 5px; border-radius: 3px;"><a style="color: black;" href="#" style="color: black;">Features</a></li>
+            <li style="border: 1px solid #666; padding: 5px; border-radius: 3px;"><a style="color: black;" href="#features">Features</a></li>
             <li style="border: 2px solid #666; padding: 8px 12px; border-radius: 5px; background-color: rgba(255, 255, 255, 0.3);"><a style="color: black;" href="#promo">Promo</a></li>
             <li style="border: 2px solid #666; padding: 8px 12px; border-radius: 5px; background-color: rgba(255, 255, 255, 0.3);"><a style="color: black;" href="#surface-hubs">Surface Hubs</a></li>
             <li style="border: 2px solid #666; padding: 8px 12px; border-radius: 5px; background-color: rgba(255, 255, 255, 0.3);"><a style="color: black;" href="#highlights">Key Highlights</a></li>
             <li style="border: 2px solid #666; padding: 8px 12px; border-radius: 5px; background-color: rgba(255, 255, 255, 0.3);"><a style="color: black;" href="#contact">Contact</a></li>
         </ul>
     </nav>
-
-    
-
-    <section class="hero">
-        <h1>Introducing the New Surface Laptop and Pro for Business</h1>
-        <p>Experience the power of performance and style.</p>
-    </section>
-
-    <section class="video-banner">
-        <iframe width="800" height="450" src="https://www.youtube.com/embed/9SWEA2y2DjQ" frameborder="0" allowfullscreen></iframe>
-    </section>
-
+    <h1>Introducing the New Surface Laptop and Accessories</h1>
     <section class="product-showcase" id="features">
         <div class="product">
             <img src="Surface Pro.png" alt="Microsoft Surface Pro">
@@ -56,19 +70,12 @@
             <h2>Microsoft Surface Laptop for Business</h2>
             <p>For full specifications, <a href="Surface Laptop 7 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
         </div>
+        <div class="product">
+            <img src="Surface USB4 Dock.png" alt="Microsoft Surface USB4 Dock">
+            <h2>Microsoft Surface USB4 Dock <span style="color: red;">*Coming Soon*</span></h2>
+            <p>For full specifications, <a href="USB4_Dock.pdf" target="_blank">click here</a>.</p>
+        </div>
     </section>
-
-    <section class="promo" id="promo" style="text-align: center; padding: 40px; font-size: 1.5em; background-color: rgba(173, 216, 230, 0.3); border-radius: 10px; display: inline-block; padding: 20px;">
-        
-        <h2 style="font-size: 2em; color: #333;">🔥 Hot Promotions 🔥</h2>
-        <p style="font-weight: bold;">Check out the latest offers on Surface Copilot devices:</p>
-        <ul style="list-style: none; padding: 0;">
-            <li style="margin: 20px 0;"><a href="H2 Copilot Offer -New Savings on Surface Copilot Devices CAD.PDF" target="_blank" style="font-size: 1.2em; color: #d32f2f; text-decoration: underline;">H2 Copilot Offer - Canada</a></li>
-            <li style="margin: 20px 0;"><a href="H2 New Savings on Surface Copilot Devices {USA}.PDF" target="_blank" style="font-size: 1.2em; color: #d32f2f; text-decoration: underline;">H2 Copilot Offer - USA</a></li>
-        <p style="font-weight: bold; color: black;">*Please Contact your Dedicated VSS for Customer Eligibility*</p>
-        </ul>
-    </section>
-
     <section class="highlights" id="highlights" style="padding: 40px; text-align: left; color: black; font-weight: bold; font-size: 1.2em;">
         <h2 style="font-weight: bold;"><u>Key Highlights</u></h2>
         <ul>

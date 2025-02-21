@@ -9,14 +9,17 @@
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll("nav a").forEach(anchor => {
                 anchor.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute("href").substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: "smooth" });
-                        targetSection.classList.add("highlight");
-                        setTimeout(() => targetSection.classList.remove("highlight"), 1000);
+                    const href = this.getAttribute("href");
+                    if (href.startsWith("#")) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetSection = document.getElementById(targetId);
+
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: "smooth" });
+                            targetSection.classList.add("highlight");
+                            setTimeout(() => targetSection.classList.remove("highlight"), 1000);
+                        }
                     }
                 });
             });
@@ -85,12 +88,12 @@
         <h3 style="color: #007bff; font-size: 2.6em; font-weight: bold;">H2 Copilot Promotions Valid until June 30th 2025</h3>
         <p style="font-size: 1.2em; color: #333;">Canadian:</p>
         <ul style="list-style-type: none; padding: 0; font-size: 1.2em;">
-            <li><a href="H2%20Copilot%20Offer%20-New%20Savings%20on%20Surface%20Copilot%20Devices%20CAD.PDF" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">H2 Copilot Offer - Canada</a></li>
+            <li><a href="H2%20Copilot%20Offer%20-New%20Savings%20on%20Surface%20Copilot%20Devices%20CAD.PDF" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">H2 Copilot Offer - New Savings on Surface Copilot Devices (CAD)</a></li>
             <li><a href="New Savings on Surface Copilot Devices (Canada).PDF" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">New Savings on Surface Copilot Devices (Canada)</a></li>
         </ul>
         <p style="font-size: 1.2em; color: #333;">USA:</p>
         <ul style="list-style-type: none; padding: 0; font-size: 1.2em;">
-            <li><a href="H2%20New%20Savings%20on%20Surface%20Copilot%20Devices%20%7BUSA%7D.PDF" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">H2 Copilot Offer - USA</a></li>
+            <li><a href="H2%20New%20Savings%20on%20Surface%20Copilot%20Devices%20%7BUSA%7D.PDF" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">H2 Copilot Offer - New Savings on Surface Copilot Devices (USA)</a></li>
             <li><a href="New Savings on Surface Copilot Devices (USA).PDF" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">New Savings on Surface Copilot Devices (USA)</a></li>
         </ul>
         <p style="font-size: 1.2em; color: red; font-weight: bold;">These Files are Customer Facing FOR ELIGIBLE CUSTOMERS</p>
@@ -140,9 +143,9 @@
         <img src="Softchoice Surface Sales Contest Feb-March .png" alt="Surface to Sunshine Contest Flyer" style="width: 50%; margin-top: 20px;">
         <h3>Prizes:</h3>
         <ul>
-            <li>🏆 1st Prize: $1,000 Travel + $1,000 Hotel</li>
-            <li>🥈 2nd Prize: $500 Travel + $500 Hotel</li>
-            <li>🥉 3rd Prize: $250 Hotel Voucher</li>
+            <li🏆 1st Prize: $1,000 Travel + $1,000 Hotel</li>
+            <li🥈 2nd Prize: $500 Travel + $500 Hotel</li>
+            <li🥉 3rd Prize: $250 Hotel Voucher</li>
         </ul>
         <p>*Contest runs from February 3 - March 31. Subject to Softchoice's terms & conditions.</p>
     </section>

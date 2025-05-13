@@ -11,12 +11,6 @@ body {
     text-align: center;
 }
 
-.custom-nav {
-    border: 2px solid #333;
-    padding: 10px;
-    border-radius: 5px;
-}
-
 nav ul {
     list-style: none;
     padding: 0;
@@ -43,10 +37,6 @@ nav ul li a {
     color: white;
 }
 
-.video-banner iframe {
-    margin-top: 20px;
-}
-
 .product-showcase {
     display: flex;
     justify-content: center;
@@ -65,31 +55,6 @@ nav ul li a {
 .product img {
     width: 100%;
     border-radius: 10px;
-}
-
-.coming-soon {
-    color: red;
-}
-
-.contact-info {
-    padding: 40px 20px;
-    background: rgba(0, 0, 0, 0.4); /* Further lightened contact background */
-}
-
-.contact-info a {
-    color: white;
-    font-weight: bold;
-}
-
-footer {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.4); /* Further lightened footer background */
-}
-
-.warning {
-    color: red;
-    font-weight: bold;
-    font-size: 1.2em;
 }
 
 #backToTop {

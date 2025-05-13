@@ -6,9 +6,15 @@ body {
     padding: 0;
     background: url('copilot_background.png') no-repeat center center fixed;
     background-size: cover;
-    background-color: rgba(255, 255, 255, 0.2); /* Lightens background overlay */
+    background-color: rgba(255, 255, 255, 0.2);
     color: white;
     text-align: center;
+}
+
+.custom-nav {
+    border: 2px solid #333;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 nav ul {
@@ -30,11 +36,23 @@ nav ul li a {
 
 .hero {
     padding: 100px 20px;
-    background: rgba(0, 0, 0, 0.2); /* Further lightened background overlay */
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .hero h1, .hero p {
     color: white;
+}
+
+.video-banner {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-banner p {
+    color: black;
 }
 
 .product-showcase {
@@ -46,7 +64,7 @@ nav ul li a {
 }
 
 .product {
-    background: rgba(0, 0, 0, 0.4); /* Further lightened product background */
+    background: rgba(0, 0, 0, 0.4);
     padding: 20px;
     border-radius: 10px;
     width: 300px;
@@ -57,7 +75,18 @@ nav ul li a {
     border-radius: 10px;
 }
 
-/* Added styles for the updated "Surface Hubs" and "End of Life Devices" sections */
+.coming-soon {
+    color: red;
+}
+
+.highlights {
+    padding: 40px;
+    text-align: left;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 .custom-section {
     display: flex;
     flex-wrap: wrap;
@@ -100,7 +129,6 @@ nav ul li a {
     background-color: #555;
 }
 
-/* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     .product-showcase {
         flex-direction: column;

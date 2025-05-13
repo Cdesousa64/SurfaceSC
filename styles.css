@@ -137,6 +137,37 @@ footer {
     font-size: 1.2em; /* Slightly larger text for readability */
 }
 
+/* Promo Section Styles */
+.promo-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.promo-region {
+    margin-bottom: 40px;
+}
+
+.promo-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.promo-item {
+    max-width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.promo-item img {
+    width: 100%;
+    border-radius: 5px;
+}
+
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     .product-showcase {

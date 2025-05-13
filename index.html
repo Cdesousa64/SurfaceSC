@@ -28,8 +28,8 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav style="border: 2px solid #333; padding: 10px; border-radius: 5px;">
-        <ul style="display: flex; gap: 10px; list-style: none; padding: 0; justify-content: center;">
+    <nav class="custom-nav">
+        <ul>
             <li><a href="#features">Features</a></li>
             <li><a href="#promo">Promo</a></li>
             <li><a href="#surface-hubs">Surface Hubs</a></li>
@@ -46,16 +46,16 @@
     </section>
 
     <!-- Video Banner Section -->
-    <section class="video-banner" style="display: flex; justify-content: center; gap: 20px; flex-direction: column; align-items: center;">
-        <div style="text-align: center;">
+    <section class="video-banner">
+        <div>
             <iframe width="800" height="450" src="https://www.youtube.com/embed/4Z5VbcLnhBQ?feature=shared" frameborder="0" allowfullscreen></iframe>
             <p>New Surface Laptop for Business 7th Edition</p>
         </div>
-        <div style="text-align: center;">
+        <div>
             <iframe width="800" height="450" src="https://www.youtube.com/embed/jg1ZxdBFEYg?feature=shared" frameborder="0" allowfullscreen></iframe>
             <p>New Surface Pro for Business 11th Edition</p>
         </div>
-        <div style="text-align: center;">
+        <div>
             <iframe width="800" height="450" src="https://www.youtube.com/embed/_0u0fQuzikA" frameborder="0" allowfullscreen></iframe>
             <p>New Surface Laptop 13inch and New Surface Pro 12inch, Editions</p>
         </div>
@@ -77,7 +77,7 @@
         </div>
         <div class="product">
             <img src="Surface_USB4_Dock.png" alt="Microsoft Surface USB4 Dock">
-            <h2>Microsoft Surface USB4 Dock <span style="color: red;">*Out Now!*</span></h2>
+            <h2>Microsoft Surface USB4 Dock <span class="coming-soon">*Out Now!*</span></h2>
             <p>For full specifications, <a href="USB4_Dock.pdf" target="_blank">click here</a>.</p>
             <p><em>*These product specs are customer facing!*</em></p>
         </div>
@@ -96,10 +96,10 @@
     </section>
 
     <!-- Key Highlights Section -->
-    <section id="highlights" class="highlights" style="padding: 40px; text-align: left; color: black; font-weight: bold; font-size: 1.2em;">
-        <h2 style="font-weight: bold;"><u>Key Highlights</u></h2>
+    <section id="highlights" class="highlights">
+        <h2><u>Key Highlights</u></h2>
         <ul>
-            <li>Surface Pro and Surface Laptop:<span style="font-weight: normal;"> Now available with the latest Intel Core Ultra processors (Series 2).</span></li>
+            <li>Surface Pro and Surface Laptop:<span> Now available with the latest Intel Core Ultra processors (Series 2).</span></li>
             <li>5G Connectivity: For the first time, 5G will be available on Surface Laptop for Business, providing more cellular connectivity options for mobile work.</li>
             <li>Surface USB4 Dock: Connect and power devices like the new Surface Pro and Surface Laptop with fast charging and data transfer capabilities.</li>
             <li>Enhanced AI Processing Power: Paired with Microsoft 365 Copilot, these devices transform the employee experience, amplifying efficiency and creativity.</li>
@@ -117,7 +117,7 @@
         <p>We invite you to explore these new devices and experience the most advanced, intelligent, and secure PCs available across both Intel and Snapdragon platforms.</p>
     </section>
 
-    <!-- Microsoft Surface Hubs Section -->
+    <!-- Surface Hubs Section -->
     <section id="surface-hubs" class="custom-section">
         <div class="custom-box">
             <h2>Microsoft Surface Hubs</h2>
@@ -151,12 +151,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Surface Laptop. All rights reserved.</p>
     </footer>
-
-    <!-- Back to Top Button -->
     <button onclick="topFunction()" id="backToTop" title="Go to top">⬆ Back to Top</button>
     <script>
         let mybutton = document.getElementById("backToTop");

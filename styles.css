@@ -6,7 +6,7 @@ body {
     padding: 0;
     background: url('copilot_background.png') no-repeat center center fixed;
     background-size: cover;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2); /* Lightens background overlay */
     color: white;
     text-align: center;
 }
@@ -36,23 +36,15 @@ nav ul li a {
 
 .hero {
     padding: 100px 20px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2); /* Further lightened background overlay */
 }
 
 .hero h1, .hero p {
     color: white;
 }
 
-.video-banner {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-direction: column;
-    align-items: center;
-}
-
-.video-banner p {
-    color: black;
+.video-banner iframe {
+    margin-top: 20px;
 }
 
 .product-showcase {
@@ -64,7 +56,7 @@ nav ul li a {
 }
 
 .product {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4); /* Further lightened product background */
     padding: 20px;
     border-radius: 10px;
     width: 300px;
@@ -79,29 +71,19 @@ nav ul li a {
     color: red;
 }
 
-.highlights {
-    padding: 40px;
-    text-align: left;
-    color: black;
+.contact-info {
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.4); /* Further lightened contact background */
+}
+
+.contact-info a {
+    color: white;
     font-weight: bold;
-    font-size: 1.2em;
 }
 
-.custom-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+footer {
     padding: 20px;
-}
-
-.custom-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background: rgba(0, 0, 0, 0.4); /* Further lightened footer background */
 }
 
 .warning {
@@ -129,6 +111,33 @@ nav ul li a {
     background-color: #555;
 }
 
+/* Updated styles for Microsoft Surface Hubs */
+.surface-hubs {
+    padding: 30px; /* Increased padding for larger space */
+    margin: 20px;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 10px; /* Enhanced smooth corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Improved shadow for depth */
+    background-color: white; /* Ensures consistent background */
+    color: black; /* Text color adjustment */
+    font-size: 1.2em; /* Slightly larger text for readability */
+}
+
+/* Updated styles for End of Life Devices */
+.end-of-life-devices {
+    padding: 30px; /* Increased padding for larger space */
+    margin: 20px;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 10px; /* Enhanced smooth corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Improved shadow for depth */
+    background-color: white; /* Ensures consistent background */
+    color: black; /* Text color adjustment */
+    font-size: 1.2em; /* Slightly larger text for readability */
+}
+
+/* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     .product-showcase {
         flex-direction: column;

@@ -57,6 +57,30 @@ nav ul li a {
     border-radius: 10px;
 }
 
+/* Added styles for the updated "Surface Hubs" and "End of Life Devices" sections */
+.custom-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.custom-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 #backToTop {
     display: none;
     position: fixed;

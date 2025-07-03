@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* BACKGROUND IMAGE FIXED: uses a ::before overlay and NO background-color on body */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -9,18 +10,15 @@ body {
     background: transparent !important;
     min-height: 100vh;
     position: relative;
-    /* No background image here */
 }
-
-/* Transparent background image overlay - FIXED PATH & VISIBILITY */
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: url('./images/copilot_background.png') no-repeat center center fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    /* Change path if your image is in a folder! */
+    background: url('copilot_background.png') no-repeat center center fixed;
     background-size: cover;
-    opacity: 0.35;
+    opacity: 0.32;
     z-index: -1;
     pointer-events: none;
 }
@@ -63,6 +61,7 @@ nav {
     border: none !important;
 }
 
+/* HERO */
 .hero {
     padding: 100px 20px;
     background: rgba(0,0,0,0.2);
@@ -150,7 +149,7 @@ footer {
     border: 1px solid red;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    background-color: white;
+    background-color: rgba(255,255,255,0.85);
     color: black;
     font-size: 1.2em;
 }
@@ -164,20 +163,21 @@ footer {
     border: 1px solid red;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    background-color: white;
+    background-color: rgba(255,255,255,0.85);
     color: black;
     font-size: 1.2em;
 }
 
-/* Promo Section */
+/* Promo Section Styles */
 .promo-section {
     text-align: center;
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color: transparent;
 }
 
 .promo-region {
     margin-bottom: 40px;
+    background: transparent;
 }
 
 .promo-items {
@@ -193,7 +193,7 @@ footer {
     padding: 10px;
     border-radius: 5px;
     text-align: left;
-    background: rgba(255,255,255,0.6);
+    background: transparent;
 }
 
 .promo-item img {
@@ -221,16 +221,20 @@ footer {
     .product-showcase {
         flex-direction: column;
     }
+
     .product {
         width: 100%;
     }
+
     .hero h1 {
         font-size: 2em;
     }
+
     .promo-items {
         flex-direction: column;
         gap: 10px;
     }
+
     .highlights {
         padding: 20px;
         font-size: 1em;

@@ -6,17 +6,19 @@ body {
     padding: 0;
     color: white;
     text-align: center;
-    background: none !important; /* Remove previous background */
+    background: transparent !important;
+    position: relative;
+    min-height: 100vh;
 }
 
-/* Transparent background image overlay */
+/* Transparent background image overlay - ensure correct image path */
 body::before {
     content: "";
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     background: url('copilot_background.png') no-repeat center center fixed;
     background-size: cover;
-    opacity: 0.12; /* Adjust this value for more/less transparency */
+    opacity: 0.35; /* Increase for more visible image, decrease for more transparency */
     z-index: -1;
     pointer-events: none;
 }
@@ -54,7 +56,6 @@ nav ul li a:hover {
     border-bottom: 2px solid #ffd200;
 }
 
-/* Remove any inline nav background/border if left in HTML */
 nav {
     background: none !important;
     border: none !important;
@@ -98,7 +99,6 @@ nav {
     color: red;
 }
 
-/* Contact Info */
 .contact-info {
     padding: 40px 20px;
     background: rgba(0, 0, 0, 0.4);

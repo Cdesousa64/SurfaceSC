@@ -7,18 +7,20 @@ body {
     color: white;
     text-align: center;
     background: transparent !important;
-    position: relative;
     min-height: 100vh;
+    position: relative;
+    /* No background image here */
 }
 
-/* Transparent background image overlay - ensure correct image path */
+/* Transparent background image overlay - FIXED PATH & VISIBILITY */
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: url('copilot_background.png') no-repeat center center fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: url('./images/copilot_background.png') no-repeat center center fixed;
     background-size: cover;
-    opacity: 0.35; /* Increase for more visible image, decrease for more transparency */
+    opacity: 0.35;
     z-index: -1;
     pointer-events: none;
 }

@@ -5,285 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surface Laptop Showcase</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll("nav a").forEach(anchor => {
-                anchor.addEventListener("click", function(e) {
-                    const href = this.getAttribute("href");
-                    if (href.startsWith("#")) {
-                        e.preventDefault();
-                        const targetId = href.substring(1);
-                        const targetSection = document.getElementById(targetId);
-
-                        if (targetSection) {
-                            targetSection.scrollIntoView({ behavior: "smooth" });
-                            targetSection.classList.add("highlight");
-                            setTimeout(() => targetSection.classList.remove("highlight"), 1000);
-                        }
-                    }
-                });
-            });
-        });
-    </script>
     <style>
-        /* Added styling for the updated "Promos" section */
-        .promo-region {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid red;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: rgb(255, 245, 245);
-            margin: 20px auto;
-            width: 80%;
-        }
-        .promo-region h3 {
-            color: black;
-        }
-        .promo-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-        .promo-item {
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 5px;
-            width: 300px;
-            text-align: center;
-            background-color: #fff;
-        }
-        .promo-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        nav ul li a.active {
+            border-bottom: 2px solid #ffd200;
+            color: #ffd200;
         }
     </style>
 </head>
 <body>
     <nav style="border: 2px solid #333; padding: 10px; border-radius: 5px;">
         <ul style="display: flex; gap: 10px; list-style: none; padding: 0; justify-content: center;">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#promo">Promo</a></li>
-            <li><a href="#surface-hubs">Surface Hubs</a></li>
-            <li><a href="#highlights">Key Highlights</a></li>
-            <li><a href="#end-of-life-devices">End of Life Devices</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#features" class="tab-link active" data-tab="features">Home</a></li>
+            <li><a href="#promo" class="tab-link" data-tab="promo">Promo</a></li>
+            <li><a href="#surface-hubs" class="tab-link" data-tab="surface-hubs">Surface Hubs</a></li>
+            <li><a href="#end-of-life-devices" class="tab-link" data-tab="end-of-life-devices">End of Life Devices</a></li>
+            <li><a href="#highlights" class="tab-link" data-tab="highlights">Key Highlights</a></li>
+            <li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-<section class="hero">
-    <h1>Introducing the New Surface Laptop and Pro for Business</h1>
-    <p>Experience the power of performance and style.</p>
-    <p style="font-size: small;">Brought to you by Microsoft and Softchoice <em>a World Wide Technology co.</em></p>
-</section>
+    <!-- Hero Section (Always Visible) -->
+    <section class="hero">
+        <h1>Introducing the New Surface Laptop and Pro for Business</h1>
+        <p>Experience the power of performance and style.</p>
+        <p style="font-size: small;">Brought to you by Microsoft and Softchoice <em>a World Wide Technology co.</em></p>
+    </section>
 
-    <!-- Video Banner Section -->
-<section class="video-banner" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-    <div style="text-align: center;">
-        <iframe width="400" height="225" src="https://www.youtube.com/embed/4Z5VbcLnhBQ?feature=shared" frameborder="0" allowfullscreen></iframe>
-        <p style="color: black;">New Surface Laptop for Business 7th Edition</p>
-    </div>
-    <div style="text-align: center;">
-        <iframe width="400" height="225" src="https://www.youtube.com/embed/jg1ZxdBFEYg?feature=shared" frameborder="0" allowfullscreen></iframe>
-        <p style="color: black;">New Surface Pro for Business 11th Edition</p>
-    </div>
-    <div style="text-align: center;">
-        <iframe width="400" height="225" src="https://www.youtube.com/embed/_0u0fQuzikA" frameborder="0" allowfullscreen></iframe>
-        <p style="color: black;">New Surface Laptop 13inch and New Surface Pro 12inch, Editions</p>
-    </div>
-</section>
+    <!-- Features/Home Tab -->
+    <section class="tab-content active" id="features">
+        <!-- Video Banner (Home tab only) -->
+        <section class="video-banner" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <div style="text-align: center;">
+                <iframe width="400" height="225" src="https://www.youtube.com/embed/4Z5VbcLnhBQ?feature=shared" frameborder="0" allowfullscreen></iframe>
+                <p style="color: black;">New Surface Laptop for Business 7th Edition</p>
+            </div>
+            <div style="text-align: center;">
+                <iframe width="400" height="225" src="https://www.youtube.com/embed/jg1ZxdBFEYg?feature=shared" frameborder="0" allowfullscreen></iframe>
+                <p style="color: black;">New Surface Pro for Business 11th Edition</p>
+            </div>
+            <div style="text-align: center;">
+                <iframe width="400" height="225" src="https://www.youtube.com/embed/_0u0fQuzikA" frameborder="0" allowfullscreen></iframe>
+                <p style="color: black;">New Surface Laptop 13inch and New Surface Pro 12inch, Editions</p>
+            </div>
+        </section>
+        <!-- Product Showcase -->
+        <section class="product-showcase" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+            <div class="product" style="width: 200px; text-align: center;">
+                <img src="Surface Pro.png" alt="Microsoft Surface Pro" style="width: 100%;">
+                <h2 style="font-size: 1.2em;">Microsoft Surface Pro for Business 11th Edition (INTEL)</h2>
+                <p>For full specifications, <a href="Surface Pro 11 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
+            </div>
+            <div class="product" style="width: 200px; text-align: center;">
+                <img src="Surface laptop image.png" alt="Surface Laptop 7" style="width: 100%;">
+                <h2 style="font-size: 1.2em;">Microsoft Surface Laptop for Business 7th Edition (INTEL)</h2>
+                <p>For full specifications, <a href="Surface Laptop 7 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
+            </div>
+            <div class="product" style="width: 200px; text-align: center;">
+                <img src="Surface_USB4_Dock.png" alt="Microsoft Surface USB4 Dock" style="width: 100%;">
+                <h2 style="font-size: 1.2em;">Microsoft Surface USB4 Dock <span style="color: red;">*Out Now!*</span></h2>
+                <p>For full specifications, <a href="USB4_Dock.pdf" target="_blank">click here</a>.</p>
+            </div>
+            <div class="product" style="width: 200px; text-align: center;">
+                <img src="Surface Pro 12.png" alt="New Surface Pro 12" style="width: 100%;">
+                <h2 style="font-size: 1.2em;">New Surface Pro for Business 12inch (ARM)</h2>
+                <p>For full specifications, <a href="New Surface Pro 12.pdf" target="_blank">click here</a>.</p>
+            </div>
+            <div class="product" style="width: 200px; text-align: center;">
+                <img src="Surface Laptop 13.png" alt="New Surface Laptop 13" style="width: 100%;">
+                <h2 style="font-size: 1.2em;">New Surface Laptop for Business 13inch (ARM)</h2>
+                <p>For full specifications, <a href="New Surface Laptop 13.pdf" target="_blank">click here</a>.</p>
+            </div>
+            <div class="product" style="width: 200px; text-align: center;">
+                <img src="microsoft-surface-protection-plan.jpg" alt="Microsoft Surface Protection Plan" style="width: 100%;">
+                <h2 style="font-size: 1.2em;">Microsoft Warranty Plans</h2>
+                <p>For full specifications, <a href="Microsoft Surface Warranty plans.pdf" target="_blank">click here</a>.</p>
+            </div>
+        </section>
+    </section>
 
-    <!-- Features Section -->
-<section class="product-showcase" id="features" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-    <div class="product" style="width: 200px; text-align: center;">
-    <img src="Surface Pro.png" alt="Microsoft Surface Pro" style="width: 100%;">
-    <h2 style="font-size: 1.2em;">Microsoft Surface Pro for Business 11th Edition (INTEL)</h2>
-    <p>For full specifications, <a href="Surface Pro 11 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
-</div>
-    <div class="product" style="width: 200px; text-align: center;">
-    <img src="Surface laptop image.png" alt="Surface Laptop 7" style="width: 100%;">
-    <h2 style="font-size: 1.2em;">Microsoft Surface Laptop for Business 7th Edition (INTEL)</h2>
-    <p>For full specifications, <a href="Surface Laptop 7 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
-</div>
-    <div class="product" style="width: 200px; text-align: center;">
-        <img src="Surface_USB4_Dock.png" alt="Microsoft Surface USB4 Dock" style="width: 100%;">
-        <h2 style="font-size: 1.2em;">Microsoft Surface USB4 Dock <span style="color: red;">*Out Now!*</span></h2>
-        <p>For full specifications, <a href="USB4_Dock.pdf" target="_blank">click here</a>.</p>
-    </div>
-    <div class="product" style="width: 200px; text-align: center;">
-        <img src="Surface Pro 12.png" alt="New Surface Pro 12" style="width: 100%;">
-        <h2 style="font-size: 1.2em;">New Surface Pro for Business 12inch (ARM)</h2>
-        <p>For full specifications, <a href="New Surface Pro 12.pdf" target="_blank">click here</a>.</p>
-    </div>
-    <div class="product" style="width: 200px; text-align: center;">
-        <img src="Surface Laptop 13.png" alt="New Surface Laptop 13" style="width: 100%;">
-        <h2 style="font-size: 1.2em;">New Surface Laptop for Business 13inch (ARM)</h2>
-        <p>For full specifications, <a href="New Surface Laptop 13.pdf" target="_blank">click here</a>.</p>
-    </div>
-    <div class="product" style="width: 200px; text-align: center;">
-    <img src="microsoft-surface-protection-plan.jpg" alt="Microsoft Surface Protection Plan" style="width: 100%;">
-    <h2 style="font-size: 1.2em;">Microsoft Warranty Plans</h2>
-    <p>For full specifications, <a href="Microsoft Surface Warranty plans.pdf" target="_blank">click here</a>.</p>
-    </div>
-</section>
+    <!-- Promo Tab -->
+    <section class="tab-content" id="promo" aria-label="Exclusive Promotions">
+        <div style="border: 2px solid darkorange; padding: 20px; border-radius: 10px; background-color: rgba(255, 249, 240, 0.6); text-align: center; margin: 20px auto; width: 80%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h2 style="color: darkorange; font-size: 2em;">Exclusive Promotions</h2>
+            <p style="color: darkorange; font-size: 1.5em;">Check out the latest deals available in Canada and USA!</p>
+            <!-- Canada Promotions -->
+            <div id="promo-canada" class="promo-region" aria-label="Promotions for Canada">
+                <h3>Canada</h3>
+                <p style="color: red; font-weight: bold; text-decoration: underline;">
+                    Promo Offers End September 30th, 2025
+                </p>
+                <div class="promo-items" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                    <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
+                        <h4>
+                            <a href="CAD%20Special%20Savings%20on%20Surface%20Laptop%207th%20Edition.PDF" target="_blank" title="Download PDF with Special Savings on Surface Laptop 7th Edition">
+                                Special Savings on Surface Laptop 7th Edition
+                            </a>
+                        </h4>
+                        <p>Download the PDF for exclusive deals in Canada.</p>
+                        <p style="color: red; font-size: 1.5em; font-weight: bold; text-align: center;">NEW PROMO</p>
+                    </article>
+                    <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
+                        <h4>
+                            <a href="CAD%20Special%20Savings%20on%20Surface%20Pro%2011th%20Edition.PDF" target="_blank" title="Download PDF with Special Savings on Surface Pro 11th Edition">
+                                Special Savings on Surface Pro 11th Edition
+                            </a>
+                        </h4>
+                        <p>Download the PDF for exclusive deals in Canada.</p>
+                        <p style="color: red; font-size: 1.5em; font-weight: bold; text-align: center;">NEW PROMO</p>
+                    </article>
+                    <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
+                        <h4>
+                            <a href="New%20Savings%20on%20Surface%20Copilot%20Devices%20(Canada).PDF" target="_blank" title="Download PDF with New Savings on Surface Copilot Devices in Canada">
+                                New Savings on Surface Copilot Devices
+                            </a>
+                        </h4>
+                        <p>Explore the latest savings on Surface Copilot Devices in Canada.</p>
+                    </article>
+                    <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
+                        <h4>
+                            <a href="H2%20Copilot%20Offer%20-New%20Savings%20on%20Surface%20Copilot%20Devices%20CAD.PDF" target="_blank" title="Download PDF with H2 Copilot Offer for Canada">
+                                H2 Copilot Offer - New Savings
+                            </a>
+                        </h4>
+                        <p>Discover exclusive H2 Copilot savings in Canada.</p>
+                    </article>
+                    <p style="color: red; font-weight: bold;">
+                        Please reach out to your Surface VSS to see if your Customer qualifies for these Promotions.
+                    </p>
+                </div>
+            </div>
+            <!-- USA Promotions -->
+            <div id="promo-usa" class="promo-region" aria-label="Promotions for USA">
+                <h3>USA</h3>
+                <p style="color: red; font-weight: bold; text-decoration: underline;">
+                    Promo Offers End September 30th, 2025
+                </p>
+                <div class="promo-items" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                    <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
+                        <h4>
+                            <a href="USA%20Special%20Savings%20on%20Surface%20Pro%2011th%20Edition.PDF" target="_blank" title="Download PDF with Special Savings on Surface Pro 11th Edition for USA">
+                                Special Savings on Surface Pro 11th Edition
+                            </a>
+                        </h4>
+                        <p>Download the PDF for exclusive deals in the USA.</p>
+                        <p style="color: red; font-size: 1.5em; font-weight: bold; text-align: center;">NEW PROMO</p>
+                    </article>
+                    <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
+                        <h4>
+                            <a href="USA%20Special%20Savings%20on%20Surface%20Laptop%207th%20Edition.PDF" target="_blank" title="Download PDF with Special Savings on Surface Laptop 7th Edition for USA">
+                                Special Savings on Surface Laptop 7th Edition
+                            </a>
+                        </h4>
+                        <p>Download the PDF for exclusive deals in the USA.</p>
+                        <p style="color: red; font-size: 1.5em; font-weight: bold; text-align: center;">NEW PROMO</p>
+                    </article>
+                    <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
+                        <h4>
+                            <a href="New%20Savings%20on%20Surface%20Copilot%20Devices%20(USA).PDF" target="_blank" title="Download PDF with New Savings on Surface Copilot Devices in USA">
+                                New Savings on Surface Copilot Devices
+                            </a>
+                        </h4>
+                        <p>Explore the latest savings on Surface Copilot Devices in the USA.</p>
+                    </article>
+                    <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
+                        <h4>
+                            <a href="H2%20New%20Savings%20on%20Surface%20Copilot%20Devices%20%7BUSA%7D.PDF" target="_blank" title="Download PDF with H2 New Copilot Offer for USA">
+                                H2 New Savings on Surface Copilot Devices
+                            </a>
+                        </h4>
+                        <p>Discover exclusive H2 Copilot savings in the USA.</p>
+                    </article>
+                    <p style="color: red; font-weight: bold;">
+                        Please reach out to your Surface VSS to see if your Customer qualifies for these Promotions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Promos Section -->
-<section id="promo" aria-label="Exclusive Promotions">
-   <div style="border: 2px solid darkorange; padding: 20px; border-radius: 10px; background-color: rgba(255, 249, 240, 0.6); text-align: center; margin: 20px auto; width: 80%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-    <h2 style="color: darkorange; font-size: 2em;">Exclusive Promotions</h2>
-    <p style="color: darkorange; font-size: 1.5em;">Check out the latest deals available in Canada and USA!</p>
+    <!-- Surface Hubs Tab -->
+    <section id="surface-hubs" class="tab-content">
+        <div style="background: white; padding: 40px; border-radius: 20px; width: 500px; border: 2px solid black; margin: 0 auto;">
+            <h2 style="color: black;">Microsoft Surface Hubs</h2>
+            <p style="color: red; font-weight: bold; font-size: 1.5em;">⚠ Since the Surface Hubs are built to order, please expect an ETA of 12-16 weeks for orders. ⚠</p>
+            <h2 style="color: black;">DEMO UNITS</h2>
+            <p style="color: red; font-weight: bold; font-size: 1.3em;">⚠ There are EXTENDED LEAD TIMES for 50% DEMO units! ⚠</p>
+        </div>
+    </section>
 
-     <!-- Canada Promotions -->
-<div id="promo-canada" class="promo-region" aria-label="Promotions for Canada">
-    <h3>Canada</h3>
-    <p style="color: red; font-weight: bold; text-decoration: underline;">
-        Promo Offers End September 30th, 2025
-    </p>
-    <div class="promo-items" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-        <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
-    <h4>
-        <a href="CAD%20Special%20Savings%20on%20Surface%20Laptop%207th%20Edition.PDF" 
-           target="_blank" 
-           title="Download PDF with Special Savings on Surface Laptop 7th Edition">
-           Special Savings on Surface Laptop 7th Edition
-        </a>
-    </h4>
-    <p>Download the PDF for exclusive deals in Canada.</p>
-    <p style="color: red; font-size: 1.5em; font-weight: bold; text-align: center;">NEW PROMO</p>
-</article>
-        <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
-            <h4>
-                <a href="CAD%20Special%20Savings%20on%20Surface%20Pro%2011th%20Edition.PDF" 
-                   target="_blank" 
-                   title="Download PDF with Special Savings on Surface Pro 11th Edition">
-                   Special Savings on Surface Pro 11th Edition
-                </a>
-            </h4>
-            <p>Download the PDF for exclusive deals in Canada.</p>
-            <p style="color: red; font-size: 1.5em; font-weight: bold; text-align: center;">NEW PROMO</p>
-        </article>
-        <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
-            <h4>
-                <a href="New%20Savings%20on%20Surface%20Copilot%20Devices%20(Canada).PDF" 
-                   target="_blank" 
-                   title="Download PDF with New Savings on Surface Copilot Devices in Canada">
-                   New Savings on Surface Copilot Devices
-                </a>
-            </h4>
-            <p>Explore the latest savings on Surface Copilot Devices in Canada.</p>
-        </article>
-        <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
-            <h4>
-                <a href="H2%20Copilot%20Offer%20-New%20Savings%20on%20Surface%20Copilot%20Devices%20CAD.PDF" 
-                   target="_blank" 
-                   title="Download PDF with H2 Copilot Offer for Canada">
-                   H2 Copilot Offer - New Savings
-                </a>
-            </h4>
-            <p>Discover exclusive H2 Copilot savings in Canada.</p>
-        </article>
-        <p style="color: red; font-weight: bold;">
-        Please reach out to your Surface VSS to see if your Customer qualifies for these Promotions.
-    </p>
-    </div>
-</div>
-
-<!-- USA Promotions -->
-<div id="promo-usa" class="promo-region" aria-label="Promotions for USA">
-    <h3>USA</h3>
-    <p style="color: red; font-weight: bold; text-decoration: underline;">
-        Promo Offers End September 30th, 2025
-    </p>
-    <div class="promo-items" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-        <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
-            <h4>
-                <a href="USA%20Special%20Savings%20on%20Surface%20Pro%2011th%20Edition.PDF" 
-                   target="_blank" 
-                   title="Download PDF with Special Savings on Surface Pro 11th Edition for USA">
-                   Special Savings on Surface Pro 11th Edition
-                </a>
-            </h4>
-            <p>Download the PDF for exclusive deals in the USA.</p>
-            <p style="color: red; font-size: 1.5em; font-weight: bold; text-align: center;">NEW PROMO</p>
-        </article>
-        <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
-            <h4>
-                <a href="USA%20Special%20Savings%20on%20Surface%20Laptop%207th%20Edition.PDF" 
-                   target="_blank" 
-                   title="Download PDF with Special Savings on Surface Laptop 7th Edition for USA">
-                   Special Savings on Surface Laptop 7th Edition
-                </a>
-            </h4>
-            <p>Download the PDF for exclusive deals in the USA.</p>
-            <p style="color: red; font-size: 1.5em; font-weight: bold; text-align: center;">NEW PROMO</p>
-        </article>
-        <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
-            <h4>
-                <a href="New%20Savings%20on%20Surface%20Copilot%20Devices%20(USA).PDF" 
-                   target="_blank" 
-                   title="Download PDF with New Savings on Surface Copilot Devices in USA">
-                   New Savings on Surface Copilot Devices
-                </a>
-            </h4>
-            <p>Explore the latest savings on Surface Copilot Devices in the USA.</p>
-        </article>
-        <article class="promo-item" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 250px; background-color: rgba(255, 255, 255, 0.6);">
-            <h4>
-                <a href="H2%20New%20Savings%20on%20Surface%20Copilot%20Devices%20%7BUSA%7D.PDF" 
-                   target="_blank" 
-                   title="Download PDF with H2 New Copilot Offer for USA">
-                   H2 New Savings on Surface Copilot Devices
-                </a>
-            </h4>
-            <p>Discover exclusive H2 Copilot savings in the USA.</p>
-        </article>
-        <p style="color: red; font-weight: bold;">
-        Please reach out to your Surface VSS to see if your Customer qualifies for these Promotions.
-    </p>
-    </div>
-</div>
-</div>
-</section>
-
-    <!-- Key Highlights Section -->
-<section class="highlights" id="highlights" style="padding: 40px; text-align: left; color: black; font-weight: bold; font-size: 1.2em; border: 10px solid; border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1; border-radius: 15px; margin: 20px auto; width: 80%; background-color: rgba(255, 255, 255, 0.6);">
-    <h2 style="font-weight: bold;"><u>Key Highlights</u></h2>
-    <ul>
-        <li>Surface Pro and Surface Laptop:<span style="font-weight: normal;"> Now available with the latest Intel Core Ultra processors (Series 2).</span></li>
-        <li>5G Connectivity: For the first time, 5G will be available on Surface Laptop for Business, providing more cellular connectivity options for mobile work.</li>
-        <li>Surface USB4 Dock: Connect and power devices like the new Surface Pro and Surface Laptop with fast charging and data transfer capabilities.</li>
-        <li>Enhanced AI Processing Power: Paired with Microsoft 365 Copilot, these devices transform the employee experience, amplifying efficiency and creativity.</li>
-    </ul>
-    <h2><u>Additional Information</u></h2>
-    <h2><u>Intel Core Ultra Series 2 Processors (Lunar Lake)</u></h2>
-    <ul>
-        <li>AI Capabilities: Supercharged productivity, heightened security, and speed.</li>
-        <li>Effortless Portability: Cooler and quieter performance with a longer-lasting battery.</li>
-        <li>Greater Performance: Optimized for productivity, content creation, and gaming with built-in Intel Arc graphics.</li>
-        <li>Increased Security: Built-in protections to help keep your data more secure and private.</li>
-        <li>Robust Graphics: Modern feature set for greater everyday performance, advanced media, and expansive display capabilities.</li>
-        <li>Maximized Connectivity: Features like Thunderbolt technology for enhanced peripheral and connectivity experience.</li>
-    </ul>
-    <p>We invite you to explore these new devices and experience the most advanced, intelligent, and secure PCs available across both Intel and Snapdragon platforms.</p>
-</section>
-
-    <!-- Surface Hubs and End of Life Devices Sections -->
-    <section style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-        <!-- Surface Hubs Section -->
-<div style="background: white; padding: 40px; border-radius: 20px; width: 500px; border: 2px solid black;">
-    <h2 style="color: black;">Microsoft Surface Hubs</h2>
-    <p style="color: red; font-weight: bold; font-size: 1.5em;">⚠ Since the Surface Hubs are built to order, please expect an ETA of 12-16 weeks for orders. ⚠</p>
-    <h2 style="color: black;">DEMO UNITS</h2>
-    <p style="color: red; font-weight: bold; font-size: 1.3em;">⚠ There are EXTENDED LEAD TIMES for 50% DEMO units! ⚠</p>
-</div>
-        
-        <!-- End of Life Devices Section -->
-        <div style="background: white; padding: 40px; border-radius: 20px; width: 500px; border: 2px solid black;">
+    <!-- End of Life Devices Tab -->
+    <section id="end-of-life-devices" class="tab-content">
+        <div style="background: white; padding: 40px; border-radius: 20px; width: 500px; border: 2px solid black; margin: 0 auto;">
             <h2 style="color: black;">End Of Life Devices</h2>
-            <p style="text-decoration: underline; color: red; font-weight: bold;">- Surface Laptop Studio 2!!! WHATEVER IS LEFT IN DISTI IS ALL THERE IS!!! (No replacments for this model. Please suggest The Laptop 7th and or Pro 11th editions)</p>
+            <p style="text-decoration: underline; color: red; font-weight: bold;">- Surface Laptop Studio 2!!! WHATEVER IS LEFT IN DISTI IS ALL THERE IS!!! (No replacments for this model. Please suggest Surface Laptop 7th edition or Surface Pro 11th edition as alternatives.)</p>
             <p style="color: black; font-weight: bold;">- Surface Laptop 6 End of life April 1st (Replacment is the Laptop 7th edition)</p>
             <p style="color: black; font-weight: bold;">- Surface Pro 10 End of life April 1st (Replacment is the Pro 11th edition for non 5G Intel models)</p>
             <p style="text-decoration: underline; color: red; font-weight: bold;">**THE PRO 10 5G IS NOT END OF LIFE**</p>
@@ -292,19 +208,41 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-<section class="contact-info" id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-item">
-        <p><strong>Christian De Sousa:</strong> (CAD Commercial, Enterprise & PS) <a href="mailto:christian.desousa@softchoice.com">christian.desousa@softchoice.com</a></p>
-    </div>
-    <div class="contact-item">
-        <p><strong>Brent Krajewski:</strong> (CAD & USA TSD, USA PS) <a href="mailto:brent.krajewski@softchoice.com">brent.krajewski@softchoice.com</a></p>
-    </div>
-    <div class="contact-item">
-        <p><strong>Thomas Fong:</strong> (USA Commercial, Enterprise) <a href="mailto:thomas.fong@softchoice.com">thomas.fong@softchoice.com</a></p>
-    </div>
-</section>
+    <!-- Key Highlights Tab -->
+    <section class="highlights tab-content" id="highlights" style="padding: 40px; text-align: left; color: black; font-weight: bold; font-size: 1.2em; border: 10px solid; border-image: linear-gradient(to right, red, orange, gold, green, blue, indigo, violet) 1;">
+        <h2 style="font-weight: bold;"><u>Key Highlights</u></h2>
+        <ul>
+            <li>Surface Pro and Surface Laptop:<span style="font-weight: normal;"> Now available with the latest Intel Core Ultra processors (Series 2).</span></li>
+            <li>5G Connectivity: For the first time, 5G will be available on Surface Laptop for Business, providing more cellular connectivity options for mobile work.</li>
+            <li>Surface USB4 Dock: Connect and power devices like the new Surface Pro and Surface Laptop with fast charging and data transfer capabilities.</li>
+            <li>Enhanced AI Processing Power: Paired with Microsoft 365 Copilot, these devices transform the employee experience, amplifying efficiency and creativity.</li>
+        </ul>
+        <h2><u>Additional Information</u></h2>
+        <h2><u>Intel Core Ultra Series 2 Processors (Lunar Lake)</u></h2>
+        <ul>
+            <li>AI Capabilities: Supercharged productivity, heightened security, and speed.</li>
+            <li>Effortless Portability: Cooler and quieter performance with a longer-lasting battery.</li>
+            <li>Greater Performance: Optimized for productivity, content creation, and gaming with built-in Intel Arc graphics.</li>
+            <li>Increased Security: Built-in protections to help keep your data more secure and private.</li>
+            <li>Robust Graphics: Modern feature set for greater everyday performance, advanced media, and expansive display capabilities.</li>
+            <li>Maximized Connectivity: Features like Thunderbolt technology for enhanced peripheral and connectivity experience.</li>
+        </ul>
+        <p>We invite you to explore these new devices and experience the most advanced, intelligent, and secure PCs available across both Intel and Snapdragon platforms.</p>
+    </section>
+
+    <!-- Contact Tab -->
+    <section class="contact-info tab-content" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-item">
+            <p><strong>Christian De Sousa:</strong> (CAD Commercial, Enterprise & PS) <a href="mailto:christian.desousa@softchoice.com">christian.desousa@softchoice.com</a></p>
+        </div>
+        <div class="contact-item">
+            <p><strong>Brent Krajewski:</strong> (CAD & USA TSD, USA PS) <a href="mailto:brent.krajewski@softchoice.com">brent.krajewski@softchoice.com</a></p>
+        </div>
+        <div class="contact-item">
+            <p><strong>Thomas Fong:</strong> (USA Commercial, Enterprise) <a href="mailto:thomas.fong@softchoice.com">thomas.fong@softchoice.com</a></p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -314,6 +252,34 @@
     <!-- Back to Top Button -->
     <button onclick="topFunction()" id="backToTop" title="Go to top">⬆ Back to Top</button>
     <script>
+        // Tab logic
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(sec => sec.classList.remove('active'));
+            const section = document.getElementById(tabId);
+            if (section) section.classList.add('active');
+            document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+            const navLink = document.querySelector('.tab-link[data-tab="' + tabId + '"]');
+            if (navLink) navLink.classList.add('active');
+        }
+
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+                showTab(tabId);
+                // Update URL hash without scrolling
+                history.replaceState(null, '', '#' + tabId);
+            });
+        });
+
+        // On page load, set active tab by hash if present
+        window.addEventListener('DOMContentLoaded', function() {
+            let hash = window.location.hash.replace('#', '');
+            if (!hash || !document.getElementById(hash)) hash = "features";
+            showTab(hash);
+        });
+
+        // Back to Top logic (unchanged)
         let mybutton = document.getElementById("backToTop");
         window.onscroll = function() {scrollFunction()};
         function scrollFunction() {

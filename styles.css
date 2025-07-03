@@ -4,11 +4,21 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('copilot_background.png') no-repeat center center fixed;
-    background-size: cover;
-    background-color: rgba(255, 255, 255, 0.2);
     color: white;
     text-align: center;
+    background: none !important; /* Remove previous background */
+}
+
+/* Transparent background image overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: url('copilot_background.png') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.12; /* Adjust this value for more/less transparency */
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* NAVIGATION TABS - BLACK THEME */

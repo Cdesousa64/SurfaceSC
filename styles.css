@@ -21,13 +21,13 @@ body::before {
     pointer-events: none;
 }
 
-/* NAVIGATION TABS - BLACK THEME */
+/* NAVIGATION TABS - Black Font Only */
 nav ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: center;
-    background: black;
+    background: transparent;
     border-radius: 5px;
 }
 
@@ -36,10 +36,10 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: bold;
-    background: black;
+    background: transparent;
     padding: 10px 20px;
     border-radius: 5px 5px 0 0;
     border: none;
@@ -49,7 +49,7 @@ nav ul li a {
 
 nav ul li a.active,
 nav ul li a:hover {
-    color: #ffd200;
+    color: #ffd200 !important;
     background: #222;
     border-bottom: 2px solid #ffd200;
 }

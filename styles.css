@@ -1,72 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* BACKGROUND IMAGE FIXED: uses a ::before overlay and NO background-color on body */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    color: white;
-    text-align: center;
-    background: transparent !important;
     min-height: 100vh;
-    position: relative;
-}
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    /* Change path if your image is in a folder! */
+    color: #222;
+    text-align: center;
     background: url('copilot_background.png') no-repeat center center fixed;
     background-size: cover;
-    opacity: 0.32;
-    z-index: -1;
-    pointer-events: none;
 }
 
-/* NAVIGATION TABS - Black Font Only */
+/* Navigation Styles */
+nav {
+    border: 2px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    background: transparent;
+    margin-bottom: 24px;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
+    gap: 10px;
     justify-content: center;
     background: transparent;
-    border-radius: 5px;
-}
-
-nav ul li {
-    margin: 0 15px;
 }
 
 nav ul li a {
-    color: black;
+    color: #111;
     text-decoration: none;
     font-weight: bold;
     background: transparent;
-    padding: 10px 20px;
+    padding: 10px 18px;
     border-radius: 5px 5px 0 0;
     border: none;
-    transition: color 0.2s, background 0.2s;
     display: inline-block;
+    transition: color 0.2s, background 0.2s;
 }
 
+nav ul li a:hover,
 nav ul li a.active,
-nav ul li a:hover {
-    color: #ffd200 !important;
+nav ul li a:focus {
+    color: #ffd200;
     background: #222;
     border-bottom: 2px solid #ffd200;
 }
 
-nav {
-    background: none !important;
-    border: none !important;
-}
-
-/* HERO */
+/* Hero and Sections */
 .hero {
-    padding: 100px 20px;
-    background: rgba(0,0,0,0.2);
+    padding: 100px 20px 40px 20px;
+    background: rgba(0,0,0,0.15);
 }
-
 .hero h1, .hero p {
     color: white;
 }
@@ -82,10 +70,11 @@ nav {
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
+    background: transparent;
 }
 
 .product {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255,255,255,0.85);
     padding: 20px;
     border-radius: 10px;
     width: 300px;
@@ -100,21 +89,83 @@ nav {
     color: red;
 }
 
-.contact-info {
-    padding: 40px 20px;
-    background: rgba(0, 0, 0, 0.4);
+/* Promo Region */
+.promo-region {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(255,255,255,0.85);
+    margin: 20px auto;
+    width: 80%;
+}
+.promo-region h3 {
+    color: black;
+}
+.promo-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+.promo-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    background: rgba(255,255,255,0.8);
+}
+.promo-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
+/* Highlights */
+.highlights {
+    padding: 40px;
+    text-align: left;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: 10px solid;
+    border-image: linear-gradient(to right, red, orange, gold, green, blue, indigo, violet) 1;
+    background: rgba(255,255,255,0.92);
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 1000px;
+}
+
+/* Surface Hubs and End of Life */
+section[style*="flex"] > div {
+    background: rgba(255,255,255,0.92) !important;
+    padding: 40px;
+    border-radius: 20px;
+    width: 500px;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+
+/* Contact Section */
+.contact-info {
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.3);
+}
 .contact-info a {
     color: white;
     font-weight: bold;
 }
 
+/* Footer */
 footer {
     padding: 20px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
 }
 
+/* Misc */
 .warning {
     color: red;
     font-weight: bold;
@@ -135,108 +186,31 @@ footer {
     cursor: pointer;
     border-radius: 5px;
 }
-
 #backToTop:hover {
     background-color: #555;
 }
 
-/* Surface Hubs (Forcasting & Lead Times) */
-#surface-hubs .tab-content,
-.surface-hubs {
-    padding: 30px;
-    margin: 20px;
-    text-align: center;
-    border: 1px solid red;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    background-color: rgba(255,255,255,0.85);
-    color: black;
-    font-size: 1.2em;
-}
-
-/* End of Life Devices */
-#end-of-life-devices .tab-content,
-.end-of-life-devices {
-    padding: 30px;
-    margin: 20px;
-    text-align: center;
-    border: 1px solid red;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    background-color: rgba(255,255,255,0.85);
-    color: black;
-    font-size: 1.2em;
-}
-
-/* Promo Section Styles */
-.promo-section {
-    text-align: center;
-    padding: 20px;
-    background-color: transparent;
-}
-
-.promo-region {
-    margin-bottom: 40px;
-    background: transparent;
-}
-
-.promo-items {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.promo-item {
-    max-width: 300px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: left;
-    background: transparent;
-}
-
-.promo-item img {
-    width: 100%;
-    border-radius: 5px;
-}
-
-/* Key Highlights Section */
-.highlights {
-    padding: 40px;
-    text-align: left;
-    color: black;
-    font-weight: bold;
-    font-size: 1.2em;
-    border: 10px solid;
-    border-image: linear-gradient(to right, red, orange, gold, green, blue, indigo, violet) 1;
-    background: white;
-    border-radius: 12px;
-    margin: 40px auto;
-    max-width: 1000px;
-}
-
-/* Responsive Design for Mobile Devices */
+/* Responsive */
 @media (max-width: 768px) {
     .product-showcase {
         flex-direction: column;
     }
-
     .product {
         width: 100%;
     }
-
     .hero h1 {
         font-size: 2em;
     }
-
     .promo-items {
         flex-direction: column;
         gap: 10px;
     }
-
     .highlights {
         padding: 20px;
         font-size: 1em;
+    }
+    section[style*="flex"] > div {
+        width: 98vw;
+        min-width: unset;
     }
 }

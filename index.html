@@ -6,195 +6,157 @@
     <title>Surface Laptop Showcase</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        // Tab navigation using history API
         document.addEventListener("DOMContentLoaded", function() {
-            // Tab info: tabId, navLabel, route
-            const tabs = [
-                {id: "home-tab", label: "Home", route: "home"},
-                {id: "promo", label: "Promos & Contests", route: "promos"},
-                {id: "surface-hubs", label: "Forcasting and Lead times", route: "forcasting"},
-                {id: "end-of-life-devices", label: "End of Life Devices", route: "eol"},
-                {id: "highlights", label: "Key Highlights", route: "highlights"},
-                {id: "contact", label: "Contacts", route: "contacts"}
-            ];
+            document.querySelectorAll("nav a").forEach(anchor => {
+                anchor.addEventListener("click", function(e) {
+                    const href = this.getAttribute("href");
+                    if (href.startsWith("#")) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetSection = document.getElementById(targetId);
 
-            // Populate nav menu
-            const navUl = document.querySelector("nav.custom-nav ul");
-            navUl.innerHTML = "";
-            tabs.forEach(tab => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = `#${tab.route}`;
-                a.textContent = tab.label;
-                a.dataset.tab = tab.id;
-                li.appendChild(a);
-                navUl.appendChild(li);
-            });
-
-            // Section lookup by ID
-            function getSectionById(id) {
-                return document.getElementById(id);
-            }
-
-            // Hide/show only the selected section, hide others
-            function showTab(tabId) {
-                // All section IDs
-                const sectionIds = [
-                    "home-tab",
-                    "promo",
-                    "surface-hubs",
-                    "end-of-life-devices",
-                    "highlights",
-                    "contact"
-                ];
-                sectionIds.forEach(id => {
-                    const el = getSectionById(id);
-                    if (el) el.style.display = (id === tabId ? "" : "none");
-                });
-                // Highlight nav (active state)
-                document.querySelectorAll("nav.custom-nav a").forEach(a => {
-                    a.classList.toggle("active", a.dataset.tab === tabId);
-                });
-            }
-
-            // Get tabId from route (hash)
-            function tabIdFromRoute(route) {
-                const found = tabs.find(tab => tab.route === route);
-                return found ? tab.id : "home-tab";
-            }
-
-            // Handle tab nav click
-            navUl.addEventListener("click", function(e) {
-                const a = e.target.closest("a[data-tab]");
-                if (a) {
-                    e.preventDefault();
-                    const tabId = a.dataset.tab;
-                    const tabObj = tabs.find(tab => tab.id === tabId);
-                    if (tabObj) {
-                        // Use history API to change route
-                        history.pushState({tab: tabId}, "", "#" + tabObj.route);
-                        showTab(tabId);
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: "smooth" });
+                            targetSection.classList.add("highlight");
+                            setTimeout(() => targetSection.classList.remove("highlight"), 1000);
+                        }
                     }
-                }
+                });
             });
-
-            // On hash change or popstate, show the right tab
-            function handleRoute() {
-                const hash = window.location.hash.replace(/^#/, "");
-                const tabId = tabIdFromRoute(hash);
-                showTab(tabId);
-            }
-            window.addEventListener("popstate", handleRoute);
-
-            // Initial: hide all, show current
-            handleRoute();
         });
     </script>
 </head>
 <body>
     <nav class="custom-nav" aria-label="Primary Navigation">
         <ul>
-            <!-- Populated by JS -->
+            <li><a href="#features">Features</a></li>
+            <li><a href="#promo">Promos &amp; Contests</a></li>
+            <li><a href="#surface-hubs">Surface Hubs</a></li>
+            <li><a href="#highlights">Key Highlights</a></li>
+            <li><a href="#end-of-life-devices">End of Life Devices</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- HOME TAB: hero, video, features -->
-    <section id="home-tab">
-        <section class="hero">
-            <h1>Introducing the New Surface Laptop and Pro for Business</h1>
-            <p>Experience the power of performance and style.</p>
-            <p style="font-size: small;">Brought to you by Microsoft and Softchoice <em>a World Wide Technology co.</em></p>
-        </section>
-        <section class="video-banner">
-            <div>
-                <iframe width="400" height="225" src="https://www.youtube.com/embed/4Z5VbcLnhBQ?feature=shared" frameborder="0" allowfullscreen></iframe>
-                <p>New Surface Laptop for Business 7th Edition</p>
-            </div>
-            <div>
-                <iframe width="400" height="225" src="https://www.youtube.com/embed/jg1ZxdBFEYg?feature=shared" frameborder="0" allowfullscreen></iframe>
-                <p>New Surface Pro for Business 11th Edition</p>
-            </div>
-            <div>
-                <iframe width="400" height="225" src="https://www.youtube.com/embed/_0u0fQuzikA" frameborder="0" allowfullscreen></iframe>
-                <p>New Surface Laptop 13inch and New Surface Pro 12inch, Editions</p>
-            </div>
-        </section>
-        <section class="product-showcase">
-            <div class="product">
-                <img src="Surface Pro.png" alt="Microsoft Surface Pro">
-                <h2>Microsoft Surface Pro for Business 11th Edition (INTEL)</h2>
-                <p>For full specifications, <a href="Surface Pro 11 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
-            </div>
-            <div class="product">
-                <img src="Surface laptop image.png" alt="Surface Laptop 7">
-                <h2>Microsoft Surface Laptop for Business 7th Edition (INTEL)</h2>
-                <p>For full specifications, <a href="Surface Laptop 7 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
-            </div>
-            <div class="product">
-                <img src="Surface_USB4_Dock.png" alt="Microsoft Surface USB4 Dock">
-                <h2>Microsoft Surface USB4 Dock <span class="coming-soon">*Out Now!*</span></h2>
-                <p>For full specifications, <a href="USB4_Dock.pdf" target="_blank">click here</a>.</p>
-            </div>
-            <div class="product">
-                <img src="Surface Pro 12.png" alt="New Surface Pro 12">
-                <h2>New Surface Pro for Business 12inch (ARM)</h2>
-                <p>For full specifications, <a href="New Surface Pro 12.pdf" target="_blank">click here</a>.</p>
-            </div>
-            <div class="product">
-                <img src="Surface Laptop 13.png" alt="New Surface Laptop 13">
-                <h2>New Surface Laptop for Business 13inch (ARM)</h2>
-                <p>For full specifications, <a href="New Surface Laptop 13.pdf" target="_blank">click here</a>.</p>
-            </div>
-            <div class="product">
-                <img src="microsoft-surface-protection-plan.jpg" alt="Microsoft Surface Protection Plan">
-                <h2>Microsoft Warranty Plans</h2>
-                <p>For full specifications, <a href="Microsoft Surface Warranty plans.pdf" target="_blank">click here</a>.</p>
-            </div>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Introducing the New Surface Laptop and Pro for Business</h1>
+        <p>Experience the power of performance and style.</p>
+        <p style="font-size: small;">Brought to you by Microsoft and Softchoice <em>a World Wide Technology co.</em></p>
     </section>
 
-    <!-- Promos & Contests -->
-    <section id="promo" class="promo-section" aria-label="Exclusive Promotions" style="display:none">
+    <!-- Video Banner Section -->
+    <section class="video-banner">
+        <div>
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/4Z5VbcLnhBQ?feature=shared" frameborder="0" allowfullscreen></iframe>
+            <p>New Surface Laptop for Business 7th Edition</p>
+        </div>
+        <div>
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/jg1ZxdBFEYg?feature=shared" frameborder="0" allowfullscreen></iframe>
+            <p>New Surface Pro for Business 11th Edition</p>
+        </div>
+        <div>
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/_0u0fQuzikA" frameborder="0" allowfullscreen></iframe>
+            <p>New Surface Laptop 13inch and New Surface Pro 12inch, Editions</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="product-showcase" id="features">
+        <div class="product">
+            <img src="Surface Pro.png" alt="Microsoft Surface Pro">
+            <h2>Microsoft Surface Pro for Business 11th Edition (INTEL)</h2>
+            <p>For full specifications, <a href="Surface Pro 11 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
+        </div>
+        <div class="product">
+            <img src="Surface laptop image.png" alt="Surface Laptop 7">
+            <h2>Microsoft Surface Laptop for Business 7th Edition (INTEL)</h2>
+            <p>For full specifications, <a href="Surface Laptop 7 Intel Specsheet.pdf" target="_blank">click here</a>.</p>
+        </div>
+        <div class="product">
+            <img src="Surface_USB4_Dock.png" alt="Microsoft Surface USB4 Dock">
+            <h2>Microsoft Surface USB4 Dock <span class="coming-soon">*Out Now!*</span></h2>
+            <p>For full specifications, <a href="USB4_Dock.pdf" target="_blank">click here</a>.</p>
+        </div>
+        <div class="product">
+            <img src="Surface Pro 12.png" alt="New Surface Pro 12">
+            <h2>New Surface Pro for Business 12inch (ARM)</h2>
+            <p>For full specifications, <a href="New Surface Pro 12.pdf" target="_blank">click here</a>.</p>
+        </div>
+        <div class="product">
+            <img src="Surface Laptop 13.png" alt="New Surface Laptop 13">
+            <h2>New Surface Laptop for Business 13inch (ARM)</h2>
+            <p>For full specifications, <a href="New Surface Laptop 13.pdf" target="_blank">click here</a>.</p>
+        </div>
+        <div class="product">
+            <img src="microsoft-surface-protection-plan.jpg" alt="Microsoft Surface Protection Plan">
+            <h2>Microsoft Warranty Plans</h2>
+            <p>For full specifications, <a href="Microsoft Surface Warranty plans.pdf" target="_blank">click here</a>.</p>
+        </div>
+    </section>
+
+    <!-- Promos Section -->
+    <section id="promo" class="promo-section" aria-label="Exclusive Promotions">
         <div class="promo-region">
             <h2>Exclusive Promotions &amp; Contests</h2>
             <p>Check out the latest deals available in Canada and USA!</p>
         </div>
+
         <!-- Canada Promotions -->
         <div id="promo-canada" class="promo-region" aria-label="Promotions for Canada">
             <h3>Canada</h3>
-            <p class="promo-warning">Promo Offers End September 30th, 2025</p>
+            <p class="promo-warning">
+                Promo Offers End September 30th, 2025
+            </p>
             <div class="promo-items">
                 <article class="promo-item">
                     <h4>
-                        <a href="https://github.com/Cdesousa64/SurfaceSC/raw/main/Exclusive%20Offers%20on%20Surface%20and%20Microsoft%20Copilot%20Solutions%20(Canada%20Q1).PDF"
-                         target="_blank"
-                         title="Download Exclusive Offers on Surface and Microsoft Copilot Solutions PDF">
-                            Exclusive Offers on Surface and Microsoft Copilot Solutions
+                        <a href="CAD%20Special%20Savings%20on%20Surface%20Laptop%207th%20Edition.PDF" 
+                        target="_blank" 
+                        title="Download PDF with Special Savings on Surface Laptop 7th Edition">
+                        Special Savings on Surface Laptop 7th Edition
                         </a>
                     </h4>
-                    <p>Only Eligible Customers can receive this promo. Please reach out to your Dedicated VSS for more info.</p>
+                    <p>Download the PDF for exclusive deals in Canada.</p>
+                    <p class="new-promo">NEW PROMO</p>
                 </article>
                 <article class="promo-item">
                     <h4>
-                        <a href="https://github.com/Cdesousa64/SurfaceSC/raw/main/Special%20Savings%20Windows%2011%20on%20Surface%20(Canada%20Q1).PDF"
-                         target="_blank"
-                         title="Download Special Savings Windows 11 on Surface PDF">
-                            Special Savings Windows 11 on Surface
+                        <a href="CAD%20Special%20Savings%20on%20Surface%20Pro%2011th%20Edition.PDF" 
+                        target="_blank" 
+                        title="Download PDF with Special Savings on Surface Pro 11th Edition">
+                        Special Savings on Surface Pro 11th Edition
                         </a>
                     </h4>
-                    <p>Only Eligible Customers can receive this promo. Please reach out to your Dedicated VSS for more info.</p>
+                    <p>Download the PDF for exclusive deals in Canada.</p>
+                    <p class="new-promo">NEW PROMO</p>
+                </article>
+                <article class="promo-item">
+                    <h4>
+                        <a href="New%20Savings%20on%20Surface%20Copilot%20Devices%20(Canada).PDF" 
+                        target="_blank" 
+                        title="Download PDF with New Savings on Surface Copilot Devices in Canada">
+                        New Savings on Surface Copilot Devices
+                        </a>
+                    </h4>
+                    <p>Explore the latest savings on Surface Copilot Devices in Canada.</p>
+                </article>
+                <article class="promo-item">
+                    <h4>
+                        <a href="H2%20Copilot%20Offer%20-New%20Savings%20on%20Surface%20Copilot%20Devices%20CAD.PDF" 
+                        target="_blank" 
+                        title="Download PDF with H2 Copilot Offer for Canada">
+                        H2 Copilot Offer - New Savings
+                        </a>
+                    </h4>
+                    <p>Discover exclusive H2 Copilot savings in Canada.</p>
                 </article>
             </div>
             <p class="promo-warning">
                 Please reach out to your Surface VSS to see if your Customer qualifies for these Promotions.
             </p>
-            <div class="promo-special-eol">
-                <div class="eol-promo-box">
-                    <p><b><u>Meteor Lake EOL Promo</u></b></p>
-                    <p style="font-weight:bold; color:#c00;">7% off Laptop 6 &amp; Pro 10, while supplies last!</p>
-                </div>
-            </div>
         </div>
+
         <!-- French - Canada Promotions -->
         <div id="promo-canada-fr" class="promo-region" aria-label="Promotions pour le Canada (Français)" lang="fr">
             <h3>Canada (Français)</h3>
@@ -204,10 +166,10 @@
             <div class="promo-items">
                 <article class="promo-item">
                     <h4>
-                        <a href="Copilot_Francais_Canada_Q1.pdf"
-                         target="_blank"
-                         title="Télécharger le PDF : Offres exclusives sur Surface et Microsoft Copilot Solutions (Canada Q1)">
-                            Offres exclusives sur Surface et Microsoft Copilot Solutions (Canada Q1)
+                        <a href="Copilot_Francais_Canada_Q1.pdf" 
+                        target="_blank" 
+                        title="Télécharger le PDF : Offres exclusives sur Surface et Microsoft Copilot Solutions (Canada Q1)">
+                        Offres exclusives sur Surface et Microsoft Copilot Solutions (Canada Q1)
                         </a>
                     </h4>
                     <p>Téléchargez le PDF pour des offres exclusives sur les solutions Surface et Copilot au Canada.</p>
@@ -215,57 +177,70 @@
                 </article>
                 <article class="promo-item">
                     <h4>
-                        <a href="https://github.com/Cdesousa64/SurfaceSC/raw/main/E%CC%81conomies%20sur%20Microsoft%20Surface%20et%20Windows%2011%20(Q1).PDF"
-                         target="_blank"
-                         title="Télécharger le PDF : Économies sur Microsoft Surface et Windows 11 (Q1)">
-                            Économies sur Microsoft Surface et Windows 11 (Q1)
+                        <a href="Windows11_Surface_Francais_Canada_Q1.pdf" 
+                        target="_blank" 
+                        title="Télécharger le PDF : Offres spéciales Windows 11 sur Surface (Canada Q1)">
+                        Offres spéciales Windows 11 sur Surface (Canada Q1)
                         </a>
                     </h4>
-                    <p>Téléchargez le PDF pour des économies spéciales sur les appareils Surface et Windows 11 au Canada.</p>
+                    <p>Téléchargez le PDF pour des économies spéciales sur les appareils Windows 11 au Canada.</p>
                     <p class="new-promo">NOUVELLE PROMO</p>
                 </article>
             </div>
             <p class="promo-warning">
                 Veuillez contacter votre VSS Surface pour savoir si votre client est admissible à ces promotions.
             </p>
-            <div class="promo-special-eol">
-    <div class="eol-promo-box">
-        <p><b><u>Promotion fin de vie Meteor Lake</u></b></p>
-        <p style="font-weight:bold; color:#c00;">7% de réduction sur le Laptop 6 &amp; Pro 10, jusqu'à épuisement des stocks&nbsp;!</p>
-    </div>
-</div>
         </div>
+
         <!-- USA Promotions -->
         <div id="promo-usa" class="promo-region" aria-label="Promotions for USA">
             <h3>USA</h3>
-            <p class="promo-warning">Promo Offers End September 30th, 2025</p>
+            <p class="promo-warning">
+                Promo Offers End September 30th, 2025
+            </p>
             <div class="promo-items">
                 <article class="promo-item">
                     <h4>
-                        <a href="https://github.com/Cdesousa64/SurfaceSC/raw/main/Exclusive%20Savings%20on%20Surface%20and%20Microsoft%20Copilot%20Solutions%20(USA%20Q1).PDF"
-                         target="_blank"
-                         title="Download Exclusive Savings on Surface and Microsoft Copilot Solutions PDF">
-                            Exclusive Savings on Surface and Microsoft Copilot Solutions
+                        <a href="USA%20Special%20Savings%20on%20Surface%20Pro%2011th%20Edition.PDF" 
+                        target="_blank" 
+                        title="Download PDF with Special Savings on Surface Pro 11th Edition for USA">
+                        Special Savings on Surface Pro 11th Edition
                         </a>
                     </h4>
-                    <p>Only Eligible Customers can receive this promo. Please reach out to your Dedicated VSS for more info.</p>
+                    <p>Download the PDF for exclusive deals in the USA.</p>
+                    <p class="new-promo">NEW PROMO</p>
                 </article>
                 <article class="promo-item">
                     <h4>
-                        <a href="https://github.com/Cdesousa64/SurfaceSC/raw/main/Special%20Savings%20Windows%2011%20on%20Surface%20(USA%20Q1).PDF"
-                         target="_blank"
-                         title="Download Special Savings Windows 11 on Surface PDF">
-                            Special Savings Windows 11 on Surface
+                        <a href="USA%20Special%20Savings%20on%20Surface%20Laptop%207th%20Edition.PDF" 
+                        target="_blank" 
+                        title="Download PDF with Special Savings on Surface Laptop 7th Edition for USA">
+                        Special Savings on Surface Laptop 7th Edition
                         </a>
                     </h4>
-                    <p>Only Eligible Customers can receive this promo. Please reach out to your Dedicated VSS for more info.</p>
+                    <p>Download the PDF for exclusive deals in the USA.</p>
+                    <p class="new-promo">NEW PROMO</p>
                 </article>
-            </div>
-            <div class="promo-special-eol">
-                <div class="eol-promo-box">
-                    <p><b><u>Meteor Lake EOL Promo</u></b></p>
-                    <p style="font-weight:bold; color:#c00;">7% off Laptop 6 &amp; Pro 10, while supplies last!</p>
-                </div>
+                <article class="promo-item">
+                    <h4>
+                        <a href="New%20Savings%20on%20Surface%20Copilot%20Devices%20(USA).PDF" 
+                        target="_blank" 
+                        title="Download PDF with New Savings on Surface Copilot Devices in USA">
+                        New Savings on Surface Copilot Devices
+                        </a>
+                    </h4>
+                    <p>Explore the latest savings on Surface Copilot Devices in the USA.</p>
+                </article>
+                <article class="promo-item">
+                    <h4>
+                        <a href="H2%20New%20Savings%20on%20Surface%20Copilot%20Devices%20%7BUSA%7D.PDF" 
+                        target="_blank" 
+                        title="Download PDF with H2 New Copilot Offer for USA">
+                        H2 New Savings on Surface Copilot Devices
+                        </a>
+                    </h4>
+                    <p>Discover exclusive H2 Copilot savings in the USA.</p>
+                </article>
             </div>
             <p class="promo-warning">
                 Please reach out to your Surface VSS to see if your Customer qualifies for these Promotions.
@@ -273,27 +248,8 @@
         </div>
     </section>
 
-    <!-- Forcasting and Lead times (Surface Hubs) -->
-    <section id="surface-hubs" class="surface-hubs" style="display:none">
-        <h2>Microsoft Surface Hubs</h2>
-        <p class="warning">⚠ Since the Surface Hubs are built to order, please expect an ETA of 12-16 weeks for orders. ⚠</p>
-        <h2>DEMO UNITS</h2>
-        <p class="warning">⚠ There are EXTENDED LEAD TIMES for 50% DEMO units! ⚠</p>
-    </section>
-
-    <!-- End of Life Devices -->
-    <section id="end-of-life-devices" class="end-of-life-devices" style="display:none">
-        <h2>End Of Life Devices</h2>
-        <p style="text-decoration: underline;">- Surface Laptop Studio 2!!! WHATEVER IS LEFT IN DISTI IS ALL THERE IS!!! (No replacements for this model. Please suggest Surface Laptop 7th edition [...]</p>
-        <p>- Surface Laptop 6 End of life April 1st (Replacement is the Laptop 7th edition)</p>
-        <p>- Surface Pro 10 End of life April 1st (Replacement is the Pro 11th edition for non 5G Intel models)</p>
-        <p style="text-decoration: underline;">**THE PRO 10 5G IS NOT END OF LIFE**</p>
-        <p>- Surface Laptop Go 3 End of life March 1st (Replacement is the 13th inch ARM Surface laptop)</p>
-        <p>- Surface Go 4 End of life March 1st (Replacement is the 12 inch ARM Surface Pro)</p>
-    </section>
-
-    <!-- Key Highlights -->
-    <section class="highlights" id="highlights" style="display:none">
+    <!-- Key Highlights Section -->
+    <section class="highlights" id="highlights">
         <h2><u>Key Highlights</u></h2>
         <ul>
             <li>Surface Pro and Surface Laptop:<span style="font-weight: normal;"> Now available with the latest Intel Core Ultra processors (Series 2).</span></li>
@@ -314,8 +270,39 @@
         <p>We invite you to explore these new devices and experience the most advanced, intelligent, and secure PCs available across both Intel and Snapdragon platforms.</p>
     </section>
 
-    <!-- Contacts -->
-    <section class="contact-info" id="contact" style="display:none">
+    <!-- Surface Hubs and End of Life Devices Section -->
+    <section class="section-flex">
+        <!-- Surface Hubs Section -->
+        <div id="surface-hubs" class="surface-hubs">
+            <h2>Microsoft Surface Hubs</h2>
+            <p class="warning">⚠ Since the Surface Hubs are built to order, please expect an ETA of 12-16 weeks for orders. ⚠</p>
+            <h2>DEMO UNITS</h2>
+            <p class="warning">⚠ There are EXTENDED LEAD TIMES for 50% DEMO units! ⚠</p>
+        </div>
+        <!-- End of Life Devices Section -->
+        <div id="end-of-life-devices" class="end-of-life-devices">
+            <h2>End Of Life Devices</h2>
+            <p style="text-decoration: underline;">- Surface Laptop Studio 2!!! WHATEVER IS LEFT IN DISTI IS ALL THERE IS!!! (No replacements for this model. Please suggest Surface Laptop 7th edition [...]
+            <p>- Surface Laptop 6 End of life April 1st (Replacement is the Laptop 7th edition)</p>
+            <p>- Surface Pro 10 End of life April 1st (Replacement is the Pro 11th edition for non 5G Intel models)</p>
+            <p style="text-decoration: underline;">**THE PRO 10 5G IS NOT END OF LIFE**</p>
+            <p>- Surface Laptop Go 3 End of life March 1st (Replacement is the 13th inch ARM Surface laptop)</p>
+            <p>- Surface Go 4 End of life March 1st (Replacement is the 12 inch ARM Surface Pro)</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-info" id="contact">
+        <!-- TD Synnex Surface Page Box -->
+        <div class="tdsynnex-box">
+            <h2>TD Synnex Surface Page</h2>
+            <div class="tdsynnex-website">
+                <a href="https://surfacetds.ca/#products" target="_blank">https://surfacetds.ca/#products</a>
+            </div>
+            <p>This is TD Synnex's Surface page. Here you will find SKU's for all the current surface products with discounts (if applicable to the customer) and information. Here you can get the skus you need to quote.</p>
+            <p><b><u><span style="color:#c00;">PLEASE ALWAYS CONFIRM WITH YOUR DEDICATED SURFACE VSS BEFORE QUOTING</span></u></b></p>
+        </div>
+        <!-- Contacts List -->
         <h2>Contact Us</h2>
         <div class="contact-item">
             <p><strong>Christian De Sousa:</strong> (CAD Commercial, Enterprise & PS) <a href="mailto:christian.desousa@softchoice.com">christian.desousa@softchoice.com</a></p>

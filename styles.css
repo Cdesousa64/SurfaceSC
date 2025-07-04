@@ -230,45 +230,32 @@ nav ul li a:hover, nav ul li a.active {
     border-radius: 12px;
 }
 
-/* TD Synnex Box Styles */
-.tdsynnex-box {
-    background: #fff;
-    border: 2px solid #2c63d2;
-    border-radius: 12px;
-    padding: 24px 18px 20px 18px;
-    margin-bottom: 32px;
-    color: #222;
-    text-align: left;
-    box-shadow: 0 2px 10px rgba(44,99,210,0.08);
-}
-
-.tdsynnex-box h2 {
-    color: #2c63d2;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.tdsynnex-website {
-    margin: 10px 0 10px 0;
-    text-align: center;
-}
-
-.tdsynnex-website a {
-    color: #2c63d2;
+.contact-info a {
+    color: #ffd200;
     font-weight: bold;
-    font-size: 1.04em;
-    word-break: break-all;
 }
 
-.tdsynnex-box p {
-    margin: 12px 0 0 0;
-    color: #222;
+/* TD Synnex Contact styled like contacts */
+.tdsynnex-contact {
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border-radius: 10px;
+    padding: 18px 16px;
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.tdsynnex-link {
+    color: #ffd200;
+    font-weight: bold;
+    word-break: break-all;
     font-size: 1em;
 }
 
-.tdsynnex-box u, .tdsynnex-box b span {
+.tdsynnex-warning {
     color: #c00 !important;
     font-weight: bold;
+    font-size: 1em;
 }
 
 .contact-info a {

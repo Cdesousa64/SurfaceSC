@@ -15,6 +15,7 @@
                 {id: "surface-hubs", label: "Forcasting and Lead times", route: "forcasting"},
                 {id: "end-of-life-devices", label: "End of Life Devices", route: "eol"},
                 {id: "highlights", label: "Key Highlights", route: "highlights"},
+                {id: "resources", label: "Resources", route: "resources"},
                 {id: "contact", label: "Contacts", route: "contacts"}
             ];
 
@@ -45,6 +46,7 @@
                     "surface-hubs",
                     "end-of-life-devices",
                     "highlights",
+                    "resources",
                     "contact"
                 ];
                 sectionIds.forEach(id => {
@@ -60,7 +62,7 @@
             // Get tabId from route (hash)
             function tabIdFromRoute(route) {
                 const found = tabs.find(tab => tab.route === route);
-                return found ? tab.id : "home-tab";
+                return found ? found.id : "home-tab";
             }
 
             // Handle tab nav click
@@ -410,7 +412,18 @@
       We invite you to explore these new devices and experience the most advanced, intelligent, and secure PCs available across both Intel and Snapdragon platforms.
     </p>
 </section>
-    
+     <!-- Resources Section (NEW) -->
+    <section id="resources" class="resources-section" style="display:none;">
+        <h2><u>Resources</u></h2>
+        <ul>
+            <li><a href="https://surface.microsoft.com/" target="_blank">Microsoft Surface Official Site</a></li>
+            <li><a href="https://surfacetds.ca/#products" target="_blank">TD Synnex Surface Page</a></li>
+            <li><a href="https://www.microsoft.com/en-ca/surface/business" target="_blank">Surface for Business</a></li>
+            <li><a href="Surface_Deployment_Guide.pdf" target="_blank">Surface Deployment Guide (PDF)</a></li>
+            <!-- Add more as needed -->
+        </ul>
+        <p>Find product guides, deployment resources, and more helpful links here.</p>
+    </section>
    <!-- Contact Section -->
 <section class="contact-info" id="contact">
     <!-- TD Synnex Surface Page Box - styled like contacts -->

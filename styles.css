@@ -1205,3 +1205,15 @@ footer {
   .promo-region-title { font-size: 1em; }
   .promo-card { padding: 11px 4px 8px 7px; }
 }
+.promo-badge-discount {
+  background: #c00;
+  color: #fff;
+  border-radius: 7px;
+  font-size: 0.93em;
+  font-weight: bold;
+  padding: 2px 12px;
+  margin-left: 7px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  text-transform: uppercase;
+}

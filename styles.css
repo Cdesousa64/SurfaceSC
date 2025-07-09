@@ -475,3 +475,218 @@ footer {
   .eol-title { font-size: 1.3rem; }
   .eol-badge { font-size: 0.9rem; }
 }
+
+/* Surface Hubs Highlight - Enhanced Styles */
+.surface-hubs-highlight {
+  background: transparent;
+  padding: 20px 0;
+  width: 100%;
+  max-width: none;
+}
+
+.surface-hubs-banner {
+  background: linear-gradient(135deg, #0078d4 0%, #1e88e5 50%, #2196f3 100%);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  margin: 20px auto 30px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 16px rgba(0, 120, 212, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.surface-hubs-banner-icon {
+  font-size: 2.5rem;
+  color: #ffd200;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.surface-hubs-banner-content h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.surface-hubs-banner-content p {
+  margin: 5px 0 0 0;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.surface-hubs-card {
+  margin: 30px auto;
+  background: rgba(255,255,255,0.98);
+  border-radius: 16px;
+  border: 2px solid #0078d4;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  max-width: 750px;
+  padding: 32px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.surface-hubs-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+  border-color: #ffd200;
+}
+
+.surface-hubs-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0078d4, #ffd200, #0078d4);
+}
+
+.surface-hubs-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.surface-hubs-card-icon {
+  font-size: 2.2rem;
+  color: #0078d4;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.surface-hubs-card-title {
+  color: #c00;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.surface-hubs-card-content {
+  text-align: center;
+  font-size: 1.09em;
+}
+
+.surface-hubs-warning {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.15em;
+  text-align: center;
+  margin: 15px 0;
+  box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.surface-hubs-internal-notice {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.18em;
+  text-align: center;
+  margin-bottom: 18px;
+  text-decoration: underline;
+  box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.surface-hubs-leadtime-img {
+  max-width: 100%;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.surface-hubs-guidance {
+  text-align: center;
+}
+
+.surface-hubs-guidance > div {
+  margin-bottom: 18px;
+}
+
+.surface-hubs-guidance strong {
+  color: #0078d4;
+  font-weight: 700;
+}
+
+.surface-hubs-guidance ul {
+  display: inline-block;
+  text-align: left;
+  margin: 8px 0;
+}
+
+.surface-hubs-guidance li {
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .surface-hubs-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .surface-hubs-banner-icon {
+    font-size: 2rem;
+  }
+  
+  .surface-hubs-card {
+    margin: 20px auto;
+    padding: 24px 20px;
+  }
+  
+  .surface-hubs-card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .surface-hubs-card-icon {
+    font-size: 1.8rem;
+  }
+  
+  .surface-hubs-card-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .surface-hubs-banner {
+    margin: 15px auto 20px auto;
+    padding: 15px;
+  }
+  
+  .surface-hubs-banner-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .surface-hubs-banner-content p {
+    font-size: 1rem;
+  }
+  
+  .surface-hubs-card {
+    padding: 20px 15px;
+  }
+  
+  .surface-hubs-warning,
+  .surface-hubs-internal-notice {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+}

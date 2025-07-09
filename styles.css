@@ -1219,3 +1219,30 @@ footer {
   display: inline-block;
   vertical-align: middle;
 }
+/* Add this to your CSS */
+
+.forecast-banner-card {
+  background: #ffd200;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  padding: 30px 18px 20px 18px;
+  margin: 0 auto 30px auto;
+  max-width: 930px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast-banner-card h2 {
+  color: #222;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.forecast-banner-icon {
+  font-size: 2rem;
+}

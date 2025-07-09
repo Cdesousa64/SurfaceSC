@@ -1005,3 +1005,203 @@ footer {
   .product-card img { width: 90vw; height: 60vw; max-width: 120px; max-height: 80px; }
   .section-title { font-size: 1em; }
 }
+/* --- PROMOS & CONTESTS: Card Layout --- */
+.promo-header-card {
+  background: linear-gradient(90deg, #ffd200 60%, #fffbe6 100%);
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  padding: 30px 18px 20px 18px;
+  margin: 0 auto 30px auto;
+  max-width: 930px;
+}
+.promo-header-card h2 {
+  color: #c00;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.promo-icon { font-size: 2rem; }
+.promo-badge-hot {
+  background: #c00;
+  color: #fff;
+  border-radius: 7px;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 3px 11px;
+  margin-left: 10px;
+  letter-spacing: 1px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.promo-header-desc {
+  color: #222;
+  font-size: 1.1em;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+.promo-cards-region-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+.promo-cards-region {
+  background: rgba(255,255,255,0.98);
+  border-radius: 16px;
+  border: 2.5px solid #ffd200;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+  max-width: 370px;
+  flex: 1 1 330px;
+  padding: 22px 18px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 22px;
+}
+.promo-region-title {
+  font-size: 1.26em;
+  font-weight: 800;
+  color: #2c63d2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.promo-flag { font-size: 1.45em; }
+.promo-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.promo-card {
+  background: #fffefc;
+  border-radius: 10px;
+  border: 1.5px solid #eee;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.06);
+  padding: 17px 13px 11px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: box-shadow 0.18s, border-color 0.18s;
+}
+.promo-card:hover, .promo-card:focus-within {
+  box-shadow: 0 5px 18px rgba(255,210,0,0.16);
+  border-color: #ffd200;
+}
+.promo-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
+}
+.promo-card-title {
+  font-weight: bold;
+  font-size: 1.04em;
+  color: #222;
+  flex: 1;
+}
+.promo-badge-expiry {
+  background: #ffd200;
+  color: #c00;
+  border-radius: 7px;
+  font-size: 0.93em;
+  font-weight: bold;
+  padding: 2px 9px;
+  margin-left: 7px;
+  letter-spacing: 0.5px;
+}
+.promo-badge-eol {
+  background: #c00;
+  color: #fff;
+  border-radius: 7px;
+  font-size: 0.93em;
+  font-weight: bold;
+  padding: 2px 9px;
+  margin-left: 7px;
+  letter-spacing: 0.5px;
+}
+.promo-badge-rebate {
+  background: #3eb655;
+  color: #fff;
+  border-radius: 7px;
+  font-size: 0.93em;
+  font-weight: bold;
+  padding: 2px 9px;
+  margin-left: 7px;
+  letter-spacing: 0.5px;
+}
+.promo-badge-new {
+  background: #c00;
+  color: #ffd200;
+  border-radius: 7px;
+  font-size: 0.88em;
+  font-weight: bold;
+  padding: 2px 8px;
+  margin-left: 7px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.promo-card-link {
+  color: #2c63d2;
+  font-weight: 800;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 1.01em;
+  margin-bottom: 2px;
+  gap: 6px;
+}
+.promo-card-link:hover {
+  text-decoration: underline;
+}
+.promo-pdf-icon { font-size: 1.07em; }
+.promo-eligibility {
+  color: #555;
+  font-size: 0.97em;
+}
+.promo-card-eol {
+  background: #fff9f9;
+  border-color: #ffdada;
+}
+.promo-discount {
+  font-weight: bold;
+  color: #c00;
+  font-size: 1em;
+}
+.promo-stock {
+  color: #555;
+  font-size: 0.98em;
+  font-weight: 400;
+}
+.promo-region-note {
+  margin: 9px 0 0 0;
+  color: #2c63d2;
+  font-size: 0.99em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.promo-help-icon { font-size: 1.2em; }
+
+@media (max-width: 1100px) {
+  .promo-cards-region-flex {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  .promo-cards-region {
+    max-width: 98vw;
+    min-width: 220px;
+  }
+}
+@media (max-width: 700px) {
+  .promo-header-card { padding: 18px 3vw; }
+  .promo-region-title { font-size: 1em; }
+  .promo-card { padding: 11px 4px 8px 7px; }
+}

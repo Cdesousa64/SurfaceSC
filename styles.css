@@ -313,3 +313,83 @@ footer {
     .promo-item { width: 95vw; max-width: 350px;}
     .tdsynnex-box { padding: 14px 7px 14px 7px; }
 }
+/* ...existing styles... */
+
+.resources-section {
+    padding: 40px 20px;
+    background: rgba(255,255,255,0.92);
+    color: #222;
+    margin: 40px auto 0 auto;
+    max-width: 900px;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.resources-section h2,
+.resources-section h3 {
+    color: #c00;
+    margin-bottom: 15px;
+    text-align: left;
+}
+.resource-card-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+.resource-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    border: 1px solid #eee;
+    min-width: 260px;
+    max-width: 340px;
+    flex: 1 1 260px;
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+.resource-card a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+    padding: 18px 16px;
+    width: 100%;
+    height: 100%;
+}
+.resource-card:hover,
+.resource-card:focus-within {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    border-color: #ffd200;
+}
+.resource-icon {
+    width: 54px;
+    height: 54px;
+    margin-right: 18px;
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 8px;
+    object-fit: contain;
+}
+.resource-title {
+    font-weight: bold;
+    font-size: 1.11em;
+    margin-bottom: 5px;
+    color: #2c63d2;
+}
+.resource-desc {
+    color: #222;
+    font-size: 0.97em;
+    margin-bottom: 0;
+}
+@media (max-width: 900px) {
+    .resource-card-group {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .resource-card {
+        max-width: 100%;
+    }
+}
+
+/* ...any other existing styles... */

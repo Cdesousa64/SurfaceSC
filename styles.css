@@ -1216,4 +1216,6 @@ footer {
   letter-spacing: 0.5px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   text-transform: uppercase;
+  display: inline-block;
+  vertical-align: middle;
 }

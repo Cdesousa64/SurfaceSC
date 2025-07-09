@@ -475,7 +475,7 @@ footer {
   .eol-title { font-size: 1.3rem; }
   .eol-badge { font-size: 0.9rem; }
 }
-* --- Enhanced Surface Hubs Tab --- */
+/* --- Enhanced Surface Hubs Tab --- */
 .surface-hubs-highlight {
   background: linear-gradient(90deg, #fffbe6 0%, #ffd20022 100%);
   padding: 40px 10px;

@@ -797,3 +797,211 @@ footer {
 }
 
 /* --- End Home Tab Styles --- */
+/* --- Video Gallery --- */
+.video-gallery {
+  padding: 18px 0 6px 0;
+  background: none;
+}
+.section-title {
+  text-align: center;
+  color: #c00;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 0.2px;
+}
+.video-cards {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.video-card {
+  background: rgba(255,255,255,0.93);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  padding: 8px 6px 10px 6px;
+  text-align: center;
+  min-width: 320px;
+  max-width: 340px;
+  flex: 1 1 320px;
+}
+.video-card iframe {
+  width: 320px;
+  height: 180px;
+  max-width: 100%;
+  border-radius: 8px;
+  border: none;
+  box-shadow: none;
+}
+.video-caption {
+  display: block;
+  color: #222;
+  font-size: 0.98em;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* --- Product Showcase Fix --- */
+.product-showcase-cards {
+  padding: 20px 0 8px 0;
+  background: none;
+}
+.product-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+.product-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  padding: 10px 6px 8px 6px;
+  width: 170px;
+  margin-bottom: 8px;
+  text-align: center;
+  transition: transform 0.13s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-card:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.09);
+}
+.product-card img {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 7px;
+  box-shadow: none;
+  background: #f7f7f7;
+}
+.product-card h3 {
+  font-size: 0.98em;
+  color: #1c2c5b;
+  margin-bottom: 0.6em;
+  font-weight: 600;
+  min-height: 38px;
+}
+.spec-link {
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: 4px;
+  color: #2c63d2;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #ffd200;
+  background: #ffd200;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 0.95em;
+  transition: background 0.12s, color 0.12s;
+}
+.spec-link:hover {
+  background: #fff;
+  color: #c00;
+  border-color: #c00;
+}
+.status-badge {
+  background: #c00;
+  color: #fff;
+  border-radius: 7px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+  margin-left: 2px;
+  font-weight: bold;
+}
+
+/* --- Hero Section --- */
+.hero-welcome {
+  padding: 28px 0 16px 0;
+  background: linear-gradient(135deg, rgba(50,64,130,0.10) 0%, rgba(255,255,255,0.01) 100%);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-glass {
+  background: rgba(255,255,255,0.68);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  padding: 20px 16px 12px 16px;
+  max-width: 420px;
+  width: 97vw;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.hero-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 11px;
+  object-fit: cover;
+  margin-bottom: 8px;
+  box-shadow: none;
+  border: 1px solid #ffd200;
+}
+.hero-glass h1 {
+  color: #1c2c5b;
+  font-size: 1.25em;
+  margin-bottom: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.hero-desc {
+  color: #333;
+  font-size: 1em;
+  margin-bottom: 0.6em;
+}
+.hero-powered {
+  font-size: 0.9em;
+  color: #525252;
+  margin-bottom: 0.8em;
+}
+.hero-update {
+  margin: 0.7em auto 0.1em auto;
+  color: #222;
+  background: #ffd200;
+  font-weight: 500;
+  padding: 5px 9px;
+  border-radius: 10px;
+  font-size: 0.93em;
+  display: inline-block;
+  box-shadow: none;
+}
+.hero-pill {
+  background: #c00;
+  color: #fff;
+  border-radius: 6px;
+  padding: 1px 7px;
+  margin-right: 7px;
+  font-size: 0.91em;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .product-cards, .video-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .product-card, .video-card {
+    min-width: 155px;
+    max-width: 46vw;
+  }
+  .hero-glass { padding: 16px 2vw 8px 2vw; }
+}
+@media (max-width: 700px) {
+  .video-card, .product-card {
+    min-width: 96vw;
+    max-width: 98vw;
+  }
+  .video-card iframe { width: 96vw; height: 56vw; min-height: 120px; }
+  .product-card img { width: 90vw; height: 60vw; max-width: 120px; max-height: 80px; }
+  .section-title { font-size: 1em; }
+}

@@ -392,9 +392,19 @@ footer {
     }
 }
 
+/* ...existing styles... */
+
+.end-of-life-devices {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Keeps it at the top of the main content area */
+  min-height: 400px;       /* Optional: ensures some height for vertical space */
+  padding: 40px 0;
+}
+
 /* End of Life Devices - Enhanced Styles */
 .eol-container {
-  margin: 38px auto 36px auto;
+  margin: 0 auto; /* <-- updated to work with flex centering */
   background: rgba(255,255,255, 0.97);
   border-radius: 18px;
   border: 2px solid #ffd200;
@@ -455,5 +465,3 @@ footer {
   .eol-title { font-size: 1.3rem; }
   .eol-badge { font-size: 0.9rem; }
 }
-
-/* ...rest of your existing styles... */

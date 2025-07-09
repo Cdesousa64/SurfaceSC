@@ -392,4 +392,68 @@ footer {
     }
 }
 
-/* ...any other existing styles... */
+/* End of Life Devices - Enhanced Styles */
+.eol-container {
+  margin: 38px auto 36px auto;
+  background: rgba(255,255,255, 0.97);
+  border-radius: 18px;
+  border: 2px solid #ffd200;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  max-width: 700px;
+  text-align: left;
+  padding: 38px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.eol-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.eol-header-icon {
+  font-size: 2rem;
+  color: #c00;
+}
+.eol-title {
+  color: #c00;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.eol-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.eol-item {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 1.07rem;
+}
+.eol-badge {
+  background: #ffd200;
+  color: #222;
+  border-radius: 12px;
+  font-size: 0.96rem;
+  padding: 2px 10px;
+  font-weight: bold;
+  margin-right: 7px;
+  display: inline-block;
+}
+.eol-important {
+  color: #c00;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+@media (max-width: 800px) {
+  .eol-container { padding: 18px 8px; }
+  .eol-title { font-size: 1.3rem; }
+  .eol-badge { font-size: 0.9rem; }
+}
+
+/* ...rest of your existing styles... */

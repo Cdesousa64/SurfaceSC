@@ -36,17 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCarouselDots();
   }
 
-  // Carousel navigation
-  if (carouselPrev && carouselNext) {
-    carouselPrev.addEventListener('click', function() {
-      currentSlide = Math.max(0, currentSlide - 1);
-      updateCarousel();
-    });
-    carouselNext.addEventListener('click', function() {
-      currentSlide = Math.min(products.length - 1, currentSlide + 1);
-      updateCarousel();
-    });
-  }
+  // Carousel navigation (infinite loop)
+  carouselPrev.addEventListener('click', function() {
+    currentSlide = (currentSlide - 1 + products.length) % products.length;
+    updateCarousel();
+  });
+  carouselNext.addEventListener('click', function() {
+    currentSlide = (currentSlide + 1) % products.length;
+    updateCarousel();
+  });
 
   // Carousel dots
   function renderCarouselDots() {

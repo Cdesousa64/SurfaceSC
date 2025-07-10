@@ -1,22 +1,131 @@
-// Comparison feature for Surface devices
+// main.js — includes carousel, video modal, and comparison logic for Surface showcase
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Only run on Home tab if showcase is present
-  const showcase = document.querySelector('.product-showcase');
+  // ====== Carousel Logic ======
+  const products = window.products || []; // Defined in products.js
+  const carouselTrack = document.getElementById('carouselTrack');
+  const carouselPrev = document.getElementById('carouselPrev');
+  const carouselNext = document.getElementById('carouselNext');
+  const carouselDots = document.getElementById('carouselDots');
+  let currentSlide = 0;
+
+  // Render carousel slides
+  function renderCarousel() {
+    if (!carouselTrack || !products.length) return;
+    carouselTrack.innerHTML = '';
+    products.forEach((product, idx) => {
+      const slide = document.createElement('div');
+      slide.className = 'carousel-slide';
+      slide.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <div class="slide-specs">${product.shortDesc || ''}</div>
+        <button class="view-details" data-index="${idx}">View Details</button>
+      `;
+      carouselTrack.appendChild(slide);
+    });
+    updateCarousel();
+    renderCarouselDots();
+  }
+
+  // Update carousel to show current slide
+  function updateCarousel() {
+    if (!carouselTrack) return;
+    const slideWidth = carouselTrack.children[0]?.offsetWidth || 335;
+    carouselTrack.style.transform = `translateX(-${currentSlide * (slideWidth + 26)}px)`;
+    updateCarouselDots();
+  }
+
+  // Carousel navigation
+  if (carouselPrev && carouselNext) {
+    carouselPrev.addEventListener('click', function() {
+      currentSlide = Math.max(0, currentSlide - 1);
+      updateCarousel();
+    });
+    carouselNext.addEventListener('click', function() {
+      currentSlide = Math.min(products.length - 1, currentSlide + 1);
+      updateCarousel();
+    });
+  }
+
+  // Carousel dots
+  function renderCarouselDots() {
+    if (!carouselDots) return;
+    carouselDots.innerHTML = '';
+    products.forEach((_, idx) => {
+      const dot = document.createElement('span');
+      dot.className = 'carousel-dot' + (idx === currentSlide ? ' active' : '');
+      dot.addEventListener('click', function() {
+        currentSlide = idx;
+        updateCarousel();
+      });
+      carouselDots.appendChild(dot);
+    });
+  }
+  function updateCarouselDots() {
+    if (!carouselDots) return;
+    Array.from(carouselDots.children).forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentSlide);
+    });
+  }
+
+  // Details modal logic
+  document.body.addEventListener('click', function(e) {
+    const btn = e.target.closest('.view-details');
+    if (btn) {
+      const idx = +btn.getAttribute('data-index');
+      showDetailsModal(products[idx]);
+    }
+  });
+
+  function showDetailsModal(product) {
+    if (!product) return;
+    // You can customize this modal as needed
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+      <div class="modal-content" style="max-width:600px;">
+        <span class="close-modal" id="closeDetailsModal" style="position:absolute;right:2rem;top:2rem;font-size:2em;cursor:pointer;color:#0078d4;">&times;</span>
+        <h2>${product.name}</h2>
+        <img src="${product.image}" alt="${product.name}" style="max-width:200px;margin-bottom:16px;">
+        <div>${product.longDesc || product.shortDesc || ''}</div>
+        <table class="comparison-table" style="margin-top:16px;">
+          <tbody>
+            ${Object.entries(product.specs).map(([k,v]) => `<tr><td><b>${k}</b></td><td>${v}</td></tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.querySelector('#closeDetailsModal').addEventListener('click', () => {
+      modal.remove();
+    });
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) modal.remove();
+    });
+    window.addEventListener('keydown', function esc(ev) {
+      if (ev.key === "Escape") { modal.remove(); window.removeEventListener('keydown', esc);}
+    });
+  }
+
+  renderCarousel();
+
+  // ====== Comparison Modal Logic ======
   const openCompare = document.getElementById('openCompare');
   const compareModal = document.getElementById('compareModal');
   const closeCompare = document.getElementById('closeCompare');
   const compareBody = document.getElementById('compareBody');
 
-  // If you use the new modal (as in the HTML you provided), use this logic:
-  if (openCompare && compareModal && closeCompare && compareBody && window.products) {
+  if (openCompare && compareModal && closeCompare && compareBody && products.length) {
     openCompare.addEventListener('click', function() {
-      // Show all products for comparison (customize as needed)
+      // Show all products for comparison
       let html = '<table class="comparison-table"><thead><tr><th>Name</th>';
-      window.products.forEach(p => html += `<th>${p.name}<br><img src="${p.image}" alt="${p.name}" style="max-width:80px;max-height:60px;margin-top:0.5em;"></th>`);
+      products.forEach(p => html += `<th>${p.name}<br><img src="${p.image}" alt="${p.name}" style="max-width:80px;max-height:60px;margin-top:0.5em;"></th>`);
       html += '</tr></thead><tbody>';
-      for (const key of Object.keys(window.products[0].specs)) {
+      for (const key of Object.keys(products[0].specs)) {
         html += `<tr><td>${key}</td>`;
-        window.products.forEach(p => html += `<td>${p.specs[key]}</td>`);
+        products.forEach(p => html += `<td>${p.specs[key]}</td>`);
         html += '</tr>';
       }
       html += '</tbody></table>';
@@ -29,142 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('click', function(e) {
       if (e.target === compareModal) compareModal.style.display = 'none';
     });
-    // Optionally allow ESC key to close modal
     window.addEventListener('keydown', function(e) {
       if (e.key === "Escape") compareModal.style.display = 'none';
     });
   }
-
-  // If you want the checkbox-based comparison instead (classic UI), uncomment below and remove the block above.
-  /*
-  if (showcase && window.products) {
-    // Only show compare for the 4 workstation devices
-    const compareDevices = [
-      { ...products[0] },
-      { ...products[1] },
-      { ...products[2] },
-      { ...products[3] }
-    ];
-    // Insert comparison UI
-    const compareBox = document.createElement('div');
-    compareBox.className = 'compare-box';
-    compareBox.innerHTML = `
-      <div id="productsGrid" class="products-grid"></div>
-      <button id="compareBtn" class="compare-btn" disabled>Compare Devices</button>
-      <div id="compareModal" class="modal">
-        <div class="modal-content">
-          <span class="close-modal" id="closeModal">&times;</span>
-          <h2>Device Comparison</h2>
-          <div id="comparisonTable"></div>
-        </div>
-      </div>
-    `;
-    showcase.parentElement.insertBefore(compareBox, showcase);
-
-    // Hide original showcase for the 4 devices
-    Array.from(showcase.children).forEach(card => {
-      const title = card.querySelector('h2');
-      if (
-        title &&
-        (
-          title.textContent.includes('Surface Pro for Business 11th Edition') ||
-          title.textContent.includes('Surface Laptop for Business 7th Edition') ||
-          title.textContent.includes('New Surface Pro for Business 12') ||
-          title.textContent.includes('New Surface Laptop for Business 13')
-        )
-      ) {
-        card.style.display = 'none';
-      }
-    });
-
-    // Product selection & compare modal logic
-    const productsGrid = compareBox.querySelector('#productsGrid');
-    const compareBtn = compareBox.querySelector('#compareBtn');
-    const compareModal = compareBox.querySelector('#compareModal');
-    const closeModal = compareBox.querySelector('#closeModal');
-    const comparisonTable = compareBox.querySelector('#comparisonTable');
-    let selected = [];
-
-    function renderProducts() {
-      productsGrid.innerHTML = '';
-      compareDevices.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.dataset.productId = product.id;
-        card.innerHTML = `
-          <input type="checkbox" class="select-checkbox" id="chk-${product.id}" />
-          <img src="${product.image}" alt="${product.name}" />
-          <h3>${product.name}</h3>
-        `;
-        const checkbox = card.querySelector('.select-checkbox');
-        checkbox.checked = selected.includes(product.id);
-        checkbox.addEventListener('change', () => {
-          if (checkbox.checked) {
-            if (selected.length >= 4) {
-              checkbox.checked = false;
-              return;
-            }
-            selected.push(product.id);
-          } else {
-            selected = selected.filter(id => id !== product.id);
-          }
-          updateSelectionUI();
-        });
-        card.addEventListener('click', (e) => {
-          if (!e.target.classList.contains('select-checkbox')) {
-            checkbox.checked = !checkbox.checked;
-            checkbox.dispatchEvent(new Event('change'));
-          }
-        });
-        if (selected.includes(product.id)) card.classList.add('selected');
-        productsGrid.appendChild(card);
-      });
-      updateSelectionUI();
-    }
-
-    function updateSelectionUI() {
-      document.querySelectorAll('.product-card').forEach(card => {
-        const id = card.dataset.productId;
-        card.classList.toggle('selected', selected.includes(id));
-        card.querySelector('.select-checkbox').checked = selected.includes(id);
-      });
-      compareBtn.disabled = selected.length < 2;
-    }
-
-    compareBtn.addEventListener('click', () => {
-      showComparisonModal();
-    });
-    closeModal.addEventListener('click', () => {
-      compareModal.style.display = 'none';
-    });
-    window.addEventListener('click', (e) => {
-      if (e.target === compareModal) compareModal.style.display = 'none';
-    });
-
-    function showComparisonModal() {
-      const selectedProducts = compareDevices.filter(p => selected.includes(p.id));
-      const allSpecs = Object.keys(selectedProducts[0].specs);
-      let html = `<table class="comparison-table"><thead><tr><th>Spec</th>`;
-      selectedProducts.forEach(p => {
-        html += `<th>${p.name}<br><img src="${p.image}" alt="${p.name}" style="max-width:80px;max-height:60px;margin-top:0.5em;"></th>`;
-      });
-      html += `</tr></thead><tbody>`;
-      allSpecs.forEach(specKey => {
-        const values = selectedProducts.map(p => p.specs[specKey]);
-        const isDifferent = values.some((v, _, arr) => v !== arr[0]);
-        html += `<tr><td>${specKey}</td>`;
-        values.forEach(val => {
-          html += `<td class="${isDifferent ? 'highlight' : ''}">${val || '-'}</td>`;
-        });
-        html += `</tr>`;
-      });
-      html += `</tbody></table>`;
-      comparisonTable.innerHTML = html;
-      compareModal.style.display = 'block';
-    }
-
-    renderProducts();
-  }
-  */
-
 });

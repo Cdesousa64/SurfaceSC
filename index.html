@@ -86,73 +86,91 @@
     </script>
 </head>
 <body>
-    <nav class="custom-nav" aria-label="Primary Navigation">
-        <ul>
-            <!-- Populated by JS -->
-        </ul>
-    </nav>
-
-    <!-- HOME TAB - Enhanced for Sales Reps -->
-<section id="home-tab">
-    <!-- Hero Banner -->
-    <section class="hero-banner">
-        <img src="Surface laptop image.png" alt="Surface Laptop" class="hero-logo" />
-        <h1>Welcome to the Surface Business Showcase</h1>
-        <p class="hero-desc">Discover the latest Surface Laptops and Pros—where performance meets style, for your business edge.</p>
-        <div class="hero-actions">
-            <a href="#compare-section" class="cta-btn">Compare Devices</a>
-            <a href="#promo" class="cta-btn secondary">View Promos</a>
-            <a href="#contact" class="cta-btn secondary">Contact Rep</a>
+  <header class="main-header">
+        <div class="header-left">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" class="ms-logo">
         </div>
-        <div class="hero-update">
-            <span class="hero-pill">NEW!</span>
-            TABS HAVE ARRIVED &mdash; Check out Microsoft Q1 promos and upcoming launches!
+        <nav class="header-nav">
+            <ul>
+                <li><a href="#home-tab" class="active"><span class="nav-icon">🏠</span> Home</a></li>
+                <li><a href="#promo"><span class="nav-icon">💸</span> Promos</a></li>
+                <li><a href="#surface-hubs"><span class="nav-icon">📊</span> Lead Times</a></li>
+                <li><a href="#end-of-life-devices"><span class="nav-icon">⏳</span> EOL Devices</a></li>
+                <li><a href="#highlights"><span class="nav-icon">✨</span> Highlights</a></li>
+                <li><a href="#resources"><span class="nav-icon">📚</span> Resources</a></li>
+                <li><a href="#contact"><span class="nav-icon">📞</span> Contacts</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <img src="https://github.com/Cdesousa64/SurfaceSC/raw/main/Softchoice%20logo.png" alt="Softchoice Logo" class="softchoice-logo">
         </div>
+    </header>
+    <!-- TAB ICON ROW (optional) -->
+    <section class="tab-icons-row">
+        <a href="#home-tab"><span class="nav-icon">🏠</span><span>Home</span></a>
+        <a href="#promo"><span class="nav-icon">💸</span><span>Promos</span></a>
+        <a href="#surface-hubs"><span class="nav-icon">📊</span><span>Lead Times</span></a>
+        <a href="#end-of-life-devices"><span class="nav-icon">⏳</span><span>EOL Devices</span></a>
+        <a href="#highlights"><span class="nav-icon">✨</span><span>Highlights</span></a>
+        <a href="#resources"><span class="nav-icon">📚</span><span>Resources</span></a>
+        <a href="#contact"><span class="nav-icon">📞</span><span>Contacts</span></a>
     </section>
 
-    <!-- Featured Video Demos -->
-    <section class="section-card video-section">
-        <h2 class="section-heading">Featured Video Demos</h2>
-        <div class="video-gallery">
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/4Z5VbcLnhBQ?feature=shared" title="Surface Laptop 7th Edition" allowfullscreen loading="lazy"></iframe>
-                <p>Surface Laptop for Business 7th Edition</p>
+    <!-- REPLACE THIS SECTION: <section id="home-tab"> ... </section> -->
+    <!-- WITH THE NEW HOME TAB CODE BELOW -->
+
+    <section id="home-tab">
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <h1>Welcome to the Surface Business Showcase</h1>
+            <p class="hero-subtitle">
+                Discover the latest Surface Laptops and Pros—where performance meets style, for your business edge.<br>
+                <span class="powered-by">Powered by Microsoft &amp; Softchoice</span>
+            </p>
+            <a href="#carousel" class="hero-cta">Shop Surface Devices</a>
+        </section>
+
+        <!-- Product Carousel Section -->
+        <section class="carousel-section" id="carousel">
+            <div class="carousel-container">
+                <button class="carousel-arrow left" aria-label="Previous">&#10094;</button>
+                <div class="carousel-track-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- JS will inject product slides here -->
+                    </div>
+                </div>
+                <button class="carousel-arrow right" aria-label="Next">&#10095;</button>
             </div>
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/jg1ZxdBFEYg?feature=shared" title="Surface Pro 11th Edition" allowfullscreen loading="lazy"></iframe>
-                <p>Surface Pro for Business 11th Edition</p>
+            <div class="carousel-dots" id="carouselDots"></div>
+            <button class="compare-btn" id="openCompare">Compare Devices</button>
+        </section>
+
+        <!-- Accessories Section -->
+        <section class="accessories-section">
+            <h2>Recommended Accessories</h2>
+            <div class="accessories-grid">
+                <div class="accessory-card">
+                    <img src="Surface_USB4_Dock.png" alt="Surface USB4 Dock" />
+                    <h3>Surface USB4 Dock <span class="status-badge">Out Now!</span></h3>
+                    <a href="USB4_Dock.pdf" target="_blank" rel="noopener" class="spec-link">View Specs</a>
+                </div>
+                <div class="accessory-card">
+                    <img src="microsoft-surface-protection-plan.jpg" alt="Microsoft Surface Protection Plan" />
+                    <h3>Microsoft Warranty Plans</h3>
+                    <a href="Microsoft Surface Warranty plans.pdf" target="_blank" rel="noopener" class="spec-link">View Specs</a>
+                </div>
             </div>
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/_0u0fQuzikA" title="Surface Laptop 13/Pro 12 Editions" allowfullscreen loading="lazy"></iframe>
-                <p>New Surface Laptop 13&quot; &amp; Pro 12&quot; Editions</p>
+        </section>
+
+        <!-- Compare Modal (hidden by default, JS toggles) -->
+        <div class="modal" id="compareModal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeCompare">&times;</span>
+                <h2>Compare Surface Devices</h2>
+                <div id="compareBody"></div>
             </div>
         </div>
     </section>
-
-    <!-- Compare Devices Section -->
-    <section class="section-card compare-section" id="compare-section">
-        <h2 class="section-heading">Featured Devices</h2>
-        <p class="section-desc">Select up to 4 devices below and compare their specs side by side!</p>
-        <!-- Compare UI injected by main.js -->
-    </section>
-
-    <!-- Accessories Section -->
-    <section class="section-card accessories-section">
-        <h2 class="section-heading">Recommended Accessories</h2>
-        <div class="accessories-grid">
-            <div class="accessory-card">
-                <img src="Surface_USB4_Dock.png" alt="Surface USB4 Dock" />
-                <h3>Surface USB4 Dock <span class="status-badge">Out Now!</span></h3>
-                <a href="USB4_Dock.pdf" target="_blank" rel="noopener" class="spec-link">View Specs</a>
-            </div>
-            <div class="accessory-card">
-                <img src="microsoft-surface-protection-plan.jpg" alt="Microsoft Surface Protection Plan" />
-                <h3>Microsoft Warranty Plans</h3>
-                <a href="Microsoft Surface Warranty plans.pdf" target="_blank" rel="noopener" class="spec-link">View Specs</a>
-            </div>
-        </div>
-    </section>
-</section>
  <!-- Promotions and Contests -->
  <section id="promo" class="promo-section" aria-label="Exclusive Promotions" style="display:none">
   <div class="promo-header-card">
@@ -703,7 +721,8 @@
             document.documentElement.scrollTop = 0;
         }
     </script>
-<script src="products.js"></script>
-<script src="main.js"></script>
+ <script src="products.js"></script>
+    <script src="main.js"></script>
+    <script src="carousel.js"></script>
 </body>
 </html>

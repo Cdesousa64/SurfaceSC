@@ -1,15 +1,13 @@
-// Carousel logic for Surface product showcase
+// Carousel logic for Surface product showcase (standalone version)
 document.addEventListener("DOMContentLoaded", function() {
-    // Assume products array is loaded from products.js
     const products = window.products || [];
     const track = document.getElementById("carouselTrack");
     const dots = document.getElementById("carouselDots");
-    const leftBtn = document.querySelector(".carousel-arrow.left");
-    const rightBtn = document.querySelector(".carousel-arrow.right");
+    const leftBtn = document.getElementById("carouselPrev");   // Use IDs to match your HTML
+    const rightBtn = document.getElementById("carouselNext");
     let currentSlide = 0;
     let slideInterval;
-    
-    // Simple specs for each slide
+
     function specsShort(specs) {
         return [
             specs.Processor,
@@ -25,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <img src="${p.image}" alt="${p.name}">
             <h3>${p.name}</h3>
             <div class="slide-specs">${specsShort(p.specs)}</div>
-            <button class="view-details" onclick="window.showProductDetails && window.showProductDetails(${i})">View Details</button>
+            <button class="view-details" data-index="${i}">View Details</button>
         </div>
     `).join('');
 
@@ -40,9 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
         dots.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i===currentSlide));
     }
 
-    leftBtn.onclick = () => { goToSlide(currentSlide-1); resetInterval(); }
-    rightBtn.onclick = () => { goToSlide(currentSlide+1); resetInterval(); }
-    dots.onclick = e => {
+    if(leftBtn) leftBtn.onclick = () => { goToSlide(currentSlide-1); resetInterval(); };
+    if(rightBtn) rightBtn.onclick = () => { goToSlide(currentSlide+1); resetInterval(); };
+    if(dots) dots.onclick = e => {
         const dot = e.target.closest('.carousel-dot');
         if(dot) { goToSlide(parseInt(dot.dataset.dot)); resetInterval(); }
     };
@@ -56,8 +54,43 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', () => goToSlide(currentSlide));
     goToSlide(0);
 
-    // Optional: Details logic (modal, etc.). Plug in as needed.
-    window.showProductDetails = function(idx) {
-        alert(products[idx].name + '\n\n' + Object.entries(products[idx].specs).map(([k,v]) => `${k}: ${v}`).join('\n'));
-    };
+    // Standalone details modal logic
+    document.body.addEventListener('click', function(e) {
+        const btn = e.target.closest('.view-details');
+        if (btn) {
+            const idx = +btn.getAttribute('data-index');
+            showProductDetails(idx);
+        }
+    });
+
+    function showProductDetails(idx) {
+        const p = products[idx];
+        if(!p) return;
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.style.display = 'block';
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width:600px;">
+                <span class="close-modal" style="position:absolute;right:2rem;top:2rem;font-size:2em;cursor:pointer;color:#0078d4;">&times;</span>
+                <h2>${p.name}</h2>
+                <img src="${p.image}" alt="${p.name}" style="max-width:200px;margin-bottom:16px;">
+                <div>${p.shortDesc || ''}</div>
+                <table class="comparison-table" style="margin-top:16px;">
+                    <tbody>
+                        ${Object.entries(p.specs).map(([k,v]) => `<tr><td><b>${k}</b></td><td>${v}</td></tr>`).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.querySelector('.close-modal').addEventListener('click', () => {
+            modal.remove();
+        });
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) modal.remove();
+        });
+        window.addEventListener('keydown', function esc(ev) {
+            if (ev.key === "Escape") { modal.remove(); window.removeEventListener('keydown', esc);}
+        });
+    }
 });

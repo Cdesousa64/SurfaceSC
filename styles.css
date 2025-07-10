@@ -1,7 +1,7 @@
 /* ======= GOOGLE FONTS IMPORT ======= */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* ======= BASE BODY & LAYOUT ======= */
+/* ======= BASE BODY & LAYOUT (applies to all tabs) ======= */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -13,7 +13,7 @@ body {
     text-align: center;
 }
 
-/* ======= NAVIGATION BAR ======= */
+/* ======= NAVIGATION BAR (top nav, all tabs) ======= */
 nav.custom-nav {
     border: 2px solid #333;
     padding: 10px;
@@ -45,7 +45,7 @@ nav ul li a:hover, nav ul li a.active {
     color: #222;
 }
 
-/* ======= HERO SECTION ======= */
+/* ======= HERO SECTION (Home Tab) ======= */
 .hero {
     padding: 70px 20px 40px 20px;
     background: rgba(0, 0, 0, 0.2);
@@ -55,7 +55,7 @@ nav ul li a:hover, nav ul li a.active {
     color: white;
 }
 
-/* ======= VIDEO BANNER SECTION ======= */
+/* ======= VIDEO BANNER (Home Tab) ======= */
 .video-banner {
     display: flex;
     justify-content: center;
@@ -70,7 +70,7 @@ nav ul li a:hover, nav ul li a.active {
     margin-top: 8px;
 }
 
-/* ======= PRODUCT SHOWCASE SECTION ======= */
+/* ======= PRODUCT SHOWCASE (Home Tab) ======= */
 .product-showcase {
     display: flex;
     justify-content: center;
@@ -100,7 +100,7 @@ nav ul li a:hover, nav ul li a.active {
     color: red;
 }
 
-/* ======= PROMO SECTION ======= */
+/* ======= PROMO SECTION (Promos Tab) ======= */
 .promo-section {
     padding: 30px 0 10px 0;
     background: rgba(255,249,240,0.7);
@@ -160,7 +160,7 @@ nav ul li a:hover, nav ul li a.active {
     margin-top: 7px;
 }
 
-/* ======= GENERAL FLEX UTILITY SECTION ======= */
+/* ======= GENERAL FLEX LAYOUTS ======= */
 .section-flex {
     display: flex;
     flex-wrap: wrap;
@@ -169,7 +169,7 @@ nav ul li a:hover, nav ul li a.active {
     margin: 30px 0 0 0;
 }
 
-/* ======= SURFACE HUBS & END OF LIFE DEVICES ======= */
+/* ======= SURFACE HUBS & END OF LIFE DEVICES (Forecasting Tab) ======= */
 .surface-hubs {
     background: #fff;
     color: #222;
@@ -205,7 +205,7 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 1.09em;
 }
 
-/* ======= HIGHLIGHTS SECTION ======= */
+/* ======= HIGHLIGHTS SECTION (Forecasting Tab) ======= */
 .highlights {
     padding: 40px 10px;
     text-align: left;
@@ -224,7 +224,7 @@ nav ul li a:hover, nav ul li a.active {
     margin-bottom: 10px;
 }
 
-/* ======= CONTACT INFO & TD SYNNEX ======= */
+/* ======= CONTACT INFO & TD SYNNEX (Contact Tab) ======= */
 .contact-info {
     padding: 40px 20px;
     background: rgba(0, 0, 0, 0.4);
@@ -261,7 +261,7 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
 }
 
-/* ======= FOOTER ======= */
+/* ======= FOOTER (all tabs) ======= */
 footer {
     padding: 20px;
     background: rgba(0, 0, 0, 0.4);
@@ -288,7 +288,7 @@ footer {
     background-color: #555;
 }
 
-/* ======= RESOURCES SECTION ======= */
+/* ======= RESOURCES SECTION (Resources Tab) ======= */
 .resources-section {
     padding: 40px 20px;
     background: rgba(255,255,255,0.92);
@@ -309,6 +309,7 @@ footer {
     flex-wrap: wrap;
     gap: 24px;
     margin-bottom: 28px;
+    justify-content: center; /* <--- Ensures centered cards */
 }
 .resource-card {
     background: #fff;
@@ -357,7 +358,7 @@ footer {
     margin-bottom: 0;
 }
 
-/* ======= END OF LIFE DEVICES - ENHANCED ======= */
+/* ======= END OF LIFE DEVICES - ENHANCED (Forecasting Tab) ======= */
 .eol-container {
   margin: 0 auto;
   background: rgba(255,255,255, 0.97);
@@ -416,7 +417,7 @@ footer {
   display: inline-block;
 }
 
-/* ======= SURFACE HUBS HIGHLIGHT & LEAD CARDS SECTION ======= */
+/* ======= SURFACE HUBS HIGHLIGHT & LEAD CARDS (Forecasting Tab) ======= */
 .surface-hubs-highlight {
   background: linear-gradient(90deg, #fffbe6 0%, #ffd20022 100%);
   padding: 40px 10px;
@@ -449,10 +450,10 @@ footer {
   to { opacity: 0.7; transform: scale(1.06);}
 }
 
-/* ======= LEAD FLEX ROW & CARDS (SURFACE HUBS) ======= */
+/* ======= LEAD FLEX ROW & CARDS (Forecasting Tab, centered and balanced) ======= */
 .lead-flex-row {
   display: flex;
-  gap: 20px; /* reduced for closer cards */
+  gap: 20px;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -558,7 +559,7 @@ footer {
   font-size: 0.97em;
 }
 
-/* ======= FORECAST BANNER (FOR SURFACE HUBS) ======= */
+/* ======= FORECAST BANNER (Forecasting Tab) ======= */
 .forecast-banner-card {
   background: #ffd200;
   border-radius: 18px;
@@ -582,4 +583,89 @@ footer {
 }
 .forecast-banner-icon {
   font-size: 2rem;
+}
+
+/* ======= RESPONSIVE STYLES ======= */
+/* --- Home, Promos, Forecasting, Contact, Resources Tabs --- */
+@media (max-width: 1100px) {
+    .product-showcase, .promo-items {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .surface-hubs {
+        width: 95%;
+        max-width: 600px;
+    }
+    .promo-cards-region-flex {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+    .promo-cards-region {
+        max-width: 98vw;
+        min-width: 220px;
+    }
+    .lead-flex-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .lead-card,
+    .lead-card.card-internal {
+        max-width: 99vw;
+        min-width: 0;
+    }
+}
+@media (max-width: 900px) {
+    .resource-card-group {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .resource-card {
+        max-width: 100%;
+    }
+}
+@media (max-width: 800px) {
+  .eol-container { padding: 18px 8px; }
+  .eol-title { font-size: 1.3rem; }
+  .eol-badge { font-size: 0.9rem; }
+}
+@media (max-width: 1000px) {
+  .product-cards, .video-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .product-card, .video-card {
+    min-width: 155px;
+    max-width: 46vw;
+  }
+  .hero-glass { padding: 16px 2vw 8px 2vw; }
+}
+@media (max-width: 700px) {
+    .promo-region { width: 99%; }
+    .product-showcase { padding: 10px; }
+    .highlights { padding: 18px 4px; font-size: 1em; }
+    nav ul { gap: 7px; }
+    .promo-item { width: 95vw; max-width: 350px;}
+    .tdsynnex-box { padding: 14px 7px 14px 7px; }
+    .video-card, .product-card {
+        min-width: 96vw;
+        max-width: 98vw;
+    }
+    .video-card iframe { width: 96vw; height: 56vw; min-height: 120px; }
+    .product-card img { width: 90vw; height: 60vw; max-width: 120px; max-height: 80px; }
+    .section-title { font-size: 1em; }
+    .promo-header-card { padding: 18px 3vw; }
+    .promo-region-title { font-size: 1em; }
+    .promo-card { padding: 11px 4px 8px 7px; }
+    .lead-card, .lead-card.card-internal, .surface-hubs-highlight {
+        max-width: 99vw;
+    }
+    .lead-chart {
+        margin: 7px 0 12px 0;
+    }
 }

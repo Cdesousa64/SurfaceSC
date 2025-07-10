@@ -81,30 +81,33 @@ ul { padding-left: 1.3em; }
     color: #0078d4;
     font-weight: bold;
 }
+
 /* ===== Video Gallery Row - Side by Side Videos ===== */
 .video-gallery-row {
   display: flex;
-  gap: 30px;
+  gap: 18px; /* Smaller gap for more room */
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 1.4em;
 }
 .video-card {
-  flex: 1 1 260px;
-  max-width: 340px;
+  flex: 1 1 180px;
+  max-width: 240px;
   text-align: center;
   background: none;
   box-shadow: none;
+  margin: 0;
 }
 .video-card iframe {
   width: 100%;
-  min-width: 260px;
-  max-width: 340px;
-  height: 190px;
+  min-width: 180px;
+  max-width: 240px;
+  height: 135px; /* Smaller height for aspect ratio */
   border-radius: 9px;
   margin-bottom: 0.5em;
   background: #fff;
 }
+
 /* ===== Carousel Section ===== */
 .carousel-section {
     background: #fff;
@@ -824,11 +827,14 @@ footer {
     .promo-cards-region-flex { gap: 15px; }
     .product-showcase, .promo-items, .forecast-main-flex { flex-direction: column; align-items: center; }
 }
+
+/* Ensure video gallery stacks on smaller screens */
 @media (max-width: 1000px) {
-    .resource-card-group, .video-gallery, .accessories-grid { flex-direction: column; gap: 18px; }
+    .resource-card-group, .video-gallery-row, .accessories-grid { flex-direction: column; gap: 18px; }
     .section-card { padding: 20px 6px 22px 6px; }
     .hero-banner { padding: 24px 7px 22px 7px; }
 }
+
 @media (max-width: 900px) {
     .resource-card-group { flex-direction: column; gap: 16px; }
     .resource-card { max-width: 100%; }
@@ -838,7 +844,22 @@ footer {
     .products-grid { gap: 1rem; }
     .product-card { width: 100%; max-width: 370px; }
     .modal-content { padding: 1rem; }
+
+    /* Video gallery responsive adjustment */
+    .video-gallery-row {
+      flex-direction: column;
+      gap: 14px;
+    }
+    .video-card {
+      max-width: 99vw;
+    }
+    .video-card iframe {
+      min-width: 90vw;
+      max-width: 99vw;
+      height: 180px;
+    }
 }
+
 @media (max-width: 700px) {
     .main-header { height: auto; flex-direction: column; gap: 7px; padding: 8px 4vw;}
     .header-nav ul { gap: 11px; font-size: 0.97em;}

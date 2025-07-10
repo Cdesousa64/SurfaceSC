@@ -5,84 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surface Laptop Showcase</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="products.js"></script>
+    <script src="main.js"></script>
+    <script src="carousel.js"></script>
     <script>
-        // Tab navigation using history API
-        document.addEventListener("DOMContentLoaded", function() {
-            const tabs = [
-                {id: "home-tab", label: "Home", route: "home"},
-                {id: "promo", label: "Promos & Contests", route: "promos"},
-                {id: "surface-hubs", label: "Forecasting and Lead times", route: "forecasting"},
-                {id: "end-of-life-devices", label: "End of Life Devices", route: "eol"},
-                {id: "highlights", label: "Key Highlights", route: "highlights"},
-                {id: "resources", label: "Resources", route: "resources"},
-                {id: "contact", label: "Contacts", route: "contacts"}
-            ];
-
-            // Populate nav menu
-            const navUl = document.querySelector("nav.custom-nav ul");
-            navUl.innerHTML = "";
-            tabs.forEach(tab => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = `#${tab.route}`;
-                a.textContent = tab.label;
-                a.dataset.tab = tab.id;
-                li.appendChild(a);
-                navUl.appendChild(li);
+    // Modern tab switching with top nav
+    document.addEventListener("DOMContentLoaded", function() {
+        const sectionIds = [
+            "home-tab",
+            "promo",
+            "surface-hubs",
+            "end-of-life-devices",
+            "highlights",
+            "resources",
+            "contact"
+        ];
+        function getSectionById(id) {
+            return document.getElementById(id);
+        }
+        function showTab(tabId) {
+            sectionIds.forEach(id => {
+                const el = getSectionById(id);
+                if (el) el.style.display = (id === tabId ? "" : "none");
             });
-
-            // Section lookup by ID
-            function getSectionById(id) {
-                return document.getElementById(id);
-            }
-
-            // Hide/show only the selected section, hide others
-            function showTab(tabId) {
-                const sectionIds = [
-                    "home-tab",
-                    "promo",
-                    "surface-hubs",
-                    "end-of-life-devices",
-                    "highlights",
-                    "resources",
-                    "contact"
-                ];
-                sectionIds.forEach(id => {
-                    const el = getSectionById(id);
-                    if (el) el.style.display = (id === tabId ? "" : "none");
-                });
-                document.querySelectorAll("nav.custom-nav a").forEach(a => {
-                    a.classList.toggle("active", a.dataset.tab === tabId);
-                });
-            }
-
-            function tabIdFromRoute(route) {
-                const found = tabs.find(tab => tab.route === route);
-                return found ? found.id : "home-tab";
-            }
-
-            navUl.addEventListener("click", function(e) {
-                const a = e.target.closest("a[data-tab]");
-                if (a) {
-                    e.preventDefault();
-                    const tabId = a.dataset.tab;
-                    const tabObj = tabs.find(tab => tab.id === tabId);
-                    if (tabObj) {
-                        history.pushState({tab: tabId}, "", "#" + tabObj.route);
-                        showTab(tabId);
-                    }
-                }
+            document.querySelectorAll(".header-nav a").forEach(a => {
+                a.classList.toggle("active", a.getAttribute("href").replace("#", "") === tabId);
             });
-
-            function handleRoute() {
-                const hash = window.location.hash.replace(/^#/, "");
-                const tabId = tabIdFromRoute(hash);
+        }
+        function tabIdFromRoute(route) {
+            route = route.toLowerCase();
+            if (route === "promos") route = "promo";
+            if (route === "forecasting") route = "surface-hubs";
+            return sectionIds.includes(route) ? route : "home-tab";
+        }
+        document.querySelector(".header-nav ul").addEventListener("click", function(e) {
+            const a = e.target.closest("a[href^='#']");
+            if (a) {
+                e.preventDefault();
+                const tabId = a.getAttribute("href").replace("#", "");
                 showTab(tabId);
+                history.pushState({tab: tabId}, "", "#" + tabId);
             }
-            window.addEventListener("popstate", handleRoute);
-
-            handleRoute();
         });
+        function handleRoute() {
+            const hash = window.location.hash.replace(/^#/, "");
+            const tabId = tabIdFromRoute(hash);
+            showTab(tabId);
+        }
+        window.addEventListener("popstate", handleRoute);
+        handleRoute();
+
+        // Button: Shop Surface Devices
+        const shopBtn = document.querySelector(".hero-cta");
+        if (shopBtn) {
+            shopBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                document.getElementById("carousel").scrollIntoView({behavior:"smooth"});
+            });
+        }
+    });
     </script>
 </head>
 <body>
@@ -105,20 +86,6 @@
             <img src="https://github.com/Cdesousa64/SurfaceSC/raw/main/Softchoice%20logo.png" alt="Softchoice Logo" class="softchoice-logo">
         </div>
     </header>
-    <nav class="custom-nav"><ul></ul></nav>
-    <!-- TAB ICON ROW (optional) -->
-    <section class="tab-icons-row">
-        <a href="#home-tab"><span class="nav-icon">🏠</span><span>Home</span></a>
-        <a href="#promo"><span class="nav-icon">💸</span><span>Promos</span></a>
-        <a href="#surface-hubs"><span class="nav-icon">📊</span><span>Lead Times</span></a>
-        <a href="#end-of-life-devices"><span class="nav-icon">⏳</span><span>EOL Devices</span></a>
-        <a href="#highlights"><span class="nav-icon">✨</span><span>Highlights</span></a>
-        <a href="#resources"><span class="nav-icon">📚</span><span>Resources</span></a>
-        <a href="#contact"><span class="nav-icon">📞</span><span>Contacts</span></a>
-    </section>
-
-    <!-- REPLACE THIS SECTION: <section id="home-tab"> ... </section> -->
-    <!-- WITH THE NEW HOME TAB CODE BELOW -->
 
     <section id="home-tab">
         <!-- Hero Banner -->
@@ -144,6 +111,14 @@
             </div>
             <div class="carousel-dots" id="carouselDots"></div>
             <button class="compare-btn" id="openCompare">Compare Devices</button>
+            <!-- Compare Modal (hidden by default, JS toggles) -->
+            <div class="modal" id="compareModal">
+                <div class="modal-content">
+                    <span class="close-modal" id="closeCompare">&times;</span>
+                    <h2>Compare Surface Devices</h2>
+                    <div id="compareBody"></div>
+                </div>
+            </div>
         </section>
 
         <!-- Accessories Section -->
@@ -162,15 +137,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Compare Modal (hidden by default, JS toggles) -->
-        <div class="modal" id="compareModal">
-            <div class="modal-content">
-                <span class="close-modal" id="closeCompare">&times;</span>
-                <h2>Compare Surface Devices</h2>
-                <div id="compareBody"></div>
-            </div>
-        </div>
     </section>
  <!-- Promotions and Contests -->
  <section id="promo" class="promo-section" aria-label="Exclusive Promotions" style="display:none">
@@ -484,7 +450,7 @@
     </section>
     
     <!-- Key Highlights Section -->
-<section class="highlights" id="highlights">
+<section class="highlights" id="highlights" style="display:none;">
     <h2><u>Key Highlights</u></h2>
     <ul>
         <li><b>Surface Pro and Surface Laptop:</b> Now available with the latest Intel Core Ultra processors (Series 2) and Qualcomm Snapdragon X Series processors (ARM).</li>
@@ -699,8 +665,7 @@
         <p><strong>Sydney MacLean:</strong> (Microsoft Channel Partner Manager) <a href="mailto:symaclea@microsoft.com">symaclea@microsoft.com</a></p>
     </div>
 </section>
-
-    <!-- Footer -->
+<!-- Footer -->
     <footer>
         <p>&copy; 2025 Surface Laptop. All rights reserved.</p>
     </footer>
@@ -722,8 +687,5 @@
             document.documentElement.scrollTop = 0;
         }
     </script>
- <script src="products.js"></script>
-    <script src="main.js"></script>
-    <script src="carousel.js"></script>
 </body>
 </html>

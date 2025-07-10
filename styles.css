@@ -1,7 +1,5 @@
-/* ======= GOOGLE FONTS IMPORT ======= */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* ======= BASE BODY & LAYOUT (applies to all tabs) ======= */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -13,7 +11,6 @@ body {
     text-align: center;
 }
 
-/* ======= NAVIGATION BAR (top nav, all tabs) ======= */
 nav.custom-nav {
     border: 2px solid #333;
     padding: 10px;
@@ -21,6 +18,7 @@ nav.custom-nav {
     margin: 0 0 30px 0;
     background: rgba(0,0,0,0.25);
 }
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -28,9 +26,11 @@ nav ul {
     justify-content: center;
     gap: 20px;
 }
+
 nav ul li {
     margin: 0;
 }
+
 nav ul li a {
     color: white;
     text-decoration: none;
@@ -40,69 +40,37 @@ nav ul li a {
     border-radius: 3px;
     transition: background 0.2s, color 0.2s;
 }
+
 nav ul li a:hover, nav ul li a.active {
     background: #ffd200;
     color: #222;
 }
 
-/* ======= HERO SECTION (Home Tab) ======= */
 .hero {
     padding: 70px 20px 40px 20px;
     background: rgba(0, 0, 0, 0.2);
     margin-bottom: 0;
 }
+
 .hero h1, .hero p {
     color: white;
 }
 
-/* ======= VIDEO GALLERY (Home Tab) ======= */
-.video-gallery {
-    padding: 24px 0 10px 0;
-    background: none;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.video-cards {
+.video-banner {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 24px;
+    gap: 20px;
     flex-wrap: wrap;
-    margin: 0 auto 24px auto;
-}
-.video-card {
-    background: rgba(255,255,255,0.93);
-    border-radius: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    padding: 12px 10px 10px 10px;
-    text-align: center;
-    width: 340px;
-    max-width: 98vw;
-    margin-bottom: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.video-card iframe {
-    width: 100%;
-    min-width: 280px;
-    max-width: 320px;
-    height: 180px;
-    border-radius: 8px;
-    border: none;
-    margin-bottom: 6px;
-}
-.video-caption {
-    color: #222;
-    font-size: 1.04em;
-    margin-top: 7px;
-    font-weight: 600;
-    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.18);
 }
 
-/* ======= PRODUCT SHOWCASE (Home Tab) ======= */
+.video-banner p {
+    color: #222;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
 .product-showcase {
     display: flex;
     justify-content: center;
@@ -110,6 +78,7 @@ nav ul li a:hover, nav ul li a.active {
     gap: 20px;
     padding: 30px 10px 10px 10px;
 }
+
 .product {
     background: rgba(0, 0, 0, 0.5);
     padding: 18px;
@@ -119,24 +88,27 @@ nav ul li a:hover, nav ul li a.active {
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     color: #fff;
 }
+
 .product h2 {
     font-size: 1.05em;
     font-weight: bold;
     margin: 10px 0 8px 0;
 }
+
 .product img {
     width: 100%;
     border-radius: 10px;
 }
+
 .coming-soon {
     color: red;
 }
 
-/* ======= PROMO SECTION (Promos Tab) ======= */
 .promo-section {
     padding: 30px 0 10px 0;
     background: rgba(255,249,240,0.7);
 }
+
 .promo-region {
     margin: 25px auto 35px auto;
     padding: 14px;
@@ -148,16 +120,19 @@ nav ul li a:hover, nav ul li a.active {
     width: 92%;
     max-width: 1200px;
 }
+
 .promo-region h2, .promo-region h3 {
     color: #c00;
     margin-bottom: 10px;
 }
+
 .promo-warning {
     color: #c00;
     font-weight: bold;
     text-decoration: underline;
     margin-bottom: 18px;
 }
+
 .promo-items {
     display: flex;
     flex-wrap: wrap;
@@ -165,6 +140,7 @@ nav ul li a:hover, nav ul li a.active {
     justify-content: center;
     margin-bottom: 10px;
 }
+
 .promo-item {
     border: 1px solid #ccc;
     padding: 13px;
@@ -173,17 +149,21 @@ nav ul li a:hover, nav ul li a.active {
     text-align: left;
     background-color: rgba(255, 255, 255, 0.9);
 }
+
 .promo-item h4 {
     margin: 6px 0 7px 0;
 }
+
 .promo-item p {
     color: #222;
     margin: 8px 0;
 }
+
 .promo-item a {
     color: #2c63d2;
     font-weight: bold;
 }
+
 .new-promo {
     color: #c00;
     font-size: 1.2em;
@@ -192,7 +172,6 @@ nav ul li a:hover, nav ul li a.active {
     margin-top: 7px;
 }
 
-/* ======= GENERAL FLEX LAYOUTS ======= */
 .section-flex {
     display: flex;
     flex-wrap: wrap;
@@ -201,7 +180,6 @@ nav ul li a:hover, nav ul li a.active {
     margin: 30px 0 0 0;
 }
 
-/* ======= SURFACE HUBS & END OF LIFE DEVICES (Forecasting Tab) ======= */
 .surface-hubs {
     background: #fff;
     color: #222;
@@ -212,10 +190,8 @@ nav ul li a:hover, nav ul li a.active {
     margin-bottom: 40px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.13);
     text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
 }
+
 /* Center EOL Devices section */
 .end-of-life-devices {
     display: flex;
@@ -232,16 +208,17 @@ nav ul li a:hover, nav ul li a.active {
     border-radius: 0;
     text-align: inherit;
 }
+
 .surface-hubs h2, .end-of-life-devices h2 {
     color: #c00;
 }
+
 .warning {
     color: #c00;
     font-weight: bold;
     font-size: 1.09em;
 }
 
-/* ======= HIGHLIGHTS SECTION (Forecasting Tab) ======= */
 .highlights {
     padding: 40px 10px;
     text-align: left;
@@ -255,12 +232,12 @@ nav ul li a:hover, nav ul li a.active {
     max-width: 900px;
     border-radius: 18px;
 }
+
 .highlights h2 {
     color: #c00;
     margin-bottom: 10px;
 }
 
-/* ======= CONTACT INFO & TD SYNNEX (Contact Tab) ======= */
 .contact-info {
     padding: 40px 20px;
     background: rgba(0, 0, 0, 0.4);
@@ -268,12 +245,13 @@ nav ul li a:hover, nav ul li a.active {
     margin: 40px auto 0 auto;
     max-width: 650px;
     border-radius: 12px;
-    display: block;
 }
+
 .contact-info a {
     color: #ffd200;
     font-weight: bold;
 }
+
 /* TD Synnex Contact styled like contacts */
 .tdsynnex-contact {
     background: rgba(0, 0, 0, 0.4);
@@ -283,23 +261,25 @@ nav ul li a:hover, nav ul li a.active {
     margin-bottom: 22px;
     text-align: left;
 }
+
 .tdsynnex-link {
     color: #ffd200;
     font-weight: bold;
     word-break: break-all;
     font-size: 1em;
 }
+
 .tdsynnex-warning {
     color: #c00 !important;
     font-weight: bold;
     font-size: 1em;
 }
+
 .contact-info a {
     color: #ffd200;
     font-weight: bold;
 }
 
-/* ======= FOOTER (all tabs) ======= */
 footer {
     padding: 20px;
     background: rgba(0, 0, 0, 0.4);
@@ -307,7 +287,6 @@ footer {
     margin-top: 40px;
 }
 
-/* ======= BACK TO TOP BUTTON ======= */
 #backToTop {
     display: none;
     position: fixed;
@@ -322,11 +301,38 @@ footer {
     cursor: pointer;
     border-radius: 5px;
 }
+
 #backToTop:hover {
     background-color: #555;
 }
 
-/* ======= RESOURCES SECTION (Resources Tab) ======= */
+/* Responsive Styles */
+@media (max-width: 1100px) {
+    .product-showcase, .promo-items {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .surface-hubs {
+        width: 95%;
+        max-width: 600px;
+    }
+    /* .end-of-life-devices is intentionally NOT included here */
+}
+
+@media (max-width: 700px) {
+    .promo-region { width: 99%; }
+    .product-showcase { padding: 10px; }
+    .highlights { padding: 18px 4px; font-size: 1em; }
+    nav ul { gap: 7px; }
+    .promo-item { width: 95vw; max-width: 350px;}
+    .tdsynnex-box { padding: 14px 7px 14px 7px; }
+}
+/* ...existing styles... */
+
 .resources-section {
     padding: 40px 20px;
     background: rgba(255,255,255,0.92);
@@ -335,7 +341,6 @@ footer {
     max-width: 900px;
     border-radius: 18px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    display: block;
 }
 .resources-section h2,
 .resources-section h3 {
@@ -348,7 +353,6 @@ footer {
     flex-wrap: wrap;
     gap: 24px;
     margin-bottom: 28px;
-    justify-content: center;
 }
 .resource-card {
     background: #fff;
@@ -396,8 +400,19 @@ footer {
     font-size: 0.97em;
     margin-bottom: 0;
 }
+@media (max-width: 900px) {
+    .resource-card-group {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .resource-card {
+        max-width: 100%;
+    }
+}
 
-/* ======= END OF LIFE DEVICES - ENHANCED (Forecasting Tab) ======= */
+/* ...existing styles... */
+
+/* End of Life Devices - Enhanced Styles */
 .eol-container {
   margin: 0 auto;
   background: rgba(255,255,255, 0.97);
@@ -409,7 +424,6 @@ footer {
   padding: 38px 36px;
   position: relative;
   overflow: hidden;
-  display: block;
 }
 .eol-header {
   display: flex;
@@ -456,8 +470,14 @@ footer {
   margin-bottom: 14px;
   display: inline-block;
 }
+@media (max-width: 800px) {
+  .eol-container { padding: 18px 8px; }
+  .eol-title { font-size: 1.3rem; }
+  .eol-badge { font-size: 0.9rem; }
+}
 
-/* ======= SURFACE HUBS HIGHLIGHT & LEAD CARDS (Forecasting Tab) ======= */
+/* --- Enhanced Surface Hubs Tab --- */
+/* Add Forecasting fixes ONLY below here, do not touch Home tab styles above! */
 .surface-hubs-highlight {
   background: linear-gradient(90deg, #fffbe6 0%, #ffd20022 100%);
   padding: 40px 10px;
@@ -466,7 +486,6 @@ footer {
   max-width: 1200px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
   position: relative;
-  display: block;
 }
 .section-banner {
   background: #ffd200;
@@ -607,324 +626,21 @@ footer {
   font-size: 0.97em;
 }
 
-/* ======= FORECAST BANNER (Forecasting Tab) ======= */
-.forecast-banner-card {
-  background: #ffd200;
-  border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
-  padding: 30px 18px 20px 18px;
-  margin: 0 auto 30px auto;
-  max-width: 930px;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.forecast-banner-card h2 {
-  color: #222;
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.forecast-banner-icon {
-  font-size: 2rem;
-}
-
-/* ======= PROMOS & CONTESTS: Card Layout ======= */
-.promo-header-card {
-  background: linear-gradient(90deg, #ffd200 60%, #fffbe6 100%);
-  border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
-  padding: 30px 18px 20px 18px;
-  margin: 0 auto 30px auto;
-  max-width: 930px;
-}
-.promo-header-card h2 {
-  color: #c00;
-  margin-bottom: 10px;
-  font-size: 2rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.promo-icon { font-size: 2rem; }
-.promo-badge-hot {
-  background: #c00;
-  color: #fff;
-  border-radius: 7px;
-  font-size: 0.9em;
-  font-weight: bold;
-  padding: 3px 11px;
-  margin-left: 10px;
-  letter-spacing: 1px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}
-.promo-header-desc {
-  color: #222;
-  font-size: 1.1em;
-  margin-bottom: 4px;
-  font-weight: bold;
-}
-.promo-cards-region-flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 28px;
-}
-.promo-cards-region {
-  background: rgba(255,255,255,0.98);
-  border-radius: 16px;
-  border: 2.5px solid #ffd200;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.09);
-  max-width: 370px;
-  flex: 1 1 330px;
-  padding: 22px 18px 16px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  margin-bottom: 22px;
-}
-.promo-region-title {
-  font-size: 1.26em;
-  font-weight: 800;
-  color: #2c63d2;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-.promo-flag { font-size: 1.45em; }
-.promo-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.promo-card {
-  background: #fffefc;
-  border-radius: 10px;
-  border: 1.5px solid #eee;
-  box-shadow: 0 2px 7px rgba(0,0,0,0.06);
-  padding: 17px 13px 11px 13px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  transition: box-shadow 0.18s, border-color 0.18s;
-}
-.promo-card:hover, .promo-card:focus-within {
-  box-shadow: 0 5px 18px rgba(255,210,0,0.16);
-  border-color: #ffd200;
-}
-.promo-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 3px;
-  flex-wrap: wrap;
-}
-.promo-card-title {
-  font-weight: bold;
-  font-size: 1.04em;
-  color: #222;
-  flex: 1;
-}
-.promo-badge-expiry {
-  background: #ffd200;
-  color: #c00;
-  border-radius: 7px;
-  font-size: 0.93em;
-  font-weight: bold;
-  padding: 2px 9px;
-  margin-left: 7px;
-  letter-spacing: 0.5px;
-}
-.promo-badge-eol {
-  background: #c00;
-  color: #fff;
-  border-radius: 7px;
-  font-size: 0.93em;
-  font-weight: bold;
-  padding: 2px 9px;
-  margin-left: 7px;
-  letter-spacing: 0.5px;
-}
-.promo-badge-rebate {
-  background: #3eb655;
-  color: #fff;
-  border-radius: 7px;
-  font-size: 0.93em;
-  font-weight: bold;
-  padding: 2px 9px;
-  margin-left: 7px;
-  letter-spacing: 0.5px;
-}
-.promo-badge-new {
-  background: #c00;
-  color: #ffd200;
-  border-radius: 7px;
-  font-size: 0.88em;
-  font-weight: bold;
-  padding: 2px 8px;
-  margin-left: 7px;
-  letter-spacing: 0.5px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-.promo-card-link {
-  color: #2c63d2;
-  font-weight: 800;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  font-size: 1.01em;
-  margin-bottom: 2px;
-  gap: 6px;
-}
-.promo-card-link:hover {
-  text-decoration: underline;
-}
-.promo-pdf-icon { font-size: 1.07em; }
-.promo-eligibility {
-  color: #555;
-  font-size: 0.97em;
-}
-.promo-card-eol {
-  background: #fff9f9;
-  border-color: #ffdada;
-}
-.promo-discount {
-  font-weight: bold;
-  color: #c00;
-  font-size: 1em;
-}
-.promo-stock {
-  color: #555;
-  font-size: 0.98em;
-  font-weight: 400;
-}
-.promo-region-note {
-  margin: 9px 0 0 0;
-  color: #2c63d2;
-  font-size: 0.99em;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.promo-help-icon { font-size: 1.2em; }
-
-.promo-badge-discount {
-  background: #c00;
-  color: #fff;
-  border-radius: 7px;
-  font-size: 0.93em;
-  font-weight: bold;
-  padding: 2px 12px;
-  margin-left: 7px;
-  letter-spacing: 0.5px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  text-transform: uppercase;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* ======= RESPONSIVE STYLES (ALL TABS) ======= */
-@media (max-width: 1200px) {
-  .surface-hubs-highlight,
-  .promo-header-card {
-    max-width: 99vw;
+/* Responsive adjustments for the new section */
+@media (max-width: 850px) {
+  .surface-hubs-highlight {
+    padding: 18px 2vw;
   }
-}
-@media (max-width: 1100px) {
-    .product-showcase, .promo-items, .promo-cards-region-flex, .product-cards, .video-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-    .section-flex {
-        flex-direction: column;
-        align-items: center;
-    }
-    .surface-hubs {
-        width: 95%;
-        max-width: 600px;
-    }
-    .promo-cards-region {
-        max-width: 98vw;
-        min-width: 220px;
-    }
-    .lead-flex-row {
-        flex-direction: column;
-        align-items: center;
-    }
-    .lead-card,
-    .lead-card.card-internal {
-        max-width: 99vw;
-        min-width: 0;
-    }
-}
-@media (max-width: 900px) {
-    .resource-card-group {
-        flex-direction: column;
-        gap: 16px;
-        align-items: center;
-    }
-    .resource-card {
-        max-width: 100%;
-    }
-    .lead-flex-row {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .lead-card.card-internal { max-width: 100%; }
-}
-@media (max-width: 800px) {
-    .eol-container { padding: 18px 8px; }
-    .eol-title { font-size: 1.3rem; }
-    .eol-badge { font-size: 0.9rem; }
-}
-@media (max-width: 1000px) {
-    .product-cards, .video-cards {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .product-card, .video-card {
-        min-width: 155px;
-        max-width: 46vw;
-    }
-    .hero-glass { padding: 16px 2vw 8px 2vw; }
+  .lead-card {
+    padding: 12px 5px;
+  }
+  .section-banner { font-size: 1.3rem; }
 }
 @media (max-width: 700px) {
-    .promo-region,
-    .promo-header-card,
-    .surface-hubs-highlight,
-    .lead-card,
-    .lead-card.card-internal,
-    .resources-section,
-    .contact-info,
-    .eol-container,
-    .highlights {
-        max-width: 99vw;
-    }
-    .product-showcase { padding: 10px; }
-    .highlights { padding: 18px 4px; font-size: 1em; }
-    nav ul { gap: 7px; }
-    .promo-item { width: 95vw; max-width: 350px;}
-    .tdsynnex-box { padding: 14px 7px 14px 7px; }
-    .video-card, .product-card {
-        min-width: 96vw;
-        max-width: 98vw;
-    }
-    .video-card iframe { width: 96vw; height: 56vw; min-height: 120px; }
-    .product-card img { width: 90vw; height: 60vw; max-width: 120px; max-height: 80px; }
-    .section-title { font-size: 1em; }
-    .promo-region-title { font-size: 1em; }
-    .promo-card { padding: 11px 4px 8px 7px; }
-    .lead-chart {
-        margin: 7px 0 12px 0;
-    }
+  .lead-card, .surface-hubs-highlight {
+    max-width: 99vw;
+  }
+  .lead-chart {
+    margin: 7px 0 12px 0;
+  }
 }

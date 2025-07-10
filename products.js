@@ -2,7 +2,7 @@ const products = [
   {
     id: "pro-11-intel",
     name: "Surface Pro for Business 11th Edition (Intel)",
-    image: "Surface Pro.png",
+    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro.png",
     specs: {
       Processor: "Intel Core Ultra 7 165U",
       RAM: "16GB LPDDR5x",
@@ -23,7 +23,7 @@ const products = [
   {
     id: "laptop-7-intel",
     name: "Surface Laptop for Business 7th Edition (Intel)",
-    image: "Surface laptop image.png",
+    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20laptop%20image.png",
     specs: {
       Processor: "Intel Core Ultra 7 165H",
       RAM: "16GB LPDDR5x",
@@ -44,7 +44,7 @@ const products = [
   {
     id: "pro-12-arm",
     name: "New Surface Pro for Business 12\" (ARM)",
-    image: "Surface Pro 12.png",
+    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2012.png",
     specs: {
       Processor: "Snapdragon X Elite",
       RAM: "16GB LPDDR5x",
@@ -65,7 +65,7 @@ const products = [
   {
     id: "laptop-13-arm",
     name: "New Surface Laptop for Business 13\" (ARM)",
-    image: "Surface Laptop 13.png",
+    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%2013.png",
     specs: {
       Processor: "Snapdragon X Elite",
       RAM: "16GB LPDDR5x",

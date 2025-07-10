@@ -81,7 +81,30 @@ ul { padding-left: 1.3em; }
     color: #0078d4;
     font-weight: bold;
 }
-
+/* ===== Video Gallery Row - Side by Side Videos ===== */
+.video-gallery-row {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.4em;
+}
+.video-card {
+  flex: 1 1 260px;
+  max-width: 340px;
+  text-align: center;
+  background: none;
+  box-shadow: none;
+}
+.video-card iframe {
+  width: 100%;
+  min-width: 260px;
+  max-width: 340px;
+  height: 190px;
+  border-radius: 9px;
+  margin-bottom: 0.5em;
+  background: #fff;
+}
 /* ===== Carousel Section ===== */
 .carousel-section {
     background: #fff;

@@ -3,6 +3,8 @@ const products = [
     id: "pro-11-intel",
     name: "Surface Pro for Business 11th Edition (Intel)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro.png",
+    shortDesc: "Ultra-light, ultra-flexible business tablet with Intel Core Ultra 7.",
+    longDesc: "The Surface Pro 11th Edition (Intel) delivers top-tier performance and versatility for business users. It features a stunning 13\" PixelSense Flow touchscreen, enhanced security, and long battery life, making it perfect for productivity on the go.",
     specs: {
       Processor: "Intel Core Ultra 7 165U",
       RAM: "16GB LPDDR5x",
@@ -24,6 +26,8 @@ const products = [
     id: "laptop-7-intel",
     name: "Surface Laptop for Business 7th Edition (Intel)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20laptop%20image.png",
+    shortDesc: "Premium Intel-powered laptop with all-day battery life.",
+    longDesc: "The Surface Laptop 7th Edition (Intel) combines sleek design with powerful performance. Featuring a 15\" PixelSense touchscreen, next-gen Intel Core Ultra 7 processor, and advanced security features, it's built for professionals on the move.",
     specs: {
       Processor: "Intel Core Ultra 7 165H",
       RAM: "16GB LPDDR5x",
@@ -45,6 +49,8 @@ const products = [
     id: "pro-12-arm",
     name: "New Surface Pro for Business 12\" (ARM)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2012.png",
+    shortDesc: "Next-gen ARM device with Snapdragon X Elite for AI workloads.",
+    longDesc: "Surface Pro 12\" (ARM) redefines mobile productivity with Snapdragon X Elite and exceptional battery life. Enjoy advanced connectivity, robust security, and a brilliant PixelSense touchscreen, all in an ultra-portable design.",
     specs: {
       Processor: "Snapdragon X Elite",
       RAM: "16GB LPDDR5x",
@@ -66,6 +72,8 @@ const products = [
     id: "laptop-13-arm",
     name: "New Surface Laptop for Business 13\" (ARM)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%2013.png",
+    shortDesc: "Fast, efficient ARM laptop with modern connectivity.",
+    longDesc: "The Surface Laptop 13\" (ARM) offers powerful Snapdragon X Elite performance, long battery life, and enterprise-grade security. Its 13.8\" PixelSense touchscreen and premium build are ideal for business users who require mobility and speed.",
     specs: {
       Processor: "Snapdragon X Elite",
       RAM: "16GB LPDDR5x",
@@ -84,3 +92,6 @@ const products = [
     }
   }
 ];
+
+// Expose products globally for main.js
+window.products = products;

@@ -85,27 +85,49 @@ ul { padding-left: 1.3em; }
 /* ===== Video Gallery Row - Side by Side Videos ===== */
 .video-gallery-row {
   display: flex;
-  gap: 18px; /* Smaller gap for more room */
+  flex-direction: row;
+  gap: 18px;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: nowrap; /* Prevent wrapping at desktop width */
   margin-bottom: 1.4em;
+  width: 100%;
 }
 .video-card {
-  flex: 1 1 180px;
-  max-width: 240px;
+  flex: 0 0 220px;     /* Fixed width for all cards */
+  max-width: 220px;
+  min-width: 0;
   text-align: center;
   background: none;
   box-shadow: none;
   margin: 0;
 }
 .video-card iframe {
-  width: 100%;
-  min-width: 180px;
-  max-width: 240px;
-  height: 135px; /* Smaller height for aspect ratio */
+  width: 220px;
+  height: 124px;       /* 16:9 aspect ratio for 220px wide */
   border-radius: 9px;
   margin-bottom: 0.5em;
   background: #fff;
+  display: block;
+}
+
+/* Responsive: stack videos on mobile/tablet */
+@media (max-width: 700px) {
+  .video-gallery-row {
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .video-card {
+    max-width: 99vw;
+    flex: 1 1 auto;
+  }
+  .video-card iframe {
+    width: 90vw;
+    max-width: 99vw;
+    height: 180px;
+  }
 }
 
 /* ===== Carousel Section ===== */
@@ -844,20 +866,6 @@ footer {
     .products-grid { gap: 1rem; }
     .product-card { width: 100%; max-width: 370px; }
     .modal-content { padding: 1rem; }
-
-    /* Video gallery responsive adjustment */
-    .video-gallery-row {
-      flex-direction: column;
-      gap: 14px;
-    }
-    .video-card {
-      max-width: 99vw;
-    }
-    .video-card iframe {
-      min-width: 90vw;
-      max-width: 99vw;
-      height: 180px;
-    }
 }
 
 @media (max-width: 700px) {
@@ -876,6 +884,22 @@ footer {
     .forecast-banner-card { padding: 14px 1vw 10px 1vw; }
     .forecast-main-flex { gap: 13px; }
     .forecast-col { min-width: 99vw; max-width: 99vw; }
+    /* Video gallery responsive adjustment (repeat for clarity) */
+    .video-gallery-row {
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+    .video-card {
+      max-width: 99vw;
+      flex: 1 1 auto;
+    }
+    .video-card iframe {
+      width: 90vw;
+      max-width: 99vw;
+      height: 180px;
+    }
 }
 @media (max-width: 600px) {
     .comparison-table th,

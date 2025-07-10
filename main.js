@@ -122,10 +122,11 @@ document.addEventListener('DOMContentLoaded', function() {
       products.forEach(p => html += `<th>${p.name}<br><img src="${p.image}" alt="${p.name}" style="max-width:80px;max-height:60px;margin-top:0.5em;"></th>`);
       html += '</tr></thead><tbody>';
       for (const key of Object.keys(products[0].specs)) {
-        html += `<tr><td>${key}</td>`;
-        products.forEach(p => html += `<td>${p.specs[key]}</td>`);
-        html += '</tr>';
-      }
+      let label = key === 'Warranty' ? 'Manufacturing Warranty' : key;
+      html += `<tr><td>${label}</td>`;
+      products.forEach(p => html += `<td>${p.specs[key]}</td>`);
+      html += '</tr>';
+    }
       html += '</tbody></table>';
       compareBody.innerHTML = html;
       compareModal.style.display = 'block';

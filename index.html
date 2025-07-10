@@ -8,7 +8,6 @@
     <script>
         // Tab navigation using history API
         document.addEventListener("DOMContentLoaded", function() {
-            // Tab info: tabId, navLabel, route
             const tabs = [
                 {id: "home-tab", label: "Home", route: "home"},
                 {id: "promo", label: "Promos & Contests", route: "promos"},
@@ -39,7 +38,6 @@
 
             // Hide/show only the selected section, hide others
             function showTab(tabId) {
-                // All section IDs
                 const sectionIds = [
                     "home-tab",
                     "promo",
@@ -53,19 +51,16 @@
                     const el = getSectionById(id);
                     if (el) el.style.display = (id === tabId ? "" : "none");
                 });
-                // Highlight nav (active state)
                 document.querySelectorAll("nav.custom-nav a").forEach(a => {
                     a.classList.toggle("active", a.dataset.tab === tabId);
                 });
             }
 
-            // Get tabId from route (hash)
             function tabIdFromRoute(route) {
                 const found = tabs.find(tab => tab.route === route);
                 return found ? found.id : "home-tab";
             }
 
-            // Handle tab nav click
             navUl.addEventListener("click", function(e) {
                 const a = e.target.closest("a[data-tab]");
                 if (a) {
@@ -73,14 +68,12 @@
                     const tabId = a.dataset.tab;
                     const tabObj = tabs.find(tab => tab.id === tabId);
                     if (tabObj) {
-                        // Use history API to change route
                         history.pushState({tab: tabId}, "", "#" + tabObj.route);
                         showTab(tabId);
                     }
                 }
             });
 
-            // On hash change or popstate, show the right tab
             function handleRoute() {
                 const hash = window.location.hash.replace(/^#/, "");
                 const tabId = tabIdFromRoute(hash);
@@ -88,7 +81,6 @@
             }
             window.addEventListener("popstate", handleRoute);
 
-            // Initial: hide all, show current
             handleRoute();
         });
     </script>
@@ -100,80 +92,70 @@
         </ul>
     </nav>
 
-   <!-- HOME TAB: hero, video, features (Redesigned) -->
-<section id="home-tab">
-  <!-- Hero Banner -->
-  <section class="hero-welcome">
-    <div class="hero-glass">
-      <img src="Surface laptop image.png" alt="Surface Laptop" class="hero-logo" />
-      <h1>Welcome to the New Surface Business Showcase</h1>
-      <p class="hero-desc">Discover the latest Surface Laptops and Pros — where performance meets style, for your business edge.</p>
-      <p class="hero-powered">
-        <span>Brought to you by <b>Microsoft</b> &amp; <b>Softchoice</b> <em>a World Wide Technology co.</em></span>
-      </p>
-      <div class="hero-update">
-        <span class="hero-pill">NEW!</span>
-        TABS HAVE ARRIVED &mdash; Check out Microsoft Q1 promos and upcoming launches!
-      </div>
-    </div>
-  </section>
-
-  <!-- Video Gallery -->
-  <section class="video-gallery">
-    <h2 class="section-title">See Surface in Action</h2>
-    <div class="video-cards">
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/4Z5VbcLnhBQ?feature=shared" title="Surface Laptop 7th Edition" allowfullscreen></iframe>
-        <span class="video-caption">Surface Laptop for Business 7th Edition</span>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/jg1ZxdBFEYg?feature=shared" title="Surface Pro 11th Edition" allowfullscreen></iframe>
-        <span class="video-caption">Surface Pro for Business 11th Edition</span>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/_0u0fQuzikA" title="Surface Laptop 13/Pro 12 Editions" allowfullscreen></iframe>
-        <span class="video-caption">New Surface Laptop 13" &amp; Pro 12" Editions</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Showcase -->
-  <section class="product-showcase-cards">
-    <h2 class="section-title">Featured Devices &amp; Solutions</h2>
-    <div class="product-cards">
-      <div class="product-card">
-        <img src="Surface Pro.png" alt="Microsoft Surface Pro" />
-        <h3>Surface Pro for Business 11th Edition (INTEL)</h3>
-        <a href="Surface Pro 11 Intel Specsheet.pdf" target="_blank" class="spec-link">View Specs</a>
-      </div>
-      <div class="product-card">
-        <img src="Surface laptop image.png" alt="Surface Laptop 7" />
-        <h3>Surface Laptop for Business 7th Edition (INTEL)</h3>
-        <a href="Surface Laptop 7 Intel Specsheet.pdf" target="_blank" class="spec-link">View Specs</a>
-      </div>
-      <div class="product-card">
-        <img src="Surface_USB4_Dock.png" alt="Microsoft Surface USB4 Dock" />
-        <h3>Surface USB4 Dock <span class="status-badge">Out Now!</span></h3>
-        <a href="USB4_Dock.pdf" target="_blank" class="spec-link">View Specs</a>
-      </div>
-      <div class="product-card">
-        <img src="Surface Pro 12.png" alt="New Surface Pro 12" />
-        <h3>New Surface Pro for Business 12" (ARM)</h3>
-        <a href="New Surface Pro 12.pdf" target="_blank" class="spec-link">View Specs</a>
-      </div>
-      <div class="product-card">
-        <img src="Surface Laptop 13.png" alt="New Surface Laptop 13" />
-        <h3>New Surface Laptop for Business 13" (ARM)</h3>
-        <a href="New Surface Laptop 13.pdf" target="_blank" class="spec-link">View Specs</a>
-      </div>
-      <div class="product-card">
-        <img src="microsoft-surface-protection-plan.jpg" alt="Microsoft Surface Protection Plan" />
-        <h3>Microsoft Warranty Plans</h3>
-        <a href="Microsoft Surface Warranty plans.pdf" target="_blank" class="spec-link">View Specs</a>
-      </div>
-    </div>
-  </section>
-</section>
+    <!-- HOME TAB -->
+    <section id="home-tab">
+        <!-- Hero Banner -->
+        <section class="hero">
+            <img src="Surface laptop image.png" alt="Surface Laptop" class="hero-logo" />
+            <h1>Welcome to the New Surface Business Showcase</h1>
+            <p class="hero-desc">Discover the latest Surface Laptops and Pros — where performance meets style, for your business edge.</p>
+            <p class="hero-powered">
+                <span>Brought to you by <b>Microsoft</b> &amp; <b>Softchoice</b> <em>a World Wide Technology co.</em></span>
+            </p>
+            <div class="hero-update">
+                <span class="hero-pill">NEW!</span>
+                TABS HAVE ARRIVED &mdash; Check out Microsoft Q1 promos and upcoming launches!
+            </div>
+        </section>
+        <!-- Video Gallery -->
+        <section class="video-banner">
+            <div>
+                <iframe src="https://www.youtube.com/embed/4Z5VbcLnhBQ?feature=shared" title="Surface Laptop 7th Edition" allowfullscreen></iframe>
+                <p>Surface Laptop for Business 7th Edition</p>
+            </div>
+            <div>
+                <iframe src="https://www.youtube.com/embed/jg1ZxdBFEYg?feature=shared" title="Surface Pro 11th Edition" allowfullscreen></iframe>
+                <p>Surface Pro for Business 11th Edition</p>
+            </div>
+            <div>
+                <iframe src="https://www.youtube.com/embed/_0u0fQuzikA" title="Surface Laptop 13/Pro 12 Editions" allowfullscreen></iframe>
+                <p>New Surface Laptop 13" &amp; Pro 12" Editions</p>
+            </div>
+        </section>
+        <!-- Product Showcase -->
+        <section class="product-showcase">
+            <div class="product">
+                <img src="Surface Pro.png" alt="Microsoft Surface Pro" />
+                <h2>Surface Pro for Business 11th Edition (INTEL)</h2>
+                <a href="Surface Pro 11 Intel Specsheet.pdf" target="_blank" class="spec-link">View Specs</a>
+            </div>
+            <div class="product">
+                <img src="Surface laptop image.png" alt="Surface Laptop 7" />
+                <h2>Surface Laptop for Business 7th Edition (INTEL)</h2>
+                <a href="Surface Laptop 7 Intel Specsheet.pdf" target="_blank" class="spec-link">View Specs</a>
+            </div>
+            <div class="product">
+                <img src="Surface_USB4_Dock.png" alt="Microsoft Surface USB4 Dock" />
+                <h2>Surface USB4 Dock <span class="status-badge">Out Now!</span></h2>
+                <a href="USB4_Dock.pdf" target="_blank" class="spec-link">View Specs</a>
+            </div>
+            <div class="product">
+                <img src="Surface Pro 12.png" alt="New Surface Pro 12" />
+                <h2>New Surface Pro for Business 12" (ARM)</h2>
+                <a href="New Surface Pro 12.pdf" target="_blank" class="spec-link">View Specs</a>
+            </div>
+            <div class="product">
+                <img src="Surface Laptop 13.png" alt="New Surface Laptop 13" />
+                <h2>New Surface Laptop for Business 13" (ARM)</h2>
+                <a href="New Surface Laptop 13.pdf" target="_blank" class="spec-link">View Specs</a>
+            </div>
+            <div class="product">
+                <img src="microsoft-surface-protection-plan.jpg" alt="Microsoft Surface Protection Plan" />
+                <h2>Microsoft Warranty Plans</h2>
+                <a href="Microsoft Surface Warranty plans.pdf" target="_blank" class="spec-link">View Specs</a>
+            </div>
+        </section>
+    </section>
  <!-- Promotions and Contests -->
  <section id="promo" class="promo-section" aria-label="Exclusive Promotions" style="display:none">
   <div class="promo-header-card">

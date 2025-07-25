@@ -78,10 +78,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function showDetailsModal(product) {
     if (!product) return;
-    // You can customize this modal as needed
     const modal = document.createElement('div');
     modal.className = 'modal';
     modal.style.display = 'block';
+    // Render Spec Sheet as a button
     modal.innerHTML = `
       <div class="modal-content" style="max-width:600px;">
         <span class="close-modal" id="closeDetailsModal" style="position:absolute;right:2rem;top:2rem;font-size:2em;cursor:pointer;color:#0078d4;">&times;</span>
@@ -90,7 +90,12 @@ document.addEventListener('DOMContentLoaded', function() {
         <div>${product.longDesc || product.shortDesc || ''}</div>
         <table class="comparison-table" style="margin-top:16px;">
           <tbody>
-            ${Object.entries(product.specs).map(([k,v]) => `<tr><td><b>${k}</b></td><td>${v}</td></tr>`).join('')}
+            ${Object.entries(product.specs).map(([k,v]) => {
+              if (k === "Spec Sheet") {
+                return `<tr><td></td><td>${v}</td></tr>`;
+              }
+              return `<tr><td><b>${k}</b></td><td>${v}</td></tr>`;
+            }).join('')}
           </tbody>
         </table>
       </div>
@@ -117,16 +122,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (openCompare && compareModal && closeCompare && compareBody && products.length) {
     openCompare.addEventListener('click', function() {
-      // Show all products for comparison
+      // Gather all unique spec keys across products
+      const specKeys = Array.from(
+        new Set(products.flatMap(p => Object.keys(p.specs)))
+      );
       let html = '<table class="comparison-table"><thead><tr><th>Name</th>';
       products.forEach(p => html += `<th>${p.name}<br><img src="${p.image}" alt="${p.name}" style="max-width:80px;max-height:60px;margin-top:0.5em;"></th>`);
       html += '</tr></thead><tbody>';
-      for (const key of Object.keys(products[0].specs)) {
-      let label = key === 'Warranty' ? 'Manufacturing Warranty' : key;
-      html += `<tr><td>${label}</td>`;
-      products.forEach(p => html += `<td>${p.specs[key]}</td>`);
-      html += '</tr>';
-    }
+      for (const key of specKeys) {
+        let label = key === 'Warranty' ? 'Manufacturing Warranty' : key;
+        html += `<tr><td>${label === "Spec Sheet" ? "" : label}</td>`;
+        products.forEach(p => {
+          const v = p.specs[key] || '';
+          if (key === "Spec Sheet" && v) {
+            html += `<td>${v}</td>`;
+          } else {
+            html += `<td>${v}</td>`;
+          }
+        });
+        html += '</tr>';
+      }
       html += '</tbody></table>';
       compareBody.innerHTML = html;
       compareModal.style.display = 'block';

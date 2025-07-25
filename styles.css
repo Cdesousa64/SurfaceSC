@@ -130,7 +130,7 @@ ul { padding-left: 1.3em; }
   }
 }
 
-/* ===== Carousel Styles (FIXED) ===== */
+/* ===== Carousel Styles (FIXED and IMPROVED) ===== */
 .carousel-container {
   width: 99vw;
   max-width: 1200px;
@@ -139,7 +139,7 @@ ul { padding-left: 1.3em; }
 }
 .carousel-track-wrapper {
   overflow: hidden;
-  width: 670px;
+  width: 696px; /* 335px * 2 + 26px gap */
   margin: 0 auto;
 }
 .carousel-track {
@@ -213,6 +213,13 @@ ul { padding-left: 1.3em; }
   background: #005a9e;
 }
 
+/* Responsive Carousel: Show 1 card at a time for small screens */
+@media (max-width: 800px) {
+  .carousel-track-wrapper {
+    width: 335px;
+  }
+}
+
 /* Modal styles */
 .modal {
   position: fixed;
@@ -227,10 +234,15 @@ ul { padding-left: 1.3em; }
 .modal-content {
   background: #fff;
   border-radius: 18px;
-  padding: 40px 32px 32px 32px;
+  /* FIXED: ensure modal doesn't overflow horizontally */
+  max-width: 600px;
+  width: 95vw;
+  overflow-x: auto;
   box-shadow: 0 4px 32px rgba(0,120,212,0.09);
   position: relative;
   min-width:280px;
+  margin: 0 auto;
+  padding: 40px 32px 32px 32px;
 }
 
 .comparison-table {
@@ -238,6 +250,8 @@ ul { padding-left: 1.3em; }
   border-collapse: collapse;
   margin-top: 18px;
   font-size: 1em;
+  table-layout: fixed; /* FIXED: makes table fit modal */
+  word-break: break-word; /* FIXED: wrap long text */
 }
 .comparison-table th,
 .comparison-table td {
@@ -245,6 +259,8 @@ ul { padding-left: 1.3em; }
   padding: 8px 8px;
   text-align: left;
   vertical-align: middle;
+  white-space: normal; /* FIXED: allow wrapping */
+  word-break: break-word;
 }
 .comparison-table th {
   background: #f6faff;
@@ -379,11 +395,13 @@ ul { padding-left: 1.3em; }
     background: #fff;
     margin: 2% auto;
     border-radius: 12px;
+    /* FIXED: ensure modal doesn't overflow horizontally */
     padding: 2rem;
     width: 95%;
-    max-width: 1200px;
+    max-width: 600px;
     position: relative;
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    overflow-x: auto;
 }
 .close-modal {
     position: absolute;
@@ -402,14 +420,19 @@ ul { padding-left: 1.3em; }
 .comparison-table {
     border-collapse: collapse;
     width: 100%;
-    min-width: 700px;
+    min-width: 300px;
+    max-width: 100%;
+    table-layout: fixed;
+    word-break: break-word;
 }
 .comparison-table th,
 .comparison-table td {
     border: 1px solid #e0e4e8;
     padding: 1em 0.8em;
-    text-align: center;
+    text-align: left;
     font-size: 1em;
+    white-space: normal;
+    word-break: break-word;
 }
 .comparison-table th {
     background: #f4f6f8;

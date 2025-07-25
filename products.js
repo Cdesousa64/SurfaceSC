@@ -4,7 +4,7 @@ const products = [
     name: "Surface Pro for Business 11th Edition (Intel)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro.png",
     shortDesc: "Ultra-light, ultra-flexible business tablet with Intel Core Ultra 7.",
-    longDesc: "The Surface Pro 11th Edition (Intel) delivers top-tier performance and versatility for business users. It features a stunning 13\" PixelSense Flow touchscreen, enhanced security, and long battery life, making it perfect for productivity on the go.",
+    longDesc: "The Surface Pro 11th Edition (Intel) delivers top-tier performance and versatility for business users. It features a stunning 13\" PixelSense Flow touchscreen, enhanced security, and long battery life for maximum productivity.",
     specs: {
       Processor: "Intel Core Ultra 7 165U",
       RAM: "16GB LPDDR5x",
@@ -20,7 +20,7 @@ const products = [
       Camera: "5MP front, 10MP rear",
       Security: "TPM 2.0, Windows Hello Face",
       Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2011%20Edition%20Specsheet.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2011%20Intel%20Specsheet.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
     }
   },
   {
@@ -28,7 +28,7 @@ const products = [
     name: "Surface Laptop for Business 7th Edition (Intel)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20laptop%20image.png",
     shortDesc: "Premium Intel-powered laptop with all-day battery life.",
-    longDesc: "The Surface Laptop 7th Edition (Intel) combines sleek design with powerful performance. Featuring a 15\" PixelSense touchscreen, next-gen Intel Core Ultra 7 processor, and advanced security features, it's built for professionals on the move.",
+    longDesc: "The Surface Laptop 7th Edition (Intel) combines sleek design with powerful performance. Featuring a 15\" PixelSense touchscreen, next-gen Intel Core Ultra 7 processor, and advanced security.",
     specs: {
       Processor: "Intel Core Ultra 7 165H",
       RAM: "16GB LPDDR5x",
@@ -44,7 +44,7 @@ const products = [
       Camera: "1080p HD front camera",
       Security: "TPM 2.0, Windows Hello Face",
       Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%207%20Edition%20Specsheet.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%207%20Intel%20Specsheet.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
     }
   },
   {
@@ -52,7 +52,7 @@ const products = [
     name: "New Surface Pro for Business 12\" (ARM)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2012.png",
     shortDesc: "Next-gen ARM device with Snapdragon X Elite for AI workloads.",
-    longDesc: "Surface Pro 12\" (ARM) redefines mobile productivity with Snapdragon X Elite and exceptional battery life. Enjoy advanced connectivity, robust security, and a brilliant PixelSense touchscreen, all in an ultra-portable design.",
+    longDesc: "Surface Pro 12\" (ARM) redefines mobile productivity with Snapdragon X Elite and exceptional battery life. Enjoy advanced connectivity, robust security, and a brilliant PixelSense touchscreen.",
     specs: {
       Processor: "Snapdragon X Elite",
       RAM: "16GB LPDDR5x",
@@ -68,7 +68,7 @@ const products = [
       Camera: "5MP front, 10MP rear",
       Security: "TPM 2.0, Windows Hello Face",
       Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2012%20ARM%20Specsheet.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/New%20Surface%20Pro%2012.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
     }
   },
   {
@@ -76,7 +76,7 @@ const products = [
     name: "New Surface Laptop for Business 13\" (ARM)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%2013.png",
     shortDesc: "Fast, efficient ARM laptop with modern connectivity.",
-    longDesc: "The Surface Laptop 13\" (ARM) offers powerful Snapdragon X Elite performance, long battery life, and enterprise-grade security. Its 13.8\" PixelSense touchscreen and premium build are ideal for business users who require mobility and speed.",
+    longDesc: "The Surface Laptop 13\" (ARM) offers powerful Snapdragon X Elite performance, long battery life, and enterprise-grade security. Its 13.8\" PixelSense touchscreen and premium build are ideal for business.",
     specs: {
       Processor: "Snapdragon X Elite",
       RAM: "16GB LPDDR5x",
@@ -92,7 +92,7 @@ const products = [
       Camera: "1080p HD front camera",
       Security: "TPM 2.0, Windows Hello Face",
       Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%2013%20ARM%20Specsheet.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/New%20Surface%20Laptop%2013.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
     }
   },
   {
@@ -100,7 +100,7 @@ const products = [
     name: "Surface Laptop for Business 7th Edition (5G)",
     image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%205G.jpg",
     shortDesc: "Ultra-connected next-gen ARM laptop with built-in 5G and Snapdragon X Elite.",
-    longDesc: "The Surface Laptop 7th Edition (5G) takes mobile productivity further, powered by the Qualcomm Snapdragon X Elite processor and native 5G connectivity. Enjoy multi-day battery life, premium build, advanced AI features, and enterprise security—ideal for modern business on the move.",
+    longDesc: "The Surface Laptop 7th Edition (5G) takes mobile productivity further, powered by the Qualcomm Snapdragon X Elite processor and native 5G connectivity. Enjoy multi-day battery life, premium build, and robust security.",
     specs: {
       Processor: "Qualcomm Snapdragon X Elite",
       RAM: "16GB LPDDR5x",

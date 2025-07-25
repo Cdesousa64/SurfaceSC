@@ -250,27 +250,33 @@ ul { padding-left: 1.3em; }
   border-radius: 18px;
   max-width: 1100px;
   width: 98vw;
-  overflow-x: auto;
-  box-shadow: 0 4px 32px rgba(0,120,212,0.09);
-  position: relative;
   min-width: 320px;
   margin: 0 auto;
   padding: 40px 32px 32px 32px;
+  box-shadow: 0 4px 32px rgba(0,120,212,0.09);
+  position: relative;
+  overflow-y: auto;
+  max-height: 85vh;
 }
 .comparison-table {
+  display: block;
   min-width: 820px;
   max-width: 100%;
   width: auto;
   table-layout: auto;
   word-break: break-word;
+  overflow-x: auto;
+  margin-top: 18px;
 }
 @media (max-width: 900px) {
   .modal-content {
     padding: 1rem;
     max-width: 99vw;
     width: 99vw;
+    max-height: 90vh;
+    overflow-y: auto;
   }
-  .comparison-table { min-width: 600px; font-size: 0.97em; }
+  .comparison-table { min-width: 600px; font-size: 0.97em; overflow-x: auto; }
 }
 .close-modal {
   font-size: 2em;
@@ -842,8 +848,8 @@ footer {
     .eol-badge { font-size: 0.9rem; }
     .products-grid { gap: 1rem; }
     .product-card { width: 100%; max-width: 370px; }
-    .modal-content { padding: 1rem; max-width: 99vw; width: 99vw; }
-    .comparison-table { min-width: 600px; font-size: 0.97em; }
+    .modal-content { padding: 1rem; max-width: 99vw; width: 99vw; max-height:90vh; overflow-y:auto;}
+    .comparison-table { min-width: 600px; font-size: 0.97em; overflow-x: auto; }
 }
 
 @media (max-width: 700px) {
@@ -895,6 +901,8 @@ footer {
   word-break: break-word;
   border-collapse: collapse;
   margin-top: 18px;
+  display: block;
+  overflow-x: auto;
 }
 .comparison-table th, .comparison-table td {
   padding: 10px 12px;

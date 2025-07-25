@@ -130,7 +130,7 @@ ul { padding-left: 1.3em; }
   }
 }
 
-/* ===== Carousel Styles (FIXED and IMPROVED) ===== */
+/* ===== Carousel Styles: Show 2 tiles at once ===== */
 .carousel-container {
   width: 99vw;
   max-width: 1200px;
@@ -139,18 +139,18 @@ ul { padding-left: 1.3em; }
 }
 .carousel-track-wrapper {
   overflow: hidden;
-  width: 696px; /* 2 cards (335px each) + 26px gap */
+  width: 696px; /* 2 slides (335px) + gap (26px) */
   margin: 0 auto;
 }
 .carousel-track {
   display: flex;
+  gap: 26px; /* gap between slides */
   transition: transform 0.3s cubic-bezier(.4,0,.2,1);
   will-change: transform;
 }
 .carousel-slide {
   min-width: 335px;
   max-width: 335px;
-  margin-right: 26px;
   flex-shrink: 0;
   background: #fff;
   border-radius: 18px;
@@ -213,14 +213,17 @@ ul { padding-left: 1.3em; }
   background: #005a9e;
 }
 
-/* Responsive Carousel: Show 1 card at a time for small screens */
+/* Responsive: Show 1 tile at a time for small screens */
 @media (max-width: 800px) {
   .carousel-track-wrapper {
     width: 335px;
   }
+  .carousel-track {
+    gap: 0;
+  }
 }
 
-/* Modal styles (FIXED and IMPROVED) */
+/* Modal styles */
 .modal {
   position: fixed;
   left:0; top:0; width:100vw; height:100vh;
@@ -249,8 +252,8 @@ ul { padding-left: 1.3em; }
   border-collapse: collapse;
   margin-top: 18px;
   font-size: 1em;
-  table-layout: fixed; /* makes table fit modal */
-  word-break: break-word; /* wrap long text */
+  table-layout: fixed;
+  word-break: break-word;
 }
 .comparison-table th,
 .comparison-table td {
@@ -258,7 +261,7 @@ ul { padding-left: 1.3em; }
   padding: 8px 8px;
   text-align: left;
   vertical-align: middle;
-  white-space: normal; /* allow wrapping */
+  white-space: normal;
   word-break: break-word;
 }
 .comparison-table th {
@@ -294,6 +297,7 @@ ul { padding-left: 1.3em; }
   background: #005a9e;
   color: #fff !important;
 }
+
 
 /* ===== Accessories Section ===== */
 .accessories-section {

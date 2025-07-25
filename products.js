@@ -19,7 +19,8 @@ const products = [
       OS: "Windows 11 Pro",
       Camera: "5MP front, 10MP rear",
       Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year"
+      Warranty: "1 Year",
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2011%20Edition%20Specsheet.pdf' target='_blank'>Download PDF</a>"
     }
   },
   {
@@ -42,7 +43,8 @@ const products = [
       OS: "Windows 11 Pro",
       Camera: "1080p HD front camera",
       Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year"
+      Warranty: "1 Year",
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%207%20Edition%20Specsheet.pdf' target='_blank'>Download PDF</a>"
     }
   },
   {
@@ -65,7 +67,8 @@ const products = [
       OS: "Windows 11 Pro (ARM)",
       Camera: "5MP front, 10MP rear",
       Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year"
+      Warranty: "1 Year",
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2012%20ARM%20Specsheet.pdf' target='_blank'>Download PDF</a>"
     }
   },
   {
@@ -88,7 +91,8 @@ const products = [
       OS: "Windows 11 Pro (ARM)",
       Camera: "1080p HD front camera",
       Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year"
+      Warranty: "1 Year",
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%2013%20ARM%20Specsheet.pdf' target='_blank'>Download PDF</a>"
     }
   },
   {
@@ -116,5 +120,4 @@ const products = [
     }
   }
 ];
-// Expose products globally for main.js
 window.products = products;

@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // ====== Carousel Logic ======
   function setupCarousel() {
     const products = window.products || [];
     if (!products.length) {
-      // Try again in 100ms if products aren't loaded yet
+      // Wait until products are loaded
       return setTimeout(setupCarousel, 100);
     }
     const carouselTrack = document.getElementById('carouselTrack');
@@ -14,9 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentPage = 0;
     let slideInterval;
 
-    // Render carousel slides
     function renderCarousel() {
-      if (!carouselTrack || !products.length) return;
       carouselTrack.innerHTML = '';
       products.forEach((product, idx) => {
         const slide = document.createElement('div');
@@ -47,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCarousel() {
-      if (!carouselTrack) return;
       const slideWidth = getSlideWidth();
       const totalPages = getTotalPages();
       if (currentPage < 0) currentPage = totalPages - 1;
@@ -57,9 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderCarouselDots() {
-      if (!carouselDots) return;
-      const totalPages = getTotalPages();
       carouselDots.innerHTML = '';
+      const totalPages = getTotalPages();
       for (let i = 0; i < totalPages; i++) {
         const dot = document.createElement('span');
         dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
@@ -72,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     function updateCarouselDots() {
-      if (!carouselDots) return;
       Array.from(carouselDots.children).forEach((dot, idx) => {
         dot.classList.toggle('active', idx === currentPage);
       });
@@ -97,9 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 4000);
     }
 
-    window.addEventListener('resize', () => {
-      updateCarousel();
-    });
+    window.addEventListener('resize', () => updateCarousel());
 
     renderCarousel();
     resetInterval();

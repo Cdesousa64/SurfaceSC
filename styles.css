@@ -111,7 +111,6 @@ ul { padding-left: 1.3em; }
   display: block;
 }
 
-/* Responsive: stack videos on mobile/tablet */
 @media (max-width: 700px) {
   .video-gallery-row {
     flex-direction: column;
@@ -213,7 +212,6 @@ ul { padding-left: 1.3em; }
   background: #005a9e;
 }
 
-/* Responsive: Show 1 tile at a time for small screens */
 @media (max-width: 900px) {
   .carousel-track-wrapper { width: 98vw; }
   .carousel-track { gap: 18px; }
@@ -229,7 +227,7 @@ ul { padding-left: 1.3em; }
   left:0; top:0; width:100vw; height:100vh;
   background: rgba(0,0,0,0.12);
   z-index: 1000;
-  display: flex;
+  display: none; /* FIXED: always default hidden */
   align-items: flex-start;
   justify-content: center;
   padding-top: 40px;

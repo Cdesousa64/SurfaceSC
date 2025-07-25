@@ -1,123 +1,136 @@
-const products = [
-  {
-    id: "pro-11-intel",
-    name: "Surface Pro for Business 11th Edition (Intel)",
-    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro.png",
-    shortDesc: "Ultra-light, ultra-flexible business tablet with Intel Core Ultra 7.",
-    longDesc: "The Surface Pro 11th Edition (Intel) delivers top-tier performance and versatility for business users. It features a stunning 13\" PixelSense Flow touchscreen, enhanced security, and long battery life for maximum productivity.",
-    specs: {
-      Processor: "Intel Core Ultra 7 165U",
-      RAM: "16GB LPDDR5x",
-      Storage: "256GB SSD",
-      Display: "13\" PixelSense Flow 2880x1920 Touch",
-      Graphics: "Intel Graphics",
-      Ports: "2 x USB-C Thunderbolt 4, Surface Connect, Surface Keyboard, Headphone Jack",
-      Wireless: "WiFi 6E, Bluetooth 5.3",
-      Battery: "Up to 15 hours",
-      Dimensions: "287 x 209 x 9.3 mm",
-      Weight: "879g (1.94 lbs)",
-      OS: "Windows 11 Pro",
-      Camera: "5MP front, 10MP rear",
-      Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2011%20Intel%20Specsheet.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+document.addEventListener("DOMContentLoaded", function () {
+    const products = window.products || [];
+    const track = document.getElementById("carouselTrack");
+    const dots = document.getElementById("carouselDots");
+    const leftBtn = document.getElementById("carouselPrev");
+    const rightBtn = document.getElementById("carouselNext");
+    const visibleSlides = 2; // Number of cards visible at once
+    let currentPage = 0;
+    let slideInterval;
+
+    function specsShort(specs) {
+        return [specs.Processor, specs.RAM, specs.Storage, specs.Display]
+            .filter(Boolean)
+            .join(" • ");
     }
-  },
-  {
-    id: "laptop-7-intel",
-    name: "Surface Laptop for Business 7th Edition (Intel)",
-    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20laptop%20image.png",
-    shortDesc: "Premium Intel-powered laptop with all-day battery life.",
-    longDesc: "The Surface Laptop 7th Edition (Intel) combines sleek design with powerful performance. Featuring a 15\" PixelSense touchscreen, next-gen Intel Core Ultra 7 processor, and advanced security.",
-    specs: {
-      Processor: "Intel Core Ultra 7 165H",
-      RAM: "16GB LPDDR5x",
-      Storage: "512GB SSD",
-      Display: "15\" PixelSense 2496x1664 Touch",
-      Graphics: "Intel Graphics",
-      Ports: "2 x USB-C Thunderbolt 4, 1 x USB-A, Surface Connect, Headphone Jack",
-      Wireless: "WiFi 6E, Bluetooth 5.3",
-      Battery: "Up to 18 hours",
-      Dimensions: "308 x 223 x 17.5 mm",
-      Weight: "1.56 kg (3.44 lbs)",
-      OS: "Windows 11 Pro",
-      Camera: "1080p HD front camera",
-      Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%207%20Intel%20Specsheet.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+
+    // Render slides
+    track.innerHTML = products.map((p, i) => `
+        <div class="carousel-slide" data-index="${i}">
+            <img src="${p.image}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <div class="slide-specs">${specsShort(p.specs)}</div>
+            <button class="view-details" data-index="${i}">View Details</button>
+        </div>
+    `).join('');
+
+    // Function to get slide width (all slides assumed same width)
+    function getSlideWidth() {
+        const slide = track.querySelector('.carousel-slide');
+        if (!slide) return 0;
+        let gap = 40;
+        if (window.innerWidth <= 900) gap = 18;
+        if (window.innerWidth <= 700) gap = 0;
+        return slide.offsetWidth + gap;
     }
-  },
-  {
-    id: "pro-12-arm",
-    name: "New Surface Pro for Business 12\" (ARM)",
-    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Pro%2012.png",
-    shortDesc: "Next-gen ARM device with Snapdragon X Elite for AI workloads.",
-    longDesc: "Surface Pro 12\" (ARM) redefines mobile productivity with Snapdragon X Elite and exceptional battery life. Enjoy advanced connectivity, robust security, and a brilliant PixelSense touchscreen.",
-    specs: {
-      Processor: "Snapdragon X Elite",
-      RAM: "16GB LPDDR5x",
-      Storage: "512GB SSD",
-      Display: "12.3\" PixelSense Flow 2880x1920 Touch",
-      Graphics: "Qualcomm Adreno GPU",
-      Ports: "2 x USB-C, Surface Connect, Surface Keyboard, Headphone Jack",
-      Wireless: "WiFi 7, Bluetooth 5.4",
-      Battery: "Up to 16 hours",
-      Dimensions: "287 x 209 x 8.9 mm",
-      Weight: "865g (1.91 lbs)",
-      OS: "Windows 11 Pro (ARM)",
-      Camera: "5MP front, 10MP rear",
-      Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/New%20Surface%20Pro%2012.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+
+    // Set track width for all slides
+    function updateTrackWidth() {
+        const slideWidth = getSlideWidth();
+        track.style.width = `${products.length * slideWidth}px`;
     }
-  },
-  {
-    id: "laptop-13-arm",
-    name: "New Surface Laptop for Business 13\" (ARM)",
-    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%2013.png",
-    shortDesc: "Fast, efficient ARM laptop with modern connectivity.",
-    longDesc: "The Surface Laptop 13\" (ARM) offers powerful Snapdragon X Elite performance, long battery life, and enterprise-grade security. Its 13.8\" PixelSense touchscreen and premium build are ideal for business.",
-    specs: {
-      Processor: "Snapdragon X Elite",
-      RAM: "16GB LPDDR5x",
-      Storage: "512GB SSD",
-      Display: "13.8\" PixelSense 2256x1504 Touch",
-      Graphics: "Qualcomm Adreno GPU",
-      Ports: "2 x USB-C, 1 x USB-A, Surface Connect, Headphone Jack",
-      Wireless: "WiFi 7, Bluetooth 5.4",
-      Battery: "Up to 19 hours",
-      Dimensions: "297 x 220 x 15.5 mm",
-      Weight: "1.37 kg (3.02 lbs)",
-      OS: "Windows 11 Pro (ARM)",
-      Camera: "1080p HD front camera",
-      Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/New%20Surface%20Laptop%2013.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+    updateTrackWidth();
+    window.addEventListener('resize', () => {
+        updateTrackWidth();
+        goToPage(currentPage);
+    });
+
+    // Pages: one page per group of visibleSlides
+    function getTotalPages() {
+        return Math.ceil(products.length / visibleSlides);
     }
-  },
-  {
-    id: "laptop-7-arm-5g",
-    name: "Surface Laptop for Business 7th Edition (5G)",
-    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%205G.jpg",
-    shortDesc: "Ultra-connected next-gen ARM laptop with built-in 5G and Snapdragon X Elite.",
-    longDesc: "The Surface Laptop 7th Edition (5G) takes mobile productivity further, powered by the Qualcomm Snapdragon X Elite processor and native 5G connectivity. Enjoy multi-day battery life, premium build, and robust security.",
-    specs: {
-      Processor: "Qualcomm Snapdragon X Elite",
-      RAM: "16GB LPDDR5x",
-      Storage: "512GB SSD",
-      Display: "13.8\" PixelSense 2256x1504 Touch",
-      Graphics: "Qualcomm Adreno GPU",
-      Ports: "2 x USB-C, 1 x USB-A, Surface Connect, Headphone Jack",
-      Wireless: "WiFi 7, Bluetooth 5.4, 5G Cellular",
-      Battery: "Up to 19 hours",
-      Dimensions: "297 x 220 x 15.5 mm",
-      Weight: "1.37 kg (3.02 lbs)",
-      OS: "Windows 11 Pro (ARM)",
-      Camera: "1080p HD front camera",
-      Security: "TPM 2.0, Windows Hello Face",
-      Warranty: "1 Year",
-      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20laptop%207%205G.pdf' target='_blank' class='specsheet-btn'>Download Specs PDF</a>"
+
+    function renderDots() {
+        const totalPages = getTotalPages();
+        dots.innerHTML = Array.from({length: totalPages}, (_, i) =>
+            `<span class="carousel-dot${i === currentPage ? ' active' : ''}" data-dot="${i}"></span>`
+        ).join('');
     }
-  }
-];
-window.products = products;
+
+    function goToPage(page) {
+        const totalPages = getTotalPages();
+        // Infinite loop
+        if (page < 0) page = totalPages - 1;
+        if (page >= totalPages) page = 0;
+        currentPage = page;
+        const slideWidth = getSlideWidth();
+        track.style.transform = `translateX(-${currentPage * visibleSlides * slideWidth}px)`;
+        renderDots();
+    }
+
+    // Initial dots
+    renderDots();
+
+    if (leftBtn) leftBtn.onclick = () => { goToPage(currentPage - 1); resetInterval(); };
+    if (rightBtn) rightBtn.onclick = () => { goToPage(currentPage + 1); resetInterval(); };
+    if (dots) dots.onclick = e => {
+        const dot = e.target.closest(".carousel-dot");
+        if (dot) { goToPage(parseInt(dot.dataset.dot)); resetInterval(); }
+    };
+
+    function resetInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(() => {
+            goToPage(currentPage + 1);
+        }, 4000);
+    }
+    resetInterval();
+
+    window.addEventListener("resize", () => goToPage(currentPage));
+    goToPage(0);
+
+    // Details modal logic (unchanged)
+    document.body.addEventListener("click", function (e) {
+        const btn = e.target.closest(".view-details");
+        if (btn) {
+            const idx = +btn.getAttribute("data-index");
+            showProductDetails(idx);
+        }
+    });
+
+    function showProductDetails(idx) {
+        const p = products[idx];
+        if (!p) return;
+        const modal = document.createElement("div");
+        modal.className = "modal";
+        modal.style.display = "block";
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width:600px;">
+                <span class="close-modal" style="position:absolute;right:2rem;top:2rem;font-size:2em;cursor:pointer;color:#0078d4;">&times;</span>
+                <h2>${p.name}</h2>
+                <img src="${p.image}" alt="${p.name}" style="max-width:200px;margin-bottom:16px;">
+                <div>${p.shortDesc || ""}</div>
+                <table class="comparison-table" style="margin-top:16px;">
+                    <tbody>
+                        ${Object.entries(p.specs)
+                            .map(([k, v]) => `<tr><td><b>${k}</b></td><td>${v}</td></tr>`)
+                            .join("")}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.querySelector(".close-modal").addEventListener("click", () => {
+            modal.remove();
+        });
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) modal.remove();
+        });
+        window.addEventListener("keydown", function esc(ev) {
+            if (ev.key === "Escape") {
+                modal.remove();
+                window.removeEventListener("keydown", esc);
+            }
+        });
+    }
+});

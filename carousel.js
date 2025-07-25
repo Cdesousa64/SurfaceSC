@@ -27,13 +27,23 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     `).join('');
 
+    // Set track width dynamically for all slides
+    function updateTrackWidth() {
+        if (track.firstElementChild) {
+            track.style.width = `${products.length * (track.firstElementChild.offsetWidth + 26)}px`;
+        }
+    }
+    updateTrackWidth();
+    window.addEventListener('resize', updateTrackWidth);
+
     // Render dots
     dots.innerHTML = products.map((_, i) =>
         `<span class="carousel-dot${i===0?' active':''}" data-dot="${i}"></span>`
     ).join('');
 
     function goToSlide(idx) {
-        currentSlide = (idx + products.length) % products.length;
+        // Clamp idx between 0 and products.length-1
+        currentSlide = Math.max(0, Math.min(idx, products.length - 1));
         track.style.transform = `translateX(-${currentSlide * (track.firstElementChild.offsetWidth + 26)}px)`;
         dots.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i===currentSlide));
     }
@@ -47,7 +57,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function resetInterval() {
         clearInterval(slideInterval);
-        slideInterval = setInterval(() => goToSlide(currentSlide+1), 4000);
+        slideInterval = setInterval(() => {
+            if (currentSlide < products.length - 1) {
+                goToSlide(currentSlide + 1);
+            } else {
+                goToSlide(0); // Optionally loop to first slide
+            }
+        }, 4000);
     }
     resetInterval();
 

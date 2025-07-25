@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const slide = track.querySelector('.carousel-slide');
         if (!slide) return 0;
         // Use gap as defined in your CSS for desktop/mobile
-        const gap = parseInt(getComputedStyle(track).gap || '40', 10);
+        let gap = 40;
+        if (window.innerWidth <= 900) gap = 18;
+        if (window.innerWidth <= 700) gap = 0;
         return slide.offsetWidth + gap;
     }
 
@@ -45,20 +47,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Pages: one page per group of visibleSlides
-    const totalPages = Math.ceil(products.length / visibleSlides);
-    dots.innerHTML = Array.from({length: totalPages}, (_, i) =>
-        `<span class="carousel-dot${i === 0 ? ' active' : ''}" data-dot="${i}"></span>`
-    ).join('');
+    function getTotalPages() {
+        return Math.ceil(products.length / visibleSlides);
+    }
+
+    function renderDots() {
+        const totalPages = getTotalPages();
+        dots.innerHTML = Array.from({length: totalPages}, (_, i) =>
+            `<span class="carousel-dot${i === currentPage ? ' active' : ''}" data-dot="${i}"></span>`
+        ).join('');
+    }
 
     function goToPage(page) {
+        const totalPages = getTotalPages();
         // Infinite loop
         if (page < 0) page = totalPages - 1;
         if (page >= totalPages) page = 0;
         currentPage = page;
         const slideWidth = getSlideWidth();
         track.style.transform = `translateX(-${currentPage * visibleSlides * slideWidth}px)`;
-        dots.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentPage));
+        renderDots();
     }
+
+    // Initial dots
+    renderDots();
 
     if (leftBtn) leftBtn.onclick = () => { goToPage(currentPage - 1); resetInterval(); };
     if (rightBtn) rightBtn.onclick = () => { goToPage(currentPage + 1); resetInterval(); };

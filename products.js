@@ -90,8 +90,31 @@ const products = [
       Security: "TPM 2.0, Windows Hello Face",
       Warranty: "1 Year"
     }
+  },
+  {
+    id: "laptop-7-arm-5g",
+    name: "Surface Laptop for Business 7th Edition (5G)",
+    image: "https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20Laptop%205G.jpg",
+    shortDesc: "Ultra-connected next-gen ARM laptop with built-in 5G and Snapdragon X Elite.",
+    longDesc: "The Surface Laptop 7th Edition (5G) takes mobile productivity further, powered by the Qualcomm Snapdragon X Elite processor and native 5G connectivity. Enjoy multi-day battery life, premium build, advanced AI features, and enterprise security—ideal for modern business on the move.",
+    specs: {
+      Processor: "Qualcomm Snapdragon X Elite",
+      RAM: "16GB LPDDR5x",
+      Storage: "512GB SSD",
+      Display: "13.8\" PixelSense 2256x1504 Touch",
+      Graphics: "Qualcomm Adreno GPU",
+      Ports: "2 x USB-C, 1 x USB-A, Surface Connect, Headphone Jack",
+      Wireless: "WiFi 7, Bluetooth 5.4, 5G Cellular",
+      Battery: "Up to 19 hours",
+      Dimensions: "297 x 220 x 15.5 mm",
+      Weight: "1.37 kg (3.02 lbs)",
+      OS: "Windows 11 Pro (ARM)",
+      Camera: "1080p HD front camera",
+      Security: "TPM 2.0, Windows Hello Face",
+      Warranty: "1 Year",
+      "Spec Sheet": "<a href='https://github.com/Cdesousa64/SurfaceSC/raw/main/Surface%20laptop%207%205G.pdf' target='_blank'>Download PDF</a>"
+    }
   }
 ];
-
 // Expose products globally for main.js
 window.products = products;

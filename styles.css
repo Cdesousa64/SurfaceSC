@@ -139,7 +139,7 @@ ul { padding-left: 1.3em; }
 }
 .carousel-track-wrapper {
   overflow: hidden;
-  width: 696px; /* 335px * 2 + 26px gap */
+  width: 696px; /* 2 cards (335px each) + 26px gap */
   margin: 0 auto;
 }
 .carousel-track {
@@ -220,7 +220,7 @@ ul { padding-left: 1.3em; }
   }
 }
 
-/* Modal styles */
+/* Modal styles (FIXED and IMPROVED) */
 .modal {
   position: fixed;
   left:0; top:0; width:100vw; height:100vh;
@@ -234,7 +234,6 @@ ul { padding-left: 1.3em; }
 .modal-content {
   background: #fff;
   border-radius: 18px;
-  /* FIXED: ensure modal doesn't overflow horizontally */
   max-width: 600px;
   width: 95vw;
   overflow-x: auto;
@@ -250,8 +249,8 @@ ul { padding-left: 1.3em; }
   border-collapse: collapse;
   margin-top: 18px;
   font-size: 1em;
-  table-layout: fixed; /* FIXED: makes table fit modal */
-  word-break: break-word; /* FIXED: wrap long text */
+  table-layout: fixed; /* makes table fit modal */
+  word-break: break-word; /* wrap long text */
 }
 .comparison-table th,
 .comparison-table td {
@@ -259,7 +258,7 @@ ul { padding-left: 1.3em; }
   padding: 8px 8px;
   text-align: left;
   vertical-align: middle;
-  white-space: normal; /* FIXED: allow wrapping */
+  white-space: normal; /* allow wrapping */
   word-break: break-word;
 }
 .comparison-table th {
@@ -395,7 +394,6 @@ ul { padding-left: 1.3em; }
     background: #fff;
     margin: 2% auto;
     border-radius: 12px;
-    /* FIXED: ensure modal doesn't overflow horizontally */
     padding: 2rem;
     width: 95%;
     max-width: 600px;

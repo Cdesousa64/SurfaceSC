@@ -1,5 +1,3 @@
-// main.js — includes carousel, video modal, and comparison logic for Surface showcase
-
 document.addEventListener('DOMContentLoaded', function() {
   // ====== Carousel Logic ======
   const products = window.products || [];
@@ -33,13 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!carouselTrack) return;
     const slideWidth = 335;
     const gap = 40;
-    // Don't scroll beyond the last full pair
     currentSlide = Math.max(0, Math.min(currentSlide, products.length - 2));
     carouselTrack.style.transform = `translateX(-${currentSlide * (slideWidth + gap)}px)`;
     updateCarouselDots();
   }
 
-  // Carousel navigation (scroll by 1, but don't scroll past the last pair)
   if (carouselPrev) carouselPrev.addEventListener('click', function() {
     currentSlide = Math.max(0, currentSlide - 1);
     updateCarousel();
@@ -49,11 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCarousel();
   });
 
-  // Carousel dots for each pair (so last pair is always full tiles)
   function renderCarouselDots() {
     if (!carouselDots) return;
     carouselDots.innerHTML = '';
-    // Number of dots = products.length - 1 (for pairs)
     for (let i = 0; i < products.length - 1; i++) {
       const dot = document.createElement('span');
       dot.className = 'carousel-dot' + (i === currentSlide ? ' active' : '');
@@ -71,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Details modal logic (updated: removed inline max-width style)
+  // ====== Spec Details Modal ======
   document.body.addEventListener('click', function(e) {
     const btn = e.target.closest('.view-details');
     if (btn) {
@@ -82,6 +76,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function showDetailsModal(product) {
     if (!product) return;
+    // Build spec table, putting spec sheet download in its own row at bottom
+    let specRows = '';
+    Object.entries(product.specs).forEach(([k, v]) => {
+      if (k === "Spec Sheet") return; // handled below
+      specRows += `<tr>
+        <td class="spec-label"><b>${k}</b></td>
+        <td>${v}</td>
+      </tr>`;
+    });
+    let specSheetRow = '';
+    if (product.specs["Spec Sheet"]) {
+      specSheetRow = `<tr><td></td><td>${product.specs["Spec Sheet"]}</td></tr>`;
+    }
     const modal = document.createElement('div');
     modal.className = 'modal';
     modal.style.display = 'block';
@@ -90,15 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="close-modal" id="closeDetailsModal" style="position:absolute;right:2rem;top:2rem;font-size:2em;cursor:pointer;color:#0078d4;">&times;</span>
         <h2>${product.name}</h2>
         <img src="${product.image}" alt="${product.name}" style="max-width:200px;margin-bottom:16px;">
-        <div>${product.longDesc || product.shortDesc || ''}</div>
-        <table class="comparison-table" style="margin-top:16px;">
+        <div style="margin-bottom:18px;">${product.longDesc || product.shortDesc || ''}</div>
+        <table class="comparison-table">
           <tbody>
-            ${Object.entries(product.specs).map(([k,v]) => {
-              if (k === "Spec Sheet") {
-                return `<tr><td></td><td>${v}</td></tr>`;
-              }
-              return `<tr><td><b>${k}</b></td><td>${v}</td></tr>`;
-            }).join('')}
+            ${specRows}
+            ${specSheetRow}
           </tbody>
         </table>
       </div>
@@ -129,23 +132,35 @@ document.addEventListener('DOMContentLoaded', function() {
       const specKeys = Array.from(
         new Set(products.flatMap(p => Object.keys(p.specs)))
       );
-      let html = '<table class="comparison-table"><thead><tr><th>Name</th>';
-      products.forEach(p => html += `<th>${p.name}<br><img src="${p.image}" alt="${p.name}" style="max-width:80px;max-height:60px;margin-top:0.5em;"></th>`);
-      html += '</tr></thead><tbody>';
+      let html = `<table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            ${products.map(p => `<th>
+              ${p.name}<br>
+              <img src="${p.image}" alt="${p.name}" style="max-width:80px;max-height:60px;margin-top:0.5em;">
+            </th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+      `;
       for (const key of specKeys) {
         let label = key === 'Warranty' ? 'Manufacturing Warranty' : key;
-        html += `<tr><td>${label === "Spec Sheet" ? "" : label}</td>`;
-        products.forEach(p => {
-          const v = p.specs[key] || '';
-          if (key === "Spec Sheet" && v) {
-            html += `<td>${v}</td>`;
-          } else {
-            html += `<td>${v}</td>`;
-          }
-        });
-        html += '</tr>';
+        if (key === "Spec Sheet") {
+          html += `<tr><td></td>`;
+          products.forEach(p => {
+            html += `<td>${p.specs[key] || ''}</td>`;
+          });
+          html += `</tr>`;
+        } else {
+          html += `<tr><td>${label}</td>`;
+          products.forEach(p => {
+            html += `<td>${p.specs[key] || ''}</td>`;
+          });
+          html += `</tr>`;
+        }
       }
-      html += '</tbody></table>';
+      html += `</tbody></table>`;
       compareBody.innerHTML = html;
       compareModal.style.display = 'block';
     });

@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   // ====== Carousel Logic ======
-  const products = window.products || []; // Defined in products.js
+  const products = window.products || [];
   const carouselTrack = document.getElementById('carouselTrack');
   const carouselPrev = document.getElementById('carouselPrev');
   const carouselNext = document.getElementById('carouselNext');
@@ -28,37 +28,41 @@ document.addEventListener('DOMContentLoaded', function() {
     renderCarouselDots();
   }
 
-  // Update carousel to show current slide
+  // Show 2 tiles at a time, scroll by 1
   function updateCarousel() {
     if (!carouselTrack) return;
-    const slideWidth = carouselTrack.children[0]?.offsetWidth || 335;
-    carouselTrack.style.transform = `translateX(-${currentSlide * (slideWidth + 26)}px)`;
+    const slideWidth = 335;
+    const gap = 26;
+    // Don't scroll beyond last full pair
+    currentSlide = Math.max(0, Math.min(currentSlide, products.length - 2));
+    carouselTrack.style.transform = `translateX(-${currentSlide * (slideWidth + gap)}px)`;
     updateCarouselDots();
   }
 
-  // Carousel navigation (infinite loop)
+  // Carousel navigation (scroll by 1, but don't scroll past the last pair)
   carouselPrev.addEventListener('click', function() {
-    currentSlide = (currentSlide - 1 + products.length) % products.length;
+    currentSlide = Math.max(0, currentSlide - 1);
     updateCarousel();
   });
   carouselNext.addEventListener('click', function() {
-    currentSlide = (currentSlide + 1) % products.length;
+    currentSlide = Math.min(products.length - 2, currentSlide + 1);
     updateCarousel();
   });
 
-  // Carousel dots
+  // Carousel dots for each pair (so last pair is always full tiles)
   function renderCarouselDots() {
     if (!carouselDots) return;
     carouselDots.innerHTML = '';
-    products.forEach((_, idx) => {
+    // Number of dots = products.length - 1 (for pairs)
+    for (let i = 0; i < products.length - 1; i++) {
       const dot = document.createElement('span');
-      dot.className = 'carousel-dot' + (idx === currentSlide ? ' active' : '');
+      dot.className = 'carousel-dot' + (i === currentSlide ? ' active' : '');
       dot.addEventListener('click', function() {
-        currentSlide = idx;
+        currentSlide = i;
         updateCarousel();
       });
       carouselDots.appendChild(dot);
-    });
+    }
   }
   function updateCarouselDots() {
     if (!carouselDots) return;
@@ -67,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Details modal logic
+  // Details modal logic (unchanged)
   document.body.addEventListener('click', function(e) {
     const btn = e.target.closest('.view-details');
     if (btn) {
@@ -81,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.createElement('div');
     modal.className = 'modal';
     modal.style.display = 'block';
-    // Render Spec Sheet as a button
     modal.innerHTML = `
       <div class="modal-content" style="max-width:600px;">
         <span class="close-modal" id="closeDetailsModal" style="position:absolute;right:2rem;top:2rem;font-size:2em;cursor:pointer;color:#0078d4;">&times;</span>

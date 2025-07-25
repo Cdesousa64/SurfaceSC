@@ -1,10 +1,11 @@
-// Carousel logic for Surface product showcase (standalone version)
+// Carousel logic for Surface product showcase (shows 2 products at a time, loops infinitely)
 document.addEventListener("DOMContentLoaded", function () {
     const products = window.products || [];
     const track = document.getElementById("carouselTrack");
     const dots = document.getElementById("carouselDots");
     const leftBtn = document.getElementById("carouselPrev");
     const rightBtn = document.getElementById("carouselNext");
+    const visibleSlides = 3; // <<< CHANGE THIS if you want 1 or more
     let currentSlide = 0;
     let slideInterval;
 
@@ -14,92 +15,63 @@ document.addEventListener("DOMContentLoaded", function () {
             specs.RAM,
             specs.Storage,
             specs.Display,
-        ]
-            .filter(Boolean)
-            .join(" • ");
+        ].filter(Boolean).join(" • ");
     }
 
     // Render slides
-    track.innerHTML = products
-        .map(
-            (p, i) => `
+    track.innerHTML = products.map((p, i) => `
         <div class="carousel-slide" data-index="${i}">
             <img src="${p.image}" alt="${p.name}">
             <h3>${p.name}</h3>
             <div class="slide-specs">${specsShort(p.specs)}</div>
             <button class="view-details" data-index="${i}">View Details</button>
         </div>
-    `
-        )
-        .join("");
+    `).join('');
 
-    // Fix: Set track width based on actual slide widths (responsive)
+    // Calculate slide width (assumes all slides same width)
+    function getSlideWidth() {
+        const slide = track.querySelector('.carousel-slide');
+        return slide ? (slide.offsetWidth + 26) : 0; // 26px gap/margin
+    }
+
+    // Set track width
     function updateTrackWidth() {
-        const slides = track.querySelectorAll('.carousel-slide');
-        let totalWidth = 0;
-        slides.forEach(slide => {
-            totalWidth += slide.offsetWidth + 26; // 26px is assumed slide margin/gap
-        });
-        track.style.width = `${totalWidth}px`;
+        track.style.width = `${products.length * getSlideWidth()}px`;
     }
     updateTrackWidth();
-    window.addEventListener('resize', updateTrackWidth);
+    window.addEventListener('resize', () => {
+        updateTrackWidth();
+        goToSlide(currentSlide);
+    });
 
-    // Render dots
-    dots.innerHTML = products
-        .map(
-            (_, i) =>
-                `<span class="carousel-dot${i === 0 ? " active" : ""}" data-dot="${i}"></span>`
-        )
-        .join("");
-
-    // Fix: Use actual slide width for translation, not just first slide (handles variable widths)
-    function getSlideOffset(index) {
-        const slides = track.querySelectorAll('.carousel-slide');
-        let offset = 0;
-        for (let i = 0; i < index; i++) {
-            offset += slides[i].offsetWidth + 26;
-        }
-        return offset;
-    }
+    // Dots: one per "page" (group of visibleSlides)
+    const totalPages = Math.ceil(products.length / visibleSlides);
+    dots.innerHTML = Array.from({length: totalPages}, (_, i) =>
+        `<span class="carousel-dot${i===0?' active':''}" data-dot="${i}"></span>`
+    ).join('');
 
     function goToSlide(idx) {
-        // Clamp idx between 0 and products.length - 1
-        currentSlide = Math.max(0, Math.min(idx, products.length - 1));
-        const offset = getSlideOffset(currentSlide);
-        track.style.transform = `translateX(-${offset}px)`;
-        dots
-            .querySelectorAll(".carousel-dot")
-            .forEach((d, i) => d.classList.toggle("active", i === currentSlide));
+        // Wrap-around logic
+        if (idx < 0) idx = totalPages - 1;
+        if (idx >= totalPages) idx = 0;
+
+        currentSlide = idx;
+        const slideWidth = getSlideWidth();
+        track.style.transform = `translateX(-${currentSlide * slideWidth * visibleSlides}px)`;
+        dots.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i===currentSlide));
     }
 
-    if (leftBtn)
-        leftBtn.onclick = () => {
-            goToSlide(currentSlide - 1);
-            resetInterval();
-        };
-    if (rightBtn)
-        rightBtn.onclick = () => {
-            goToSlide(currentSlide + 1);
-            resetInterval();
-        };
-    if (dots)
-        dots.onclick = (e) => {
-            const dot = e.target.closest(".carousel-dot");
-            if (dot) {
-                goToSlide(parseInt(dot.dataset.dot));
-                resetInterval();
-            }
-        };
+    if (leftBtn) leftBtn.onclick = () => { goToSlide(currentSlide - 1); resetInterval(); };
+    if (rightBtn) rightBtn.onclick = () => { goToSlide(currentSlide + 1); resetInterval(); };
+    if (dots) dots.onclick = e => {
+        const dot = e.target.closest(".carousel-dot");
+        if (dot) { goToSlide(parseInt(dot.dataset.dot)); resetInterval(); }
+    };
 
     function resetInterval() {
         clearInterval(slideInterval);
         slideInterval = setInterval(() => {
-            if (currentSlide < products.length - 1) {
-                goToSlide(currentSlide + 1);
-            } else {
-                goToSlide(0); // Optionally loop to first slide
-            }
+            goToSlide(currentSlide + 1);
         }, 4000);
     }
     resetInterval();
@@ -107,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", () => goToSlide(currentSlide));
     goToSlide(0);
 
-    // Standalone details modal logic
+    // Details modal logic (unchanged)
     document.body.addEventListener("click", function (e) {
         const btn = e.target.closest(".view-details");
         if (btn) {
@@ -141,11 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
         document.body.appendChild(modal);
-        modal
-            .querySelector(".close-modal")
-            .addEventListener("click", () => {
-                modal.remove();
-            });
+        modal.querySelector(".close-modal").addEventListener("click", () => {
+            modal.remove();
+        });
         modal.addEventListener("click", function (e) {
             if (e.target === modal) modal.remove();
         });

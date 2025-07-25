@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Details modal logic (unchanged)
+  // Details modal logic (updated: removed inline max-width style)
   document.body.addEventListener('click', function(e) {
     const btn = e.target.closest('.view-details');
     if (btn) {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.className = 'modal';
     modal.style.display = 'block';
     modal.innerHTML = `
-      <div class="modal-content" style="max-width:600px;">
+      <div class="modal-content">
         <span class="close-modal" id="closeDetailsModal" style="position:absolute;right:2rem;top:2rem;font-size:2em;cursor:pointer;color:#0078d4;">&times;</span>
         <h2>${product.name}</h2>
         <img src="${product.image}" alt="${product.name}" style="max-width:200px;margin-bottom:16px;">

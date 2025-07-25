@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function getSlideWidth() {
         const slide = track.querySelector('.carousel-slide');
         if (!slide) return 0;
-        return slide.offsetWidth + parseInt(getComputedStyle(slide).marginRight || 0);
+        // Use gap as defined in your CSS for desktop/mobile
+        const gap = parseInt(getComputedStyle(track).gap || '40', 10);
+        return slide.offsetWidth + gap;
     }
 
     // Set track width for all slides

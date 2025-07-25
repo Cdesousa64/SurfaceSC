@@ -32,19 +32,19 @@ document.addEventListener('DOMContentLoaded', function() {
   function updateCarousel() {
     if (!carouselTrack) return;
     const slideWidth = 335;
-    const gap = 26;
-    // Don't scroll beyond last full pair
+    const gap = 40;
+    // Don't scroll beyond the last full pair
     currentSlide = Math.max(0, Math.min(currentSlide, products.length - 2));
     carouselTrack.style.transform = `translateX(-${currentSlide * (slideWidth + gap)}px)`;
     updateCarouselDots();
   }
 
   // Carousel navigation (scroll by 1, but don't scroll past the last pair)
-  carouselPrev.addEventListener('click', function() {
+  if (carouselPrev) carouselPrev.addEventListener('click', function() {
     currentSlide = Math.max(0, currentSlide - 1);
     updateCarousel();
   });
-  carouselNext.addEventListener('click', function() {
+  if (carouselNext) carouselNext.addEventListener('click', function() {
     currentSlide = Math.min(products.length - 2, currentSlide + 1);
     updateCarousel();
   });

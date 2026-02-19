@@ -981,3 +981,27 @@ footer {
   background: #005a9e;
   color: #fff !important;
 }
+/* FY26 updates block (inside Lead Time Guidance) */
+.fy26-updates { margin-top: 6px; }
+.fy26-title { font-weight: 800; margin-bottom: 6px; }
+.fy26-body { margin: 2px 0; line-height: 1.35; }
+
+.fy26-divider {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+  margin: 12px 0;
+}
+
+.fy26-callout-italic { font-style: italic; margin-top: 6px; }
+
+.fy26-callout-red-underline {
+  color: #b00020;
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.fy26-bullets { margin: 6px 0 4px 18px; }
+.fy26-bullets li { margin: 4px 0; }
+
+.fy26-footnote { margin-top: 6px; font-weight: 700; }
